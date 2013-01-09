@@ -22,10 +22,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.AudioTrack;
-import android.media.MediaPlayer;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -282,7 +282,7 @@ public class Morze2TextActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-		pool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+		pool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
 
 		// pool2 = new SoundPool(2,AudioManager.STREAM_MUSIC,0);
 
@@ -422,14 +422,15 @@ public class Morze2TextActivity extends Activity {
 			this.letters.push(ss);
 		}
 		Collections.reverse(this.letters);
-
+ 
 	}
 
 	String getMorseCodeFilename(String morse_code) {
 		String res = "" + morse_code; // not sure so just clone it
-		res.replace('.', 'p');
-		res.replace('-', 't');
+		res = res.replace('·', 'p');
+		res = res.replace('-', 't');
 		res = res + ".wav";
+		Log.w("Filename:",res);
 		return res;
 	}
 
@@ -451,7 +452,7 @@ public class Morze2TextActivity extends Activity {
 						outputStream.write(this.generatedSndPause);
 					}
 					c = morse_code.charAt(i);
-					if (c == '.') {
+					if (c == '·') {
 						outputStream.write(this.generatedSndDip);
 					} else { // dash
 						outputStream.write(this.generatedSndDash);
