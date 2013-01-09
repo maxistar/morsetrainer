@@ -1,5 +1,7 @@
 package com.maxistar.morze2text;
 
+import java.io.ByteArrayOutputStream;
+import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
@@ -93,9 +95,9 @@ public class Morze2TextActivity extends Activity {
 		characters.add(')');
 		characters.add('$');
 		characters.add('&');
-		characters.add('@');		
+		characters.add('@');
 	}
-	
+
 	public static final Set<Character> cyrilics = new TreeSet<Character>();
 	static {
 		cyrilics.add('А');
@@ -130,128 +132,128 @@ public class Morze2TextActivity extends Activity {
 		cyrilics.add('Ь');
 		cyrilics.add('Э');
 		cyrilics.add('Ю');
-		cyrilics.add('Я');		
-	}	
+		cyrilics.add('Я');
+	}
 	public static final Map<Character, MorseCode> morze = new HashMap<Character, MorseCode>();
 	static {
 
-		morze.put('A', new MorseCode("·-",R.raw.a));
-		morze.put('B', new MorseCode("-···",R.raw.b));
-		morze.put('C', new MorseCode("-·-·",R.raw.c));
-		morze.put('D', new MorseCode("-··",R.raw.d));
-		morze.put('E', new MorseCode("·",R.raw.e));
-		morze.put('F', new MorseCode("··-·",R.raw.f));
-		morze.put('G', new MorseCode("--·",R.raw.g));
-		morze.put('H', new MorseCode("····",R.raw.h));
-		morze.put('J', new MorseCode("·---",R.raw.j));
-		morze.put('I', new MorseCode("··",R.raw.i));
-		morze.put('K', new MorseCode("-·-",R.raw.k));
-		morze.put('L', new MorseCode("·-··",R.raw.l));
-		morze.put('M', new MorseCode("--",R.raw.m));
-		morze.put('N', new MorseCode("-·",R.raw.n));
-		morze.put('O', new MorseCode("---",R.raw.o));
-		morze.put('P', new MorseCode("·--·",R.raw.p));
-		morze.put('Q', new MorseCode("--·-",R.raw.q));
-		morze.put('R', new MorseCode("·-·",R.raw.r));
-		morze.put('S', new MorseCode("···",R.raw.s));
-		morze.put('T', new MorseCode("-",R.raw.t));
-		morze.put('U', new MorseCode("··-",R.raw.u));
-		morze.put('V', new MorseCode("···-",R.raw.v));
-		morze.put('W', new MorseCode("·--",R.raw.w));
-		morze.put('X', new MorseCode("-··-",R.raw.x));
-		morze.put('Y', new MorseCode("-·--",R.raw.y));
-		morze.put('Z', new MorseCode("--··",R.raw.z));
+		morze.put('A', new MorseCode("·-", R.raw.a));
+		morze.put('B', new MorseCode("-···", R.raw.b));
+		morze.put('C', new MorseCode("-·-·", R.raw.c));
+		morze.put('D', new MorseCode("-··", R.raw.d));
+		morze.put('E', new MorseCode("·", R.raw.e));
+		morze.put('F', new MorseCode("··-·", R.raw.f));
+		morze.put('G', new MorseCode("--·", R.raw.g));
+		morze.put('H', new MorseCode("····", R.raw.h));
+		morze.put('J', new MorseCode("·---", R.raw.j));
+		morze.put('I', new MorseCode("··", R.raw.i));
+		morze.put('K', new MorseCode("-·-", R.raw.k));
+		morze.put('L', new MorseCode("·-··", R.raw.l));
+		morze.put('M', new MorseCode("--", R.raw.m));
+		morze.put('N', new MorseCode("-·", R.raw.n));
+		morze.put('O', new MorseCode("---", R.raw.o));
+		morze.put('P', new MorseCode("·--·", R.raw.p));
+		morze.put('Q', new MorseCode("--·-", R.raw.q));
+		morze.put('R', new MorseCode("·-·", R.raw.r));
+		morze.put('S', new MorseCode("···", R.raw.s));
+		morze.put('T', new MorseCode("-", R.raw.t));
+		morze.put('U', new MorseCode("··-", R.raw.u));
+		morze.put('V', new MorseCode("···-", R.raw.v));
+		morze.put('W', new MorseCode("·--", R.raw.w));
+		morze.put('X', new MorseCode("-··-", R.raw.x));
+		morze.put('Y', new MorseCode("-·--", R.raw.y));
+		morze.put('Z', new MorseCode("--··", R.raw.z));
 
-		morze.put('1', new MorseCode("·----",R.raw.r1));
-		morze.put('2', new MorseCode("··---",R.raw.r2));
-		morze.put('3', new MorseCode("···--",R.raw.r3));
-		morze.put('4', new MorseCode("····-",R.raw.r4));
-		morze.put('5', new MorseCode("·····",R.raw.r5));
-		morze.put('6', new MorseCode("-····",R.raw.r6));
-		morze.put('7', new MorseCode("--···",R.raw.r7));
-		morze.put('8', new MorseCode("---··",R.raw.r8));
-		morze.put('9', new MorseCode("----·",R.raw.r9));
-		morze.put('0', new MorseCode("-----",R.raw.r0));
+		morze.put('1', new MorseCode("·----", R.raw.r1));
+		morze.put('2', new MorseCode("··---", R.raw.r2));
+		morze.put('3', new MorseCode("···--", R.raw.r3));
+		morze.put('4', new MorseCode("····-", R.raw.r4));
+		morze.put('5', new MorseCode("·····", R.raw.r5));
+		morze.put('6', new MorseCode("-····", R.raw.r6));
+		morze.put('7', new MorseCode("--···", R.raw.r7));
+		morze.put('8', new MorseCode("---··", R.raw.r8));
+		morze.put('9', new MorseCode("----·", R.raw.r9));
+		morze.put('0', new MorseCode("-----", R.raw.r0));
 
-		morze.put('.', new MorseCode("·-·-·-",R.raw.point));
-		morze.put(':', new MorseCode("---···",R.raw.column));
-		morze.put(',', new MorseCode("--··--",R.raw.coma));
-		morze.put(';', new MorseCode("-·-·-·",R.raw.semicolumn));
-		morze.put('?', new MorseCode("··--··",R.raw.question));
-		morze.put('=', new MorseCode("-···-",R.raw.equals));
-		morze.put('\'', new MorseCode("·----·",R.raw.rus_apostrof));
-		morze.put('+', new MorseCode("·-·-·",R.raw.plus));
-		morze.put('!', new MorseCode("-·-·--",R.raw.exclamation));
-		morze.put('-', new MorseCode("-····-",R.raw.minus));
-		morze.put('/', new MorseCode("-··-·",R.raw.slash));
-		morze.put('_', new MorseCode("··--·-",R.raw.understroke));
-		morze.put('(', new MorseCode("-·--·",R.raw.opening_par));
-		morze.put('"', new MorseCode("·-··-·",R.raw.quote));
-		morze.put(')', new MorseCode("-·--·-",R.raw.closing_par));
-		morze.put('$', new MorseCode("···-··-",R.raw.dollar));
-		morze.put('&', new MorseCode("·-···",R.raw.and));
-		morze.put('@', new MorseCode("·--·-·",R.raw.at));
+		morze.put('.', new MorseCode("·-·-·-", R.raw.point));
+		morze.put(':', new MorseCode("---···", R.raw.column));
+		morze.put(',', new MorseCode("--··--", R.raw.coma));
+		morze.put(';', new MorseCode("-·-·-·", R.raw.semicolumn));
+		morze.put('?', new MorseCode("··--··", R.raw.question));
+		morze.put('=', new MorseCode("-···-", R.raw.equals));
+		morze.put('\'', new MorseCode("·----·", R.raw.rus_apostrof));
+		morze.put('+', new MorseCode("·-·-·", R.raw.plus));
+		morze.put('!', new MorseCode("-·-·--", R.raw.exclamation));
+		morze.put('-', new MorseCode("-····-", R.raw.minus));
+		morze.put('/', new MorseCode("-··-·", R.raw.slash));
+		morze.put('_', new MorseCode("··--·-", R.raw.understroke));
+		morze.put('(', new MorseCode("-·--·", R.raw.opening_par));
+		morze.put('"', new MorseCode("·-··-·", R.raw.quote));
+		morze.put(')', new MorseCode("-·--·-", R.raw.closing_par));
+		morze.put('$', new MorseCode("···-··-", R.raw.dollar));
+		morze.put('&', new MorseCode("·-···", R.raw.and));
+		morze.put('@', new MorseCode("·--·-·", R.raw.at));
 
-		morze.put('А', new MorseCode("·-",R.raw.rus_a));
-		morze.put('Б', new MorseCode("-···",R.raw.rus_b));
-		morze.put('В', new MorseCode("·--",R.raw.rus_v));
-		morze.put('Г', new MorseCode("--·",R.raw.rus_g));
-		morze.put('Д', new MorseCode("-··",R.raw.rus_d));
-		morze.put('Е', new MorseCode("·",R.raw.rus_e));
-		morze.put('Ё', new MorseCode("·",R.raw.rus_ee));
-		morze.put('Ж', new MorseCode("···-",R.raw.rus_j));
-		morze.put('З', new MorseCode("--··",R.raw.rus_z));
-		morze.put('И', new MorseCode("··",R.raw.rus_i));
-		morze.put('Й', new MorseCode("·---",R.raw.rus_ii));
-		morze.put('К', new MorseCode("-·-",R.raw.rus_k));
-		morze.put('Л', new MorseCode("·-··",R.raw.rus_l));
-		morze.put('М', new MorseCode("--",R.raw.rus_m));
-		morze.put('Н', new MorseCode("-·",R.raw.rus_n));
-		morze.put('О', new MorseCode("---",R.raw.rus_o));
-		morze.put('П', new MorseCode("·--·",R.raw.rus_p));
-		morze.put('Р', new MorseCode("·-·",R.raw.rus_p));
-		morze.put('С', new MorseCode("···",R.raw.rus_s));
-		morze.put('Т', new MorseCode("-",R.raw.rus_t));
-		morze.put('У', new MorseCode("··-",R.raw.rus_u));
-		morze.put('Ф', new MorseCode("··-·",R.raw.rus_f));
-		morze.put('Х', new MorseCode("····",R.raw.rus_h));
-		morze.put('Ц', new MorseCode("-·-·",R.raw.rus_c));
-		morze.put('Ч', new MorseCode("---·",R.raw.rus_ch));
-		morze.put('Ш', new MorseCode("----",R.raw.rus_sh));
-		morze.put('Щ', new MorseCode("--·-",R.raw.rus_sch));
-		morze.put('Ъ', new MorseCode("--·--",R.raw.rus_tz));
-		morze.put('Ы', new MorseCode("-·- -",R.raw.rus_y));
-		morze.put('Ь', new MorseCode("-··-",R.raw.rus_mz));
-		morze.put('Э', new MorseCode("··-··",R.raw.rus_ee));
-		morze.put('Ю', new MorseCode("··--",R.raw.rus_yu));
-		morze.put('Я', new MorseCode("·-·-",R.raw.rus_ya));
+		morze.put('А', new MorseCode("·-", R.raw.rus_a));
+		morze.put('Б', new MorseCode("-···", R.raw.rus_b));
+		morze.put('В', new MorseCode("·--", R.raw.rus_v));
+		morze.put('Г', new MorseCode("--·", R.raw.rus_g));
+		morze.put('Д', new MorseCode("-··", R.raw.rus_d));
+		morze.put('Е', new MorseCode("·", R.raw.rus_e));
+		morze.put('Ё', new MorseCode("·", R.raw.rus_ee));
+		morze.put('Ж', new MorseCode("···-", R.raw.rus_j));
+		morze.put('З', new MorseCode("--··", R.raw.rus_z));
+		morze.put('И', new MorseCode("··", R.raw.rus_i));
+		morze.put('Й', new MorseCode("·---", R.raw.rus_ii));
+		morze.put('К', new MorseCode("-·-", R.raw.rus_k));
+		morze.put('Л', new MorseCode("·-··", R.raw.rus_l));
+		morze.put('М', new MorseCode("--", R.raw.rus_m));
+		morze.put('Н', new MorseCode("-·", R.raw.rus_n));
+		morze.put('О', new MorseCode("---", R.raw.rus_o));
+		morze.put('П', new MorseCode("·--·", R.raw.rus_p));
+		morze.put('Р', new MorseCode("·-·", R.raw.rus_p));
+		morze.put('С', new MorseCode("···", R.raw.rus_s));
+		morze.put('Т', new MorseCode("-", R.raw.rus_t));
+		morze.put('У', new MorseCode("··-", R.raw.rus_u));
+		morze.put('Ф', new MorseCode("··-·", R.raw.rus_f));
+		morze.put('Х', new MorseCode("····", R.raw.rus_h));
+		morze.put('Ц', new MorseCode("-·-·", R.raw.rus_c));
+		morze.put('Ч', new MorseCode("---·", R.raw.rus_ch));
+		morze.put('Ш', new MorseCode("----", R.raw.rus_sh));
+		morze.put('Щ', new MorseCode("--·-", R.raw.rus_sch));
+		morze.put('Ъ', new MorseCode("--·--", R.raw.rus_tz));
+		morze.put('Ы', new MorseCode("-·--", R.raw.rus_y));
+		morze.put('Ь', new MorseCode("-··-", R.raw.rus_mz));
+		morze.put('Э', new MorseCode("··-··", R.raw.rus_ee));
+		morze.put('Ю', new MorseCode("··--", R.raw.rus_yu));
+		morze.put('Я', new MorseCode("·-·-", R.raw.rus_ya));
 
 	}
 
 	/** Called when the activity is first created. */
-	private final double dash_duration =  0.5; // seconds
+	private final double dash_duration = 0.5; // seconds
 	private final double dip_duration = 0.25; // seconds
 	private final double pause_duration = 0.25; // seconds
 	private final int sampleRate = 8000;
-	private final int dash_numSamples = (int) (sampleRate*dash_duration);
-	private final double dash_sample[] = new double[dash_numSamples];
-	
-	private final int dip_numSamples = (int) (sampleRate*dip_duration);
-	private final double dip_sample[] = new double[dip_numSamples];
-	
-	private final int pause_numSamples = (int) (sampleRate*pause_duration);
+
+	private final int pause_numSamples = (int) (sampleRate * pause_duration);
 	private final double pause_sample[] = new double[pause_numSamples];
-	
-	
+
 	private final double freqOfTone = 440; // hz
 
 	private final int count_chars_to_learn = 5;
 	private final int repeat_to_remember = 3;
 	private final int corrects_to_be_learned = 3;
 
-	private final byte generatedSndDip[] = new byte[2 * dip_numSamples];
-	private final byte generatedSndDash[] = new byte[2 * dash_numSamples];
 	private final byte generatedSndPause[] = new byte[2 * pause_numSamples];
+
+	private final int dash_numSamples = (int) (sampleRate * dash_duration);
+	private final byte generatedSndDash[] = new byte[2 * dash_numSamples];
+
+	private final int dip_numSamples = (int) (sampleRate * dip_duration);
+	private final byte generatedSndDip[] = new byte[2 * dip_numSamples];
+
+	boolean generated = false; // shows if sounds generated
 
 	Handler handler = new Handler();
 	AudioTrack audioTrack = null;
@@ -259,7 +261,7 @@ public class Morze2TextActivity extends Activity {
 	TextView morze_text;
 	TextView hint_text;
 	TextView type_text;
- 
+
 	Map<Character, LetterStatistic> history = null;
 	Stack<LetterInfo> letters = null;
 	Stack<LetterInfo> letters_done = null;
@@ -269,29 +271,36 @@ public class Morze2TextActivity extends Activity {
 	LetterInfo current = null;
 	String user_code = "";
 	int repeat = 0;
-	MediaPlayer correct;
-	MediaPlayer wrong;
+	int correct_sound = 0;
+	int wrong_sound = 0;
 	SoundPool pool;
 	SoundPool pool2;
+	int dash_sound = 0;
+	int dip_sound = 0;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		pool = new SoundPool(2,AudioManager.STREAM_MUSIC,0);
-		
-		//pool2 = new SoundPool(2,AudioManager.STREAM_MUSIC,0);
-		
-		/*
-		File file = this.getApplicationContext().getFileStreamPath("dash.pcm");
-		if(!file.exists()){
+
+		pool = new SoundPool(3, AudioManager.STREAM_MUSIC, 0);
+
+		// pool2 = new SoundPool(2,AudioManager.STREAM_MUSIC,0);
+
+		File file = this.getApplicationContext().getFileStreamPath("dash.wav");
+		if (!file.exists()) {
 			createDashSound();
 		}
-		pool2.load(file.getAbsolutePath(), 1);
-		*/
-		
-		correct = MediaPlayer.create(this, R.raw.dialog_information);
-		wrong = MediaPlayer.create(this, R.raw.dialog_error);
-		
+		dash_sound = pool.load(file.getAbsolutePath(), 1);
+
+		file = this.getApplicationContext().getFileStreamPath("dip.wav");
+		if (!file.exists()) {
+			createDipSound();
+		}
+		dip_sound = pool.load(file.getAbsolutePath(), 1);
+
+		correct_sound = pool.load(this.getApplicationContext(),R.raw.dialog_information,1);
+		wrong_sound = pool.load(this.getApplicationContext(),R.raw.dialog_error,1);
+
 		setContentView(R.layout.main);
 
 		this.history = getLearningInfo();
@@ -301,21 +310,7 @@ public class Morze2TextActivity extends Activity {
 		hint_text = (TextView) this.findViewById(R.id.textView3);
 		type_text = (TextView) this.findViewById(R.id.textView4);
 
-		// genTone();
 
-		// playSound();
-
-		/*
-		 * audioTrack = new AudioTrack(AudioManager.STREAM_MUSIC, sampleRate,
-		 * AudioFormat.CHANNEL_CONFIGURATION_MONO,
-		 * AudioFormat.ENCODING_PCM_16BIT, numSamples, AudioTrack.MODE_STATIC);
-		 * 
-		 * 
-		 * //audioTrack.setNotificationMarkerPosition(0);
-		 * 
-		 * audioTrack.write(generatedSnd, 0, generatedSnd.length);
-		 * audioTrack.setLoopPoints(0, 8000, -1);
-		 */
 		Button b1 = (Button) this.findViewById(R.id.button1);
 		b1.setOnClickListener(new OnClickListener() {
 			@Override
@@ -332,35 +327,6 @@ public class Morze2TextActivity extends Activity {
 			}
 		});
 
-		/*
-		 * b.setOnTouchListener(new OnTouchListener(){
-		 * 
-		 * @Override public boolean onTouch(View arg0, MotionEvent arg1) { //
-		 * TODO Auto-generated method stub
-		 * 
-		 * if (arg1.getAction()==MotionEvent.ACTION_DOWN){
-		 * 
-		 * // audioTrack.reloadStaticData(); audioTrack.play(); return true;
-		 * 
-		 * } if (arg1.getAction()==MotionEvent.ACTION_UP){
-		 * 
-		 * audioTrack.stop(); audioTrack.setPlaybackHeadPosition(0);
-		 * //audioTrack.pause(); //audioTrack.flush();
-		 * //audioTrack.reloadStaticData(); return true; }
-		 * //Log.w("W","!"+arg1.getActionMasked()); return false; }
-		 * 
-		 * });
-		 */
-
-		/*
-		 * b.setOnClickListener(new OnClickListener() {
-		 * 
-		 * @Override public void onClick(View arg0) { // TODO Auto-generated
-		 * method stub playSound(); }
-		 * 
-		 * 
-		 * });
-		 */
 		hint_text.setVisibility(View.GONE);
 
 		initLetters();
@@ -372,33 +338,25 @@ public class Morze2TextActivity extends Activity {
 	}
 
 	void showLetter() {
-		
-		if (latins.contains(current.character)){
+
+		if (latins.contains(current.character)) {
 			this.type_text.setText("latins");
-		}
-		else if (numbers.contains(current.character)){
+		} else if (numbers.contains(current.character)) {
 			this.type_text.setText("number");
-		}
-		else if (characters.contains(current.character)){
+		} else if (characters.contains(current.character)) {
 			this.type_text.setText("character");
-		}
-		else if (cyrilics.contains(current.character)){
+		} else if (cyrilics.contains(current.character)) {
 			this.type_text.setText("cyrilic");
-		}
-		else {
+		} else {
 			this.type_text.setText("unknown");
 		}
-		
-		letter.setText(""+current.character);
+
+		letter.setText("" + current.character);
 		this.morze_text.setText("");
-		this.morze_text.setTextColor(this.getResources().getColor(R.color.white));
-		//if (current.mp!=null){
-		//	current.mp.start();
-		//}
-		//else {
-		//	this.showToast("error, no sound avaialble!");
-		//}
-		pool.play(current.stream_id,1,1,1,0,1);
+		this.morze_text.setTextColor(this.getResources()
+				.getColor(R.color.white));
+
+		pool.play(current.stream_id, 1, 1, 1, 0, 1);
 	}
 
 	protected void showToast(String toast_str) {
@@ -407,8 +365,8 @@ public class Morze2TextActivity extends Activity {
 		int duration = Toast.LENGTH_SHORT;
 		Toast toast = Toast.makeText(context, text, duration);
 		toast.show();
-	}	
-	
+	}
+
 	protected void initLetters() {
 		ArrayList<LetterInfo> letters = new ArrayList<LetterInfo>();
 		LetterInfo l = null;
@@ -419,8 +377,7 @@ public class Morze2TextActivity extends Activity {
 			l.character = entry.getKey();
 			l.morse_code = entry.getValue().code;
 			l.sound_res = entry.getValue().sound_res;
-			  
-			
+
 			if (history.containsKey(entry.getKey())) {
 				s = history.get(entry.getKey());
 				l.count_tries = s.count_tries;
@@ -429,20 +386,22 @@ public class Morze2TextActivity extends Activity {
 			letters.add(l);
 		}
 
-		//  sort list
-		//first less shown
-		//then shortest
-		//then learned
+		// sort list
+		// first less shown
+		// then shortest
+		// then learned
 		Collections.sort(letters, new Comparator<LetterInfo>() {
-		    @Override
-		    public int compare(LetterInfo o1, LetterInfo o2) {
-		    	if (o1.count_tries!=o2.count_tries) return o1.count_tries-o2.count_tries; 
-		        if (o1.morse_code.length()!=o2.morse_code.length()) return o1.morse_code.length()-o2.morse_code.length();
-		        if (o1.learned!=o2.learned) return o1.learned?-1:1;
-		        return 0;
-		    }
+			@Override
+			public int compare(LetterInfo o1, LetterInfo o2) {
+				if (o1.count_tries != o2.count_tries)
+					return o1.count_tries - o2.count_tries;
+				if (o1.morse_code.length() != o2.morse_code.length())
+					return o1.morse_code.length() - o2.morse_code.length();
+				if (o1.learned != o2.learned)
+					return o1.learned ? -1 : 1;
+				return 0;
+			}
 		});
-		
 
 		int counter = 0;
 		this.letters = new Stack<LetterInfo>();
@@ -450,40 +409,84 @@ public class Morze2TextActivity extends Activity {
 			if (counter >= this.count_chars_to_learn)
 				break;
 			counter++;
-			//ss.mp = MediaPlayer.create(this.getApplicationContext(), ss.sound_res);
-			//if (ss.mp==null){
-			//	this.showToast("created null player!");
-			//}
-			ss.stream_id = pool.load(this.getApplicationContext(), ss.sound_res,1);
+			// ss.mp = MediaPlayer.create(this.getApplicationContext(),
+			// ss.sound_res);
+			// if (ss.mp==null){
+			// this.showToast("created null player!");
+			// }
+			ss.stream_id = pool.load(this.getApplicationContext(),
+					ss.sound_res, 1);
+
+			ss.morse_sound_id = this.getMorseSound(ss.morse_code);
+
 			this.letters.push(ss);
 		}
 		Collections.reverse(this.letters);
 
 	}
-	
-	void saveHistory(){
+
+	String getMorseCodeFilename(String morse_code) {
+		String res = "" + morse_code; // not sure so just clone it
+		res.replace('.', 'p');
+		res.replace('-', 't');
+		res = res + ".wav";
+		return res;
+	}
+
+	int getMorseSound(String morse_code) {
+		// make filename
+		String filename = this.getMorseCodeFilename(morse_code);
+		generateSounds();
+
+		ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+
+		File file = this.getApplicationContext().getFileStreamPath(filename);
+		if (!file.exists()) {
+			// create it
+			try {
+				int i;
+				char c;
+				for (i = 0; i < morse_code.length(); i++) {
+					if (i != 0) { // add pause
+						outputStream.write(this.generatedSndPause);
+					}
+					c = morse_code.charAt(i);
+					if (c == '.') {
+						outputStream.write(this.generatedSndDip);
+					} else { // dash
+						outputStream.write(this.generatedSndDash);
+					}
+				}
+				saveWav(outputStream.toByteArray(), filename);
+				// createSound();
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		}
+		return pool.load(file.getAbsolutePath(), 1);
+	}
+
+	void saveHistory() {
 		LetterInfo i = null;
-		//pool.release();
+		// pool.release();
 		while (!letters_done.empty()) {
 			i = letters_done.pop();
 			pool.unload(i.stream_id);
-			//i.mp.release();
-			//i.mp = null;//release Media Player
-			
-			if (this.history.containsKey(i.character)){
+			// i.mp.release();
+			// i.mp = null;//release Media Player
+
+			if (this.history.containsKey(i.character)) {
 				LetterStatistic s = this.history.get(i.character);
 				s.count_tries++;
-				if (!i.correct){
+				if (!i.correct) {
 					s.count_corrects = 0;
-				}
-				else {
+				} else {
 					s.count_corrects++;
-					if (s.count_corrects>=this.corrects_to_be_learned){
+					if (s.count_corrects >= this.corrects_to_be_learned) {
 						s.learned = true;
 					}
 				}
-			}
-			else {
+			} else {
 				LetterStatistic s = new LetterStatistic();
 				this.history.put(i.character, s);
 			}
@@ -545,12 +548,14 @@ public class Morze2TextActivity extends Activity {
 	}
 
 	protected void clickDit() {
+		pool.play(this.dip_sound, (float)0.5, (float)0.5, 1, 0, 1);
 		clickButton('·');
 	}
- 
+
 	protected void clickDash() {
+		pool.play(this.dash_sound, (float)0.5, (float)0.5, 1, 0, 1);
 		clickButton('-');
-	} 
+	}
 
 	protected void clickButton(Character ch) {
 		this.user_code = this.user_code + ch;
@@ -558,37 +563,44 @@ public class Morze2TextActivity extends Activity {
 		if (!this.user_code.equals(this.current.morse_code)) {
 			// this.morzeText //make red!
 			if (!correctSoFar()) {
+				pool.play(this.wrong_sound,1,1,1,0,1);
 				this.morze_text.setText("");
 				hint_text.setVisibility(View.VISIBLE);
 				hint_text.setText(this.current.morse_code);
+				
 				this.current.correct = false;
 				this.is_error = true;
 				this.user_code = ""; // try again
-				this.wrong.start();
+				handler.postDelayed(new Runnable() {
+					@Override
+					public void run() {
+						pool.play(current.morse_sound_id, 1, 1, 1, 0, 1);
+					}
+				}, 500);
 			}
 		} else { // done ok
 			hint_text.setVisibility(View.GONE);
 			this.user_code = "";
-			this.morze_text.setTextColor(this.getResources().getColor(R.color.green));
-			this.correct.start();
+			this.morze_text.setTextColor(this.getResources().getColor(
+					R.color.green));
+			pool.play(this.correct_sound,1,1,1,0,1);
 			handler.postDelayed(new Runnable() {
 				@Override
 				public void run() {
 					showNextLetter();
 				}
 			}, 1000);
-			
+
 			// shedule new letter
 		}
 
 	}
-	
-	void showNextLetter(){
 
-		if (this.repeat<this.repeat_to_remember && this.is_error){
+	void showNextLetter() {
+
+		if (this.repeat < this.repeat_to_remember && this.is_error) {
 			this.repeat++;
-		}
-		else {
+		} else {
 			this.is_error = false;
 			if (letters.empty()) {
 				// save current statistic
@@ -622,81 +634,120 @@ public class Morze2TextActivity extends Activity {
 		 * public void run() { playSound(); } }); } }); thread.start();
 		 */
 	}
-	
-	void createDashSound(){
-		//File file = this.getApplicationContext().getFileStreamPath("dash.pcm");
-		/*
-		for (int i = 0; i < dash_numSamples; ++i) {
-			dash_sample[i] = Math.sin(2 * Math.PI * i / (sampleRate / freqOfTone));
-		}
 
-		// convert to 16 bit pcm sound array
-		// assumes the sample buffer is normalised.
-		int idx = 0;
-		for (final double dVal : dash_sample) {
-			// scale to maximum amplitude
-			final short val = (short) ((dVal * 32767));
-			// in 16 bit wav PCM, first byte is the low order byte
-			generatedSndDash[idx++] = (byte) (val & 0x00ff);
-			generatedSndDash[idx++] = (byte) ((val & 0xff00) >>> 8);
-		}
-		
-		audioTrack.write(generatedSndDash, 0, generatedSndDash.length);
-		audioTrack.w;
-				
-		
-		try {
-			FileOutputStream fileOut = this.getApplicationContext().openFileOutput("dash.pcm",
-					Activity.MODE_PRIVATE);
-			//objectOut = new ObjectOutputStream(fileOut);
-			//objectOut.writeObject(object);
-			fileOut.getFD().sync();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			
-		}*/
-	}
+	void generateSounds() {
+		if (generated)
+			return;
 
-	void genTone() {
-		// fill out the array
-		for (int i = 0; i < dash_numSamples; ++i) {
-			dash_sample[i] = Math.sin(2 * Math.PI * i / (sampleRate / freqOfTone));
-		}
-
-		// convert to 16 bit pcm sound array
-		// assumes the sample buffer is normalised.
-		int idx = 0;
-		for (final double dVal : dash_sample) {
-			// scale to maximum amplitude
-			final short val = (short) ((dVal * 32767));
-			// in 16 bit wav PCM, first byte is the low order byte
-			generatedSndDash[idx++] = (byte) (val & 0x00ff);
-			generatedSndDash[idx++] = (byte) ((val & 0xff00) >>> 8);
-		}
-		
-		
-		// fill out the array
+		double dip_sample[] = new double[dip_numSamples];
 		for (int i = 0; i < dip_numSamples; ++i) {
-			dip_sample[i] = Math.sin(2 * Math.PI * i / (sampleRate / freqOfTone));
+			dip_sample[i] = Math.sin(2 * Math.PI * i
+					/ (sampleRate / freqOfTone));
 		}
-
 		// convert to 16 bit pcm sound array
 		// assumes the sample buffer is normalised.
-		idx = 0;
+		int idx = 0;
 		for (final double dVal : dip_sample) {
 			// scale to maximum amplitude
 			final short val = (short) ((dVal * 32767));
 			// in 16 bit wav PCM, first byte is the low order byte
 			generatedSndDip[idx++] = (byte) (val & 0x00ff);
 			generatedSndDip[idx++] = (byte) ((val & 0xff00) >>> 8);
-		}		
+		}
+
+		double dash_sample[] = new double[dash_numSamples];
+		for (int i = 0; i < dash_numSamples; ++i) {
+			dash_sample[i] = Math.sin(2 * Math.PI * i
+					/ (sampleRate / freqOfTone));
+		}
+
+		// convert to 16 bit pcm sound array
+		// assumes the sample buffer is normalised.
+		idx = 0;
+		for (final double dVal : dash_sample) {
+			// scale to maximum amplitude
+			final short val = (short) ((dVal * 32767));
+			// in 16 bit wav PCM, first byte is the low order byte
+			generatedSndDash[idx++] = (byte) (val & 0x00ff);
+			generatedSndDash[idx++] = (byte) ((val & 0xff00) >>> 8);
+		}
+
+		double space_sample[] = new double[pause_numSamples];
+		for (int i = 0; i < pause_numSamples; ++i) {
+			space_sample[i] = 0;
+		}
+
+		// convert to 16 bit pcm sound array
+		// assumes the sample buffer is normalised.
+		idx = 0;
+		for (final double dVal : space_sample) {
+			// scale to maximum amplitude
+			final short val = (short) ((dVal * 32767));
+			// in 16 bit wav PCM, first byte is the low order byte
+			generatedSndPause[idx++] = (byte) (val & 0x00ff);
+			generatedSndPause[idx++] = (byte) ((val & 0xff00) >>> 8);
+		}
+
 	}
 
-	void playSound() {
-		//audioTrack.write(generatedSnd, 0, generatedSnd.length);
-		//audioTrack.play();
+	void createDipSound() {
+		generateSounds();
+		saveWav(generatedSndDip, "dip.wav");
 	}
+
+	void createDashSound() {
+		generateSounds();
+		saveWav(generatedSndDash, "dash.wav");
+	}
+
+	void saveWav(byte buffer[], String filename) {
+		DataOutputStream out;
+		try {
+			FileOutputStream fileOut = this.getApplicationContext()
+					.openFileOutput(filename, Activity.MODE_PRIVATE);
+			out = new DataOutputStream(fileOut);
+			// objectOut.writeObject(object);
+
+			short nChannels = 1;
+			short bSamples = (short) (buffer.length / 2);
+			int payloadSize = buffer.length; // 16 bite is 2 byte
+
+			out.writeBytes("RIFF");
+			out.writeInt(Integer.reverseBytes(36 + payloadSize)); // Final file
+																	// size not
+																	// known
+																	// yet,
+																	// write 0
+			out.writeBytes("WAVE");
+			out.writeBytes("fmt ");
+			out.writeInt(Integer.reverseBytes(16)); // Sub-chunk size, 16 for
+													// PCM
+			out.writeShort(Short.reverseBytes((short) 1)); // AudioFormat, 1 for
+															// PCM
+			out.writeShort(Short.reverseBytes(nChannels));// Number of channels,
+															// 1 for mono, 2 for
+															// stereo
+			out.writeInt(Integer.reverseBytes(sampleRate)); // Sample rate
+			out.writeInt(Integer.reverseBytes(sampleRate * bSamples * nChannels
+					/ 8)); // Byte rate,
+							// SampleRate*NumberOfChannels*BitsPerSample/8
+			out.writeShort(Short
+					.reverseBytes((short) (nChannels * bSamples / 8))); // Block
+																		// align,
+																		// NumberOfChannels*BitsPerSample/8
+			out.writeShort(Short.reverseBytes(bSamples)); // Bits per sample
+			out.writeBytes("data");
+			out.writeInt(payloadSize); //
+			out.write(buffer);
+
+			fileOut.getFD().sync();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+
+		}
+	}
+
 
 	static class LetterStatistic implements Serializable {
 		private static final long serialVersionUID = 1L;
@@ -712,16 +763,17 @@ public class Morze2TextActivity extends Activity {
 		boolean correct = true;
 		boolean learned = false;
 		int count_tries = 1;
-		//MediaPlayer mp = null;
+		// MediaPlayer mp = null;
 		int sound_res = 0;
 		int stream_id = 0;
+		int morse_sound_id = 0;
 	}
-	
+
 	static class MorseCode {
 		String code;
 		int sound_res;
-		
-		MorseCode(String code, int sound_res){
+
+		MorseCode(String code, int sound_res) {
 			this.code = code;
 			this.sound_res = sound_res;
 		}
