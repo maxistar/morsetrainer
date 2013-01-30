@@ -20,6 +20,7 @@ import java.util.TreeSet;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.media.SoundPool;
@@ -200,7 +201,7 @@ public class Morze2TextActivity extends Activity {
 		morze.put('Г', new MorseCode("--·", R.raw.rus_g));
 		morze.put('Д', new MorseCode("-··", R.raw.rus_d));
 		morze.put('Е', new MorseCode("·", R.raw.rus_e));
-		morze.put('Ё', new MorseCode("·", R.raw.rus_ee));
+		morze.put('Ё', new MorseCode("·", R.raw.rus_oe));
 		morze.put('Ж', new MorseCode("···-", R.raw.rus_j));
 		morze.put('З', new MorseCode("--··", R.raw.rus_z));
 		morze.put('И', new MorseCode("··", R.raw.rus_i));
@@ -281,7 +282,7 @@ public class Morze2TextActivity extends Activity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
+		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 		pool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
 
 		// pool2 = new SoundPool(2,AudioManager.STREAM_MUSIC,0);
