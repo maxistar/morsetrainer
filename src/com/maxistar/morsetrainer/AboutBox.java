@@ -1,4 +1,4 @@
-package com.maxistar.morze2text;
+package com.maxistar.morsetrainer;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -14,7 +14,7 @@ public class AboutBox extends DialogPreference
 	public AboutBox(Context context, AttributeSet attrs) {
 		super(context, attrs);
 	}
-
+ 
 	@Override
 	protected void onPrepareDialogBuilder(AlertDialog.Builder builder){
 	    // Data has changed, notify so UI can be refreshed!
@@ -26,7 +26,7 @@ public class AboutBox extends DialogPreference
 		});
 		
 		final SpannableString s = 
-              new SpannableString("about");
+              new SpannableString("Simple morse trainer with sound feedback written by Max Starikov http://maxistar.ru");
 		Linkify.addLinks(s, Linkify.WEB_URLS);
 		
 		builder.setMessage(s);

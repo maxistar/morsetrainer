@@ -1,7 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
-    <string name="hello">Hello World, Morze2TextActivity!</string>
-    <string name="app_name">Morze2Text</string>
-
+    <string name="app_name">Morse Secret Trainer</string>
 </resources>

@@ -4,8 +4,8 @@
         android:title="What to learn">
         <CheckBoxPreference  
 			android:key="learn_latinica"  
-			android:title="Latinica Letters"  
-			android:summary="learn latinica letters" 
+			android:title="Latinic Letters"  
+			android:summary="learn latinic letters" 
 			android:defaultValue="true" />
         <CheckBoxPreference  
 			android:key="learn_numbers"  
@@ -19,8 +19,8 @@
 			android:defaultValue="true" />
         <CheckBoxPreference  
 			android:key="learn_cyrilics"  
-			android:title="Cirilica"  
-			android:summary="learn numbers" 
+			android:title="Cyrilic Letters"  
+			android:summary="learn cyrilic letters" 
 			android:defaultValue="false" />        
     </PreferenceCategory> 
     <PreferenceCategory 
@@ -29,7 +29,7 @@
             android:key="version_name"
             android:summary=""
             android:title="Version" />
-        <com.maxistar.morze2text.AboutBox
+        <com.maxistar.morsetrainer.AboutBox
 			android:title="About Morse Teacher"  
 			android:summary="just shortly about the application"
 			android:dialogTitle="About" /> 

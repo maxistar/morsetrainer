@@ -1,4 +1,6 @@
-package com.maxistar.morze2text;
+package com.maxistar.morsetrainer;
+
+
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -69,7 +71,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-			Intent intent = new Intent(this, Morze2TextActivity.class);
+			Intent intent = new Intent(this, TrainingActivity.class);
 			startActivity(intent);
 		}
 		return super.onKeyDown(keyCode, event);

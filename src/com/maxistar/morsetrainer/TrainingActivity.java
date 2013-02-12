@@ -1,4 +1,4 @@
-package com.maxistar.morze2text;
+package com.maxistar.morsetrainer;
 
 import java.io.ByteArrayOutputStream;
 import java.io.DataOutputStream;
@@ -15,6 +15,8 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
+
+
 
 import android.app.Activity;
 import android.content.Context;
@@ -36,7 +38,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class Morze2TextActivity extends Activity {
+public class TrainingActivity extends Activity {
 	private static final int SETTINGS = 3;
 	private static final int REQUEST_SETTINGS = 3;
 
@@ -417,13 +419,13 @@ public class Morze2TextActivity extends Activity {
 		ArrayList<LetterInfo> letters = new ArrayList<LetterInfo>();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-		if (sharedPreferences.getBoolean("learn_latinica", false)){
+		if (sharedPreferences.getBoolean("learn_latinica", true)){
 			addMorseCodes(letters,latins);
 		}
-		if (sharedPreferences.getBoolean("learn_numbers", false)){
+		if (sharedPreferences.getBoolean("learn_numbers", true)){
 			addMorseCodes(letters,numbers);
 		}
-		if (sharedPreferences.getBoolean("learn_punctuation_signs", false)){
+		if (sharedPreferences.getBoolean("learn_punctuation_signs", true)){
 			addMorseCodes(letters,characters);
 		}
 		if (sharedPreferences.getBoolean("learn_cyrilics", false)){
