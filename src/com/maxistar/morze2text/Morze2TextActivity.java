@@ -14,19 +14,22 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Set;
 import java.util.Stack;
-import java.util.TreeSet;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
+import android.preference.PreferenceManager;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -34,7 +37,10 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class Morze2TextActivity extends Activity {
+	private static final int SETTINGS = 3;
+	private static final int REQUEST_SETTINGS = 3;
 
+	/*
 	public static final Set<Character> latins = new TreeSet<Character>();
 	static {
 		latins.add('A');
@@ -134,102 +140,121 @@ public class Morze2TextActivity extends Activity {
 		cyrilics.add('Э');
 		cyrilics.add('Ю');
 		cyrilics.add('Я');
-	}
-	public static final Map<Character, MorseCode> morze = new HashMap<Character, MorseCode>();
+	}*/
+
+	public static final Map<Character, MorseCode> latins = new HashMap<Character, MorseCode>();
 	static {
+		latins.put('A', new MorseCode("·-", R.raw.a));
+		latins.put('B', new MorseCode("-···", R.raw.b));
+		latins.put('C', new MorseCode("-·-·", R.raw.c));
+		latins.put('D', new MorseCode("-··", R.raw.d));
+		latins.put('E', new MorseCode("·", R.raw.e));
+		latins.put('F', new MorseCode("··-·", R.raw.f));
+		latins.put('G', new MorseCode("--·", R.raw.g));
+		latins.put('H', new MorseCode("····", R.raw.h));
+		latins.put('J', new MorseCode("·---", R.raw.j));
+		latins.put('I', new MorseCode("··", R.raw.i));
+		latins.put('K', new MorseCode("-·-", R.raw.k));
+		latins.put('L', new MorseCode("·-··", R.raw.l));
+		latins.put('M', new MorseCode("--", R.raw.m));
+		latins.put('N', new MorseCode("-·", R.raw.n));
+		latins.put('O', new MorseCode("---", R.raw.o));
+		latins.put('P', new MorseCode("·--·", R.raw.p));
+		latins.put('Q', new MorseCode("--·-", R.raw.q));
+		latins.put('R', new MorseCode("·-·", R.raw.r));
+		latins.put('S', new MorseCode("···", R.raw.s));
+		latins.put('T', new MorseCode("-", R.raw.t));
+		latins.put('U', new MorseCode("··-", R.raw.u));
+		latins.put('V', new MorseCode("···-", R.raw.v));
+		latins.put('W', new MorseCode("·--", R.raw.w));
+		latins.put('X', new MorseCode("-··-", R.raw.x));
+		latins.put('Y', new MorseCode("-·--", R.raw.y));
+		latins.put('Z', new MorseCode("--··", R.raw.z));
+	}
+	
+	public static final Map<Character, MorseCode> numbers = new HashMap<Character, MorseCode>();
+	static {
+		numbers.put('1', new MorseCode("·----", R.raw.r1));
+		numbers.put('2', new MorseCode("··---", R.raw.r2));
+		numbers.put('3', new MorseCode("···--", R.raw.r3));
+		numbers.put('4', new MorseCode("····-", R.raw.r4));
+		numbers.put('5', new MorseCode("·····", R.raw.r5));
+		numbers.put('6', new MorseCode("-····", R.raw.r6));
+		numbers.put('7', new MorseCode("--···", R.raw.r7));
+		numbers.put('8', new MorseCode("---··", R.raw.r8));
+		numbers.put('9', new MorseCode("----·", R.raw.r9));
+		numbers.put('0', new MorseCode("-----", R.raw.r0));		
+	}
+	
+	public static final Map<Character, MorseCode> characters = new HashMap<Character, MorseCode>();
+	static {
+		characters.put('.', new MorseCode("·-·-·-", R.raw.point));
+		characters.put(':', new MorseCode("---···", R.raw.column));
+		characters.put(',', new MorseCode("--··--", R.raw.coma));
+		characters.put(';', new MorseCode("-·-·-·", R.raw.semicolumn));
+		characters.put('?', new MorseCode("··--··", R.raw.question));
+		characters.put('=', new MorseCode("-···-", R.raw.equals));
+		characters.put('\'', new MorseCode("·----·", R.raw.rus_apostrof));
+		characters.put('+', new MorseCode("·-·-·", R.raw.plus));
+		characters.put('!', new MorseCode("-·-·--", R.raw.exclamation));
+		characters.put('-', new MorseCode("-····-", R.raw.minus));
+		characters.put('/', new MorseCode("-··-·", R.raw.slash));
+		characters.put('_', new MorseCode("··--·-", R.raw.understroke));
+		characters.put('(', new MorseCode("-·--·", R.raw.opening_par));
+		characters.put('"', new MorseCode("·-··-·", R.raw.quote));
+		characters.put(')', new MorseCode("-·--·-", R.raw.closing_par));
+		characters.put('$', new MorseCode("···-··-", R.raw.dollar));
+		characters.put('&', new MorseCode("·-···", R.raw.and));
+		characters.put('@', new MorseCode("·--·-·", R.raw.at));		
+	}
 
-		morze.put('A', new MorseCode("·-", R.raw.a));
-		morze.put('B', new MorseCode("-···", R.raw.b));
-		morze.put('C', new MorseCode("-·-·", R.raw.c));
-		morze.put('D', new MorseCode("-··", R.raw.d));
-		morze.put('E', new MorseCode("·", R.raw.e));
-		morze.put('F', new MorseCode("··-·", R.raw.f));
-		morze.put('G', new MorseCode("--·", R.raw.g));
-		morze.put('H', new MorseCode("····", R.raw.h));
-		morze.put('J', new MorseCode("·---", R.raw.j));
-		morze.put('I', new MorseCode("··", R.raw.i));
-		morze.put('K', new MorseCode("-·-", R.raw.k));
-		morze.put('L', new MorseCode("·-··", R.raw.l));
-		morze.put('M', new MorseCode("--", R.raw.m));
-		morze.put('N', new MorseCode("-·", R.raw.n));
-		morze.put('O', new MorseCode("---", R.raw.o));
-		morze.put('P', new MorseCode("·--·", R.raw.p));
-		morze.put('Q', new MorseCode("--·-", R.raw.q));
-		morze.put('R', new MorseCode("·-·", R.raw.r));
-		morze.put('S', new MorseCode("···", R.raw.s));
-		morze.put('T', new MorseCode("-", R.raw.t));
-		morze.put('U', new MorseCode("··-", R.raw.u));
-		morze.put('V', new MorseCode("···-", R.raw.v));
-		morze.put('W', new MorseCode("·--", R.raw.w));
-		morze.put('X', new MorseCode("-··-", R.raw.x));
-		morze.put('Y', new MorseCode("-·--", R.raw.y));
-		morze.put('Z', new MorseCode("--··", R.raw.z));
+	public static final Map<Character, MorseCode> cyrilics = new HashMap<Character, MorseCode>();
+	static {
+		cyrilics.put('А', new MorseCode("·-", R.raw.rus_a));
+		cyrilics.put('Б', new MorseCode("-···", R.raw.rus_b));
+		cyrilics.put('В', new MorseCode("·--", R.raw.rus_v));
+		cyrilics.put('Г', new MorseCode("--·", R.raw.rus_g));
+		cyrilics.put('Д', new MorseCode("-··", R.raw.rus_d));
+		cyrilics.put('Е', new MorseCode("·", R.raw.rus_e));
+		cyrilics.put('Ё', new MorseCode("·", R.raw.rus_oe));
+		cyrilics.put('Ж', new MorseCode("···-", R.raw.rus_j));
+		cyrilics.put('З', new MorseCode("--··", R.raw.rus_z));
+		cyrilics.put('И', new MorseCode("··", R.raw.rus_i));
+		cyrilics.put('Й', new MorseCode("·---", R.raw.rus_ii));
+		cyrilics.put('К', new MorseCode("-·-", R.raw.rus_k));
+		cyrilics.put('Л', new MorseCode("·-··", R.raw.rus_l));
+		cyrilics.put('М', new MorseCode("--", R.raw.rus_m));
+		cyrilics.put('Н', new MorseCode("-·", R.raw.rus_n));
+		cyrilics.put('О', new MorseCode("---", R.raw.rus_o));
+		cyrilics.put('П', new MorseCode("·--·", R.raw.rus_p));
+		cyrilics.put('Р', new MorseCode("·-·", R.raw.rus_p));
+		cyrilics.put('С', new MorseCode("···", R.raw.rus_s));
+		cyrilics.put('Т', new MorseCode("-", R.raw.rus_t));
+		cyrilics.put('У', new MorseCode("··-", R.raw.rus_u));
+		cyrilics.put('Ф', new MorseCode("··-·", R.raw.rus_f));
+		cyrilics.put('Х', new MorseCode("····", R.raw.rus_h));
+		cyrilics.put('Ц', new MorseCode("-·-·", R.raw.rus_c));
+		cyrilics.put('Ч', new MorseCode("---·", R.raw.rus_ch));
+		cyrilics.put('Ш', new MorseCode("----", R.raw.rus_sh));
+		cyrilics.put('Щ', new MorseCode("--·-", R.raw.rus_sch));
+		cyrilics.put('Ъ', new MorseCode("--·--", R.raw.rus_tz));
+		cyrilics.put('Ы', new MorseCode("-·--", R.raw.rus_y));
+		cyrilics.put('Ь', new MorseCode("-··-", R.raw.rus_mz));
+		cyrilics.put('Э', new MorseCode("··-··", R.raw.rus_ee));
+		cyrilics.put('Ю', new MorseCode("··--", R.raw.rus_yu));
+		cyrilics.put('Я', new MorseCode("·-·-", R.raw.rus_ya));
+		
+	}
+	
+	
+/*	public static final Map<Character, MorseCode> morze = new HashMap<Character, MorseCode>();
+	static {
+		
 
-		morze.put('1', new MorseCode("·----", R.raw.r1));
-		morze.put('2', new MorseCode("··---", R.raw.r2));
-		morze.put('3', new MorseCode("···--", R.raw.r3));
-		morze.put('4', new MorseCode("····-", R.raw.r4));
-		morze.put('5', new MorseCode("·····", R.raw.r5));
-		morze.put('6', new MorseCode("-····", R.raw.r6));
-		morze.put('7', new MorseCode("--···", R.raw.r7));
-		morze.put('8', new MorseCode("---··", R.raw.r8));
-		morze.put('9', new MorseCode("----·", R.raw.r9));
-		morze.put('0', new MorseCode("-----", R.raw.r0));
 
-		morze.put('.', new MorseCode("·-·-·-", R.raw.point));
-		morze.put(':', new MorseCode("---···", R.raw.column));
-		morze.put(',', new MorseCode("--··--", R.raw.coma));
-		morze.put(';', new MorseCode("-·-·-·", R.raw.semicolumn));
-		morze.put('?', new MorseCode("··--··", R.raw.question));
-		morze.put('=', new MorseCode("-···-", R.raw.equals));
-		morze.put('\'', new MorseCode("·----·", R.raw.rus_apostrof));
-		morze.put('+', new MorseCode("·-·-·", R.raw.plus));
-		morze.put('!', new MorseCode("-·-·--", R.raw.exclamation));
-		morze.put('-', new MorseCode("-····-", R.raw.minus));
-		morze.put('/', new MorseCode("-··-·", R.raw.slash));
-		morze.put('_', new MorseCode("··--·-", R.raw.understroke));
-		morze.put('(', new MorseCode("-·--·", R.raw.opening_par));
-		morze.put('"', new MorseCode("·-··-·", R.raw.quote));
-		morze.put(')', new MorseCode("-·--·-", R.raw.closing_par));
-		morze.put('$', new MorseCode("···-··-", R.raw.dollar));
-		morze.put('&', new MorseCode("·-···", R.raw.and));
-		morze.put('@', new MorseCode("·--·-·", R.raw.at));
-
-		morze.put('А', new MorseCode("·-", R.raw.rus_a));
-		morze.put('Б', new MorseCode("-···", R.raw.rus_b));
-		morze.put('В', new MorseCode("·--", R.raw.rus_v));
-		morze.put('Г', new MorseCode("--·", R.raw.rus_g));
-		morze.put('Д', new MorseCode("-··", R.raw.rus_d));
-		morze.put('Е', new MorseCode("·", R.raw.rus_e));
-		morze.put('Ё', new MorseCode("·", R.raw.rus_oe));
-		morze.put('Ж', new MorseCode("···-", R.raw.rus_j));
-		morze.put('З', new MorseCode("--··", R.raw.rus_z));
-		morze.put('И', new MorseCode("··", R.raw.rus_i));
-		morze.put('Й', new MorseCode("·---", R.raw.rus_ii));
-		morze.put('К', new MorseCode("-·-", R.raw.rus_k));
-		morze.put('Л', new MorseCode("·-··", R.raw.rus_l));
-		morze.put('М', new MorseCode("--", R.raw.rus_m));
-		morze.put('Н', new MorseCode("-·", R.raw.rus_n));
-		morze.put('О', new MorseCode("---", R.raw.rus_o));
-		morze.put('П', new MorseCode("·--·", R.raw.rus_p));
-		morze.put('Р', new MorseCode("·-·", R.raw.rus_p));
-		morze.put('С', new MorseCode("···", R.raw.rus_s));
-		morze.put('Т', new MorseCode("-", R.raw.rus_t));
-		morze.put('У', new MorseCode("··-", R.raw.rus_u));
-		morze.put('Ф', new MorseCode("··-·", R.raw.rus_f));
-		morze.put('Х', new MorseCode("····", R.raw.rus_h));
-		morze.put('Ц', new MorseCode("-·-·", R.raw.rus_c));
-		morze.put('Ч', new MorseCode("---·", R.raw.rus_ch));
-		morze.put('Ш', new MorseCode("----", R.raw.rus_sh));
-		morze.put('Щ', new MorseCode("--·-", R.raw.rus_sch));
-		morze.put('Ъ', new MorseCode("--·--", R.raw.rus_tz));
-		morze.put('Ы', new MorseCode("-·--", R.raw.rus_y));
-		morze.put('Ь', new MorseCode("-··-", R.raw.rus_mz));
-		morze.put('Э', new MorseCode("··-··", R.raw.rus_ee));
-		morze.put('Ю', new MorseCode("··--", R.raw.rus_yu));
-		morze.put('Я', new MorseCode("·-·-", R.raw.rus_ya));
 
 	}
+*/	
 
 	/** Called when the activity is first created. */
 	private final double dash_duration = 0.5; // seconds
@@ -238,7 +263,7 @@ public class Morze2TextActivity extends Activity {
 	private final int sampleRate = 8000;
 
 	private final int pause_numSamples = (int) (sampleRate * pause_duration);
-	private final double pause_sample[] = new double[pause_numSamples];
+	//private final double pause_sample[] = new double[pause_numSamples];
 
 	private final double freqOfTone = 440; // hz
 
@@ -340,13 +365,13 @@ public class Morze2TextActivity extends Activity {
 
 	void showLetter() {
 
-		if (latins.contains(current.character)) {
+		if (latins.containsKey(current.character)) {
 			this.type_text.setText("latins");
-		} else if (numbers.contains(current.character)) {
+		} else if (numbers.containsKey(current.character)) {
 			this.type_text.setText("number");
-		} else if (characters.contains(current.character)) {
+		} else if (characters.containsKey(current.character)) {
 			this.type_text.setText("character");
-		} else if (cyrilics.contains(current.character)) {
+		} else if (cyrilics.containsKey(current.character)) {
 			this.type_text.setText("cyrilic");
 		} else {
 			this.type_text.setText("unknown");
@@ -367,12 +392,12 @@ public class Morze2TextActivity extends Activity {
 		Toast toast = Toast.makeText(context, text, duration);
 		toast.show();
 	}
-
-	protected void initLetters() {
-		ArrayList<LetterInfo> letters = new ArrayList<LetterInfo>();
+	
+	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars){
 		LetterInfo l = null;
 		LetterStatistic s = null;
-		for (Map.Entry<Character, MorseCode> entry : morze.entrySet()) {
+
+		for (Map.Entry<Character, MorseCode> entry : chars.entrySet()) {
 			// System.out.println(entry.getKey() + "/" + entry.getValue());
 			l = new LetterInfo();
 			l.character = entry.getKey();
@@ -386,7 +411,24 @@ public class Morze2TextActivity extends Activity {
 			}
 			letters.add(l);
 		}
+	}
 
+	protected void initLetters() {
+		ArrayList<LetterInfo> letters = new ArrayList<LetterInfo>();
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+
+		if (sharedPreferences.getBoolean("learn_latinica", false)){
+			addMorseCodes(letters,latins);
+		}
+		if (sharedPreferences.getBoolean("learn_numbers", false)){
+			addMorseCodes(letters,numbers);
+		}
+		if (sharedPreferences.getBoolean("learn_punctuation_signs", false)){
+			addMorseCodes(letters,characters);
+		}
+		if (sharedPreferences.getBoolean("learn_cyrilics", false)){
+			addMorseCodes(letters,cyrilics);
+		}
 		// sort list
 		// first less shown
 		// then shortest
@@ -410,11 +452,6 @@ public class Morze2TextActivity extends Activity {
 			if (counter >= this.count_chars_to_learn)
 				break;
 			counter++;
-			// ss.mp = MediaPlayer.create(this.getApplicationContext(),
-			// ss.sound_res);
-			// if (ss.mp==null){
-			// this.showToast("created null player!");
-			// }
 			ss.stream_id = pool.load(this.getApplicationContext(),
 					ss.sound_res, 1);
 
@@ -425,6 +462,29 @@ public class Morze2TextActivity extends Activity {
 		Collections.reverse(this.letters);
  
 	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+
+		menu.add(0, SETTINGS, 0, "Settings");
+//				.setIcon(R.drawable.settings);
+
+		return super.onCreateOptionsMenu(menu);
+	}
+	
+	
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case SETTINGS:
+			Intent intent = new Intent(this.getBaseContext(),
+					SettingsActivity.class);
+			this.startActivityForResult(intent, REQUEST_SETTINGS);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
+	
 
 	String getMorseCodeFilename(String morse_code) {
 		String res = "" + morse_code; // not sure so just clone it
@@ -505,7 +565,7 @@ public class Morze2TextActivity extends Activity {
 		return map;
 	}
 
-	public static void writeObjectToFile(Context context, Object object,
+	public void writeObjectToFile(Context context, Object object,
 			String filename) {
 		ObjectOutputStream objectOut = null;
 		try {
@@ -527,7 +587,7 @@ public class Morze2TextActivity extends Activity {
 		}
 	}
 
-	public static Object readObjectFromFile(Context context, String filename) {
+	public Object readObjectFromFile(Context context, String filename) {
 		ObjectInputStream objectIn = null;
 		Object object = null;
 		try {
