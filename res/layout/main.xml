@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:orientation="vertical" >
+    android:orientation="vertical" android:paddingLeft="5dp" android:paddingRight="5dp" >
 
     <TextView
         android:id="@+id/textView1"
@@ -12,13 +12,13 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:height="80dp"
+        android:height="45dp"
         android:paddingBottom="0dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
         android:text="A"
-        android:textSize="60dp"
+        android:textSize="30dp"
         android:typeface="serif" />
 
     <TextView
@@ -84,7 +84,8 @@
         android:width="10dp"
         android:visibility="invisible"
         android:layout_centerHorizontal="true"
-        android:text="" />
+        android:text=""
+        android:background="@color/black" />
 
     <Button
         android:id="@+id/button2"
@@ -93,20 +94,25 @@
         android:layout_alignTop="@id/button3"
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/button3"
-        android:paddingTop="40dp"
-        android:paddingBottom="40dp"
-        android:text="•" />
-
+        android:paddingTop="80dp"
+        android:paddingBottom="80dp"
+        android:text="•"
+        android:textColor="@color/black"
+        style="@style/button"
+	/> 
+    
     <Button
         android:id="@+id/button1"
-        android:paddingTop="40dp"
-        android:paddingBottom="40dp"
+        android:paddingTop="80dp"
+        android:paddingBottom="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@id/button3"
         android:layout_alignParentRight="true"
         android:layout_toRightOf="@id/button3"
-        android:text="-" />
+        android:textColor="@color/black"
+        android:text="–"
+        style="@style/button" />
 
 
     
