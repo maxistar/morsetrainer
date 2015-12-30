@@ -8,6 +8,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -25,6 +26,7 @@ import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.media.SoundPool;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
@@ -103,13 +105,13 @@ public class TrainingActivity extends Activity {
 		pool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
 
 
-		File file = this.getApplicationContext().getFileStreamPath("dash.wav");
+		File file = this.getApplicationContext().getFileStreamPath("_dash.wav");
 		if (!file.exists()) {
 			createDashSound();
 		}
 		dash_sound = pool.load(file.getAbsolutePath(), 1);
 
-		file = this.getApplicationContext().getFileStreamPath("dip.wav");
+		file = this.getApplicationContext().getFileStreamPath("_dip.wav");
 		if (!file.exists()) {
 			createDipSound();
 		}
@@ -284,11 +286,10 @@ public class TrainingActivity extends Activity {
 	
 
 	String getMorseCodeFilename(String morse_code) {
-		String res = "" + morse_code; // not sure so just clone it
+		String res = "_" + morse_code; // not sure so just clone it
 		res = res.replace('·', 'p');
 		res = res.replace('-', 't');
 		res = res + ".wav";
-		Log.w("Filename:",res);
 		return res;
 	}
 
@@ -568,54 +569,33 @@ public class TrainingActivity extends Activity {
 
 	void createDipSound() {
 		generateSounds();
-		saveWav(generatedSndDip, "dip.wav");
+		saveWav(generatedSndDip, "_dip.wav");
 	}
 
 	void createDashSound() {
-		generateSounds();
-		saveWav(generatedSndDash, "dash.wav");
+		generateSounds(); //todo refactor this!
+		saveWav(generatedSndDash, "_dash.wav");
 	}
 
+	public static void writeShortLE(DataOutputStream out, short value) throws IOException {
+		  out.writeByte(value & 0xFF);
+		  out.writeByte((value >> 8) & 0xFF);
+	}
+	
 	void saveWav(byte buffer[], String filename) {
 		DataOutputStream out;
 		try {
 			FileOutputStream fileOut = this.getApplicationContext()
 					.openFileOutput(filename, Activity.MODE_PRIVATE);
+			
 			out = new DataOutputStream(fileOut);
-			// objectOut.writeObject(object);
 
-			short nChannels = 1;
-			short bSamples = (short) (buffer.length / 2);
-			int payloadSize = buffer.length; // 16 bite is 2 byte
+			WaveHeader header = new WaveHeader(WaveHeader.FORMAT_PCM, (short)1, sampleRate, (short)16, buffer.length);
 
-			out.writeBytes("RIFF");
-			out.writeInt(Integer.reverseBytes(36 + payloadSize)); // Final file
-																	// size not
-																	// known
-																	// yet,
-																	// write 0
-			out.writeBytes("WAVE");
-			out.writeBytes("fmt ");
-			out.writeInt(Integer.reverseBytes(16)); // Sub-chunk size, 16 for
-													// PCM
-			out.writeShort(Short.reverseBytes((short) 1)); // AudioFormat, 1 for
-															// PCM
-			out.writeShort(Short.reverseBytes(nChannels));// Number of channels,
-															// 1 for mono, 2 for
-															// stereo
-			out.writeInt(Integer.reverseBytes(sampleRate)); // Sample rate
-			out.writeInt(Integer.reverseBytes(sampleRate * bSamples * nChannels
-					/ 8)); // Byte rate,
-							// SampleRate*NumberOfChannels*BitsPerSample/8
-			out.writeShort(Short
-					.reverseBytes((short) (nChannels * bSamples / 8))); // Block
-																		// align,
-																		// NumberOfChannels*BitsPerSample/8
-			out.writeShort(Short.reverseBytes(bSamples)); // Bits per sample
-			out.writeBytes("data");
-			out.writeInt(payloadSize); //
+			header.write(out);
+			
 			out.write(buffer);
-
+			
 			fileOut.getFD().sync();
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -624,7 +604,6 @@ public class TrainingActivity extends Activity {
 		}
 	}
 
-
 	static class LetterStatistic implements Serializable {
 		private static final long serialVersionUID = 1L;
 		// Character character = null;
@@ -632,8 +611,6 @@ public class TrainingActivity extends Activity {
 		boolean learned = false;
 		int count_tries = 0;
 	}
-
-
 
 	static class MorseCode {
 		String code;
