@@ -1,0 +1,116 @@
+{
+  "project_info": {
+    "project_id": "morse-trainer",
+    "project_number": "509795562772",
+    "name": "Morse Trainer"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509795562772:android:00baf41e4cc67979",
+        "client_id": "android:com.maxistar.morsetrainer",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "com.maxistar.morsetrainer",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-5593068-17"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509795562772:android:efaff40bbce61130",
+        "client_id": "android:ru.maxistar.ananitics",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "ru.maxistar.ananitics",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-5593068-17"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509795562772:android:1389330d32c1ba4c",
+        "client_id": "android:ru.maxistar.ananitics.googleanaliticsproject",
+        "client_type": 1,
+        "android_client_info": {
+          "package_name": "ru.maxistar.ananitics.googleanaliticsproject",
+          "certificate_hash": []
+        }
+      },
+      "oauth_client": [],
+      "api_key": [],
+      "services": {
+        "analytics_service": {
+          "status": 2,
+          "analytics_property": {
+            "tracking_id": "UA-5593068-17"
+          }
+        },
+        "cloud_messaging_service": {
+          "status": 1,
+          "apns_config": []
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "google_signin_service": {
+          "status": 1
+        },
+        "ads_service": {
+          "status": 1
+        }
+      }
+    }
+  ],
+  "client_info": [],
+  "ARTIFACT_VERSION": "1"
+}

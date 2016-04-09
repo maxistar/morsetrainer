@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:2:1-33:12
+ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:2:1-34:12
 	package
 		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:3:5-40
 		INJECTED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml
@@ -17,6 +17,12 @@ ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xm
 		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:2:11-69
 uses-sdk
 ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:7:5-43
+MERGED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:22.2.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/AndroidManifest.xml:20:5-43
+MERGED from [com.google.android.gms:play-services-analytics:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.3.0/AndroidManifest.xml:18:5-42
+MERGED from [com.google.android.gms:play-services-basement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/AndroidManifest.xml:18:5-42
+MERGED from [com.android.support:support-v4:22.2.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/AndroidManifest.xml:20:5-43
 	android:targetSdkVersion
 		INJECTED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml
 		INJECTED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml
@@ -26,47 +32,95 @@ ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xm
 		INJECTED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml
 uses-permission#android.permission.WAKE_LOCK
 ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:8:2-65
+MERGED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:24:5-67
 	android:name
 		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:8:19-62
 uses-permission#android.permission.INTERNET
 ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:9:5-67
+MERGED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:21:5-67
+MERGED from [com.google.android.gms:play-services-analytics:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.3.0/AndroidManifest.xml:21:5-67
 	android:name
 		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:9:22-64
 uses-permission#android.permission.ACCESS_NETWORK_STATE
 ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:10:5-79
+MERGED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:22:5-79
+MERGED from [com.google.android.gms:play-services-analytics:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.3.0/AndroidManifest.xml:22:5-79
 	android:name
 		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:10:22-76
 application
-ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:12:5-31:19
+ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:12:5-32:19
+MERGED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:26:5-46:19
+MERGED from [com.google.android.gms:play-services-basement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:22.2.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/AndroidManifest.xml:22:5-20
+MERGED from [com.google.android.gms:play-services-analytics:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.3.0/AndroidManifest.xml:24:5-20
+MERGED from [com.google.android.gms:play-services-basement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/AndroidManifest.xml:20:5-24:19
+MERGED from [com.android.support:support-v4:22.2.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.2.0/AndroidManifest.xml:22:5-20
 	android:label
-		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:14:9-41
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:15:9-41
 	android:icon
-		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:13:9-38
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:14:9-38
+	android:name
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:13:9-41
 activity#com.maxistar.morsetrainer.TrainingActivity
-ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:15:9-22:20
+ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:16:9-23:20
 	android:label
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:18:13-45
+	android:name
 		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:17:13-45
-	android:name
-		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:16:13-45
 intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
-ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:18:13-21:29
+ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:19:13-22:29
 action#android.intent.action.MAIN
-ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:19:17-69
+ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:20:17-69
 	android:name
-		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:19:25-66
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:20:25-66
 category#android.intent.category.LAUNCHER
-ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:20:17-77
+ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:20:27-74
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:21:27-74
 activity#com.maxistar.morsetrainer.SettingsActivity
-ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:23:9-26:20
+ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:24:9-27:20
 	android:label
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:26:13-45
+	android:name
 		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:25:13-45
-	android:name
-		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:24:13-45
 activity#com.maxistar.morsetrainer.ProgressActivity
-ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:27:9-30:20
+ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:28:9-31:20
 	android:label
-		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:29:13-45
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:30:13-45
 	android:name
-		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:28:13-45
+		ADDED from /home/maxim/StudioProjects/Morze2Text/app/src/main/AndroidManifest.xml:29:13-45
+provider#com.google.android.gms.measurement.AppMeasurementContentProvider
+ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:28:7-31:37
+	android:authorities
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:29:11-76
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:31:11-35
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:30:11-90
+receiver#com.google.android.gms.measurement.AppMeasurementReceiver
+ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:33:7-39:18
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:35:11-33
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:34:11-83
+intent-filter#com.google.android.gms.measurement.UPLOAD
+ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:36:9-38:25
+action#com.google.android.gms.measurement.UPLOAD
+ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:37:11-77
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:37:19-75
+service#com.google.android.gms.measurement.AppMeasurementService
+ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:41:7-44:37
+	android:enabled
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:43:11-33
+	android:exported
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:44:11-35
+	android:name
+		ADDED from [com.google.android.gms:play-services-measurement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-measurement/8.3.0/AndroidManifest.xml:42:11-82
+meta-data#com.google.android.gms.version
+ADDED from [com.google.android.gms:play-services-basement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/AndroidManifest.xml:21:9-23:69
+MERGED from [com.google.android.gms:play-services-basement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/AndroidManifest.xml:21:9-23:69
+	android:value
+		ADDED from [com.google.android.gms:play-services-basement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/AndroidManifest.xml:23:13-66
+	android:name
+		ADDED from [com.google.android.gms:play-services-basement:8.3.0] /home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/AndroidManifest.xml:22:13-58

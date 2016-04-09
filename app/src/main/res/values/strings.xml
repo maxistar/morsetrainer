@@ -1,7 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Morse Sound Trainer</string>
+    <string name="app_name">Morse Audio Trainer</string>
     <string name="empty"></string>
+    <string name="nothing_selected">Nothing is selected! please select which characters you want to learn!</string>
+    <string name="settings">Settings</string>
+    <string name="progress">Progress</string>
     <string name="cyr_singing_a">ай-даа</string>
     <string name="cyr_singing_b">баа-ки-те-кут, бей-ба-ра-бан</string>
     <string name="cyr_singing_v">ви-даа-лаа, вол-чаа-таа</string>

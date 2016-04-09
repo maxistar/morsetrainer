@@ -9,13 +9,17 @@ import java.util.Map;
 
 import android.app.ListActivity;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 import com.maxistar.morsetrainer.TrainingActivity.LetterStatistic;
 import com.maxistar.morsetrainer.TrainingActivity.MorseCode;
 
@@ -24,7 +28,8 @@ public class ProgressActivity extends ListActivity {
 	ProgressAdapter adapter;
 	ArrayList<LetterInfo> values;
 	Map<Character, LetterStatistic> history = null;
-	
+	protected Tracker mTracker = null;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -35,6 +40,10 @@ public class ProgressActivity extends ListActivity {
 		
 		adapter = new ProgressAdapter(this, R.layout.progress_item);
 		setListAdapter(adapter);
+		// Obtain the shared Tracker instance.
+		MorseApplication application = (MorseApplication) getApplication();
+		mTracker = application.getDefaultTracker();
+
 	}
 	
 	protected Map<Character, LetterStatistic> getLearningInfo() {
@@ -86,8 +95,17 @@ public class ProgressActivity extends ListActivity {
 			}
 			letters.add(l);
 		}
-	}	
-	
+	}
+
+	@Override
+	protected void onResume() {
+		super.onResume();
+
+		mTracker.setScreenName("ProgressActivity");
+		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+	}
+
+
 	protected void initLetters() {
 		values = new ArrayList<LetterInfo>();
         

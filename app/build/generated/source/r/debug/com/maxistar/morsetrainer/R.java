@@ -9,6 +9,34 @@ package com.maxistar.morsetrainer;
 
 public final class R {
     public static final class attr {
+        /** <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int circleCrop=0x7f010002;
+        /** <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+         */
+        public static final int imageAspectRatio=0x7f010001;
+        /** <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td></td></tr>
+<tr><td><code>adjust_width</code></td><td>1</td><td></td></tr>
+<tr><td><code>adjust_height</code></td><td>2</td><td></td></tr>
+</table>
+         */
+        public static final int imageAspectRatioAdjust=0x7f010000;
     }
     public static final class color {
         public static final int black=0x7f070000;
@@ -25,22 +53,30 @@ public final class R {
         public static final int button_focused=0x7f020001;
         public static final int button_normal=0x7f020002;
         public static final int button_pressed=0x7f020003;
-        public static final int icon=0x7f020004;
+        public static final int common_full_open_on_phone=0x7f020004;
+        public static final int common_ic_googleplayservices=0x7f020005;
+        public static final int icon=0x7f020006;
     }
     public static final class id {
-        public static final int button1=0x7f090006;
-        public static final int button2=0x7f090005;
-        public static final int button3=0x7f090004;
-        public static final int code=0x7f09000a;
-        public static final int lang_destination=0x7f09000c;
-        public static final int lang_source=0x7f09000b;
-        public static final int letter=0x7f090009;
-        public static final int textView1=0x7f090000;
-        public static final int textView2=0x7f090001;
-        public static final int textView3=0x7f090002;
-        public static final int textView4=0x7f090003;
-        public static final int text_destination_language=0x7f090008;
-        public static final int text_source_language=0x7f090007;
+        public static final int adjust_height=0x7f0a0000;
+        public static final int adjust_width=0x7f0a0001;
+        public static final int button1=0x7f0a0009;
+        public static final int button2=0x7f0a0008;
+        public static final int button3=0x7f0a0007;
+        public static final int code=0x7f0a000d;
+        public static final int lang_destination=0x7f0a000f;
+        public static final int lang_source=0x7f0a000e;
+        public static final int letter=0x7f0a000c;
+        public static final int none=0x7f0a0002;
+        public static final int textView1=0x7f0a0003;
+        public static final int textView2=0x7f0a0004;
+        public static final int textView3=0x7f0a0005;
+        public static final int textView4=0x7f0a0006;
+        public static final int text_destination_language=0x7f0a000b;
+        public static final int text_source_language=0x7f0a000a;
+    }
+    public static final class integer {
+        public static final int google_play_services_version=0x7f080000;
     }
     public static final class layout {
         public static final int main=0x7f030000;
@@ -65,139 +101,178 @@ public final class R {
         public static final int exclamation=0x7f05000e;
         public static final int f=0x7f05000f;
         public static final int g=0x7f050010;
-        public static final int h=0x7f050011;
-        public static final int i=0x7f050012;
-        public static final int j=0x7f050013;
-        public static final int k=0x7f050014;
-        public static final int l=0x7f050015;
-        public static final int login=0x7f050016;
-        public static final int m=0x7f050017;
-        public static final int minus=0x7f050018;
-        public static final int n=0x7f050019;
-        public static final int o=0x7f05001a;
-        public static final int opening_par=0x7f05001b;
-        public static final int p=0x7f05001c;
-        public static final int plus=0x7f05001d;
-        public static final int point=0x7f05001e;
-        public static final int q=0x7f05001f;
-        public static final int question=0x7f050020;
-        public static final int quote=0x7f050021;
-        public static final int r=0x7f050022;
-        public static final int r0=0x7f050023;
-        public static final int r1=0x7f050024;
-        public static final int r2=0x7f050025;
-        public static final int r3=0x7f050026;
-        public static final int r4=0x7f050027;
-        public static final int r5=0x7f050028;
-        public static final int r6=0x7f050029;
-        public static final int r7=0x7f05002a;
-        public static final int r8=0x7f05002b;
-        public static final int r9=0x7f05002c;
-        public static final int rus_0=0x7f05002d;
-        public static final int rus_1=0x7f05002e;
-        public static final int rus_2=0x7f05002f;
-        public static final int rus_3=0x7f050030;
-        public static final int rus_4=0x7f050031;
-        public static final int rus_5=0x7f050032;
-        public static final int rus_6=0x7f050033;
-        public static final int rus_7=0x7f050034;
-        public static final int rus_8=0x7f050035;
-        public static final int rus_9=0x7f050036;
-        public static final int rus_a=0x7f050037;
-        public static final int rus_and=0x7f050038;
-        public static final int rus_apostrof=0x7f050039;
-        public static final int rus_b=0x7f05003a;
-        public static final int rus_c=0x7f05003b;
-        public static final int rus_ch=0x7f05003c;
-        public static final int rus_closing_parenthis=0x7f05003d;
-        public static final int rus_column=0x7f05003e;
-        public static final int rus_coma=0x7f05003f;
-        public static final int rus_d=0x7f050040;
-        public static final int rus_e=0x7f050041;
-        public static final int rus_ee=0x7f050042;
-        public static final int rus_ee_2=0x7f050043;
-        public static final int rus_equals=0x7f050044;
-        public static final int rus_exclamation=0x7f050045;
-        public static final int rus_f=0x7f050046;
-        public static final int rus_g=0x7f050047;
-        public static final int rus_h=0x7f050048;
-        public static final int rus_i=0x7f050049;
-        public static final int rus_ii=0x7f05004a;
-        public static final int rus_j=0x7f05004b;
-        public static final int rus_k=0x7f05004c;
-        public static final int rus_l=0x7f05004d;
-        public static final int rus_m=0x7f05004e;
-        public static final int rus_mz=0x7f05004f;
-        public static final int rus_n=0x7f050050;
-        public static final int rus_o=0x7f050051;
-        public static final int rus_oe=0x7f050052;
-        public static final int rus_opening_parenthis=0x7f050053;
-        public static final int rus_p=0x7f050054;
-        public static final int rus_point=0x7f050055;
-        public static final int rus_question=0x7f050056;
-        public static final int rus_r=0x7f050057;
-        public static final int rus_s=0x7f050058;
-        public static final int rus_sch=0x7f050059;
-        public static final int rus_semicolumn=0x7f05005a;
-        public static final int rus_sh=0x7f05005b;
-        public static final int rus_slash=0x7f05005c;
-        public static final int rus_t=0x7f05005d;
-        public static final int rus_tz=0x7f05005e;
-        public static final int rus_u=0x7f05005f;
-        public static final int rus_v=0x7f050060;
-        public static final int rus_y=0x7f050061;
-        public static final int rus_ya=0x7f050062;
-        public static final int rus_yu=0x7f050063;
-        public static final int rus_z=0x7f050064;
-        public static final int s=0x7f050065;
-        public static final int semicolumn=0x7f050066;
-        public static final int slash=0x7f050067;
-        public static final int t=0x7f050068;
-        public static final int u=0x7f050069;
-        public static final int understroke=0x7f05006a;
-        public static final int v=0x7f05006b;
-        public static final int w=0x7f05006c;
-        public static final int x=0x7f05006d;
-        public static final int y=0x7f05006e;
-        public static final int y2=0x7f05006f;
-        public static final int z=0x7f050070;
+        public static final int gtm_analytics=0x7f050011;
+        public static final int h=0x7f050012;
+        public static final int i=0x7f050013;
+        public static final int j=0x7f050014;
+        public static final int k=0x7f050015;
+        public static final int l=0x7f050016;
+        public static final int login=0x7f050017;
+        public static final int m=0x7f050018;
+        public static final int minus=0x7f050019;
+        public static final int n=0x7f05001a;
+        public static final int o=0x7f05001b;
+        public static final int opening_par=0x7f05001c;
+        public static final int p=0x7f05001d;
+        public static final int plus=0x7f05001e;
+        public static final int point=0x7f05001f;
+        public static final int q=0x7f050020;
+        public static final int question=0x7f050021;
+        public static final int quote=0x7f050022;
+        public static final int r=0x7f050023;
+        public static final int r0=0x7f050024;
+        public static final int r1=0x7f050025;
+        public static final int r2=0x7f050026;
+        public static final int r3=0x7f050027;
+        public static final int r4=0x7f050028;
+        public static final int r5=0x7f050029;
+        public static final int r6=0x7f05002a;
+        public static final int r7=0x7f05002b;
+        public static final int r8=0x7f05002c;
+        public static final int r9=0x7f05002d;
+        public static final int rus_0=0x7f05002e;
+        public static final int rus_1=0x7f05002f;
+        public static final int rus_2=0x7f050030;
+        public static final int rus_3=0x7f050031;
+        public static final int rus_4=0x7f050032;
+        public static final int rus_5=0x7f050033;
+        public static final int rus_6=0x7f050034;
+        public static final int rus_7=0x7f050035;
+        public static final int rus_8=0x7f050036;
+        public static final int rus_9=0x7f050037;
+        public static final int rus_a=0x7f050038;
+        public static final int rus_and=0x7f050039;
+        public static final int rus_apostrof=0x7f05003a;
+        public static final int rus_b=0x7f05003b;
+        public static final int rus_c=0x7f05003c;
+        public static final int rus_ch=0x7f05003d;
+        public static final int rus_closing_parenthis=0x7f05003e;
+        public static final int rus_column=0x7f05003f;
+        public static final int rus_coma=0x7f050040;
+        public static final int rus_d=0x7f050041;
+        public static final int rus_e=0x7f050042;
+        public static final int rus_ee=0x7f050043;
+        public static final int rus_ee_2=0x7f050044;
+        public static final int rus_equals=0x7f050045;
+        public static final int rus_exclamation=0x7f050046;
+        public static final int rus_f=0x7f050047;
+        public static final int rus_g=0x7f050048;
+        public static final int rus_h=0x7f050049;
+        public static final int rus_i=0x7f05004a;
+        public static final int rus_ii=0x7f05004b;
+        public static final int rus_j=0x7f05004c;
+        public static final int rus_k=0x7f05004d;
+        public static final int rus_l=0x7f05004e;
+        public static final int rus_m=0x7f05004f;
+        public static final int rus_mz=0x7f050050;
+        public static final int rus_n=0x7f050051;
+        public static final int rus_o=0x7f050052;
+        public static final int rus_oe=0x7f050053;
+        public static final int rus_opening_parenthis=0x7f050054;
+        public static final int rus_p=0x7f050055;
+        public static final int rus_point=0x7f050056;
+        public static final int rus_question=0x7f050057;
+        public static final int rus_r=0x7f050058;
+        public static final int rus_s=0x7f050059;
+        public static final int rus_sch=0x7f05005a;
+        public static final int rus_semicolumn=0x7f05005b;
+        public static final int rus_sh=0x7f05005c;
+        public static final int rus_slash=0x7f05005d;
+        public static final int rus_t=0x7f05005e;
+        public static final int rus_tz=0x7f05005f;
+        public static final int rus_u=0x7f050060;
+        public static final int rus_v=0x7f050061;
+        public static final int rus_y=0x7f050062;
+        public static final int rus_ya=0x7f050063;
+        public static final int rus_yu=0x7f050064;
+        public static final int rus_z=0x7f050065;
+        public static final int s=0x7f050066;
+        public static final int semicolumn=0x7f050067;
+        public static final int slash=0x7f050068;
+        public static final int t=0x7f050069;
+        public static final int u=0x7f05006a;
+        public static final int understroke=0x7f05006b;
+        public static final int v=0x7f05006c;
+        public static final int w=0x7f05006d;
+        public static final int x=0x7f05006e;
+        public static final int y=0x7f05006f;
+        public static final int y2=0x7f050070;
+        public static final int z=0x7f050071;
     }
     public static final class string {
-        public static final int app_name=0x7f060000;
-        public static final int cyr_singing_a=0x7f060001;
-        public static final int cyr_singing_b=0x7f060002;
-        public static final int cyr_singing_ch=0x7f060003;
-        public static final int cyr_singing_d=0x7f060004;
-        public static final int cyr_singing_e=0x7f060005;
-        public static final int cyr_singing_ee=0x7f060006;
-        public static final int cyr_singing_f=0x7f060007;
-        public static final int cyr_singing_g=0x7f060008;
-        public static final int cyr_singing_h=0x7f060009;
-        public static final int cyr_singing_i=0x7f06000a;
-        public static final int cyr_singing_k=0x7f06000b;
-        public static final int cyr_singing_l=0x7f06000c;
-        public static final int cyr_singing_m=0x7f06000d;
-        public static final int cyr_singing_mgznk=0x7f06000e;
-        public static final int cyr_singing_n=0x7f06000f;
-        public static final int cyr_singing_o=0x7f060010;
-        public static final int cyr_singing_p=0x7f060011;
-        public static final int cyr_singing_r=0x7f060012;
-        public static final int cyr_singing_s=0x7f060013;
-        public static final int cyr_singing_sch=0x7f060014;
-        public static final int cyr_singing_sh=0x7f060015;
-        public static final int cyr_singing_t=0x7f060016;
-        public static final int cyr_singing_tvznk=0x7f060017;
-        public static final int cyr_singing_u=0x7f060018;
-        public static final int cyr_singing_v=0x7f060019;
-        public static final int cyr_singing_y=0x7f06001a;
-        public static final int cyr_singing_ya=0x7f06001b;
-        public static final int cyr_singing_yii=0x7f06001c;
-        public static final int cyr_singing_yo=0x7f06001d;
-        public static final int cyr_singing_yu=0x7f06001e;
-        public static final int cyr_singing_z=0x7f06001f;
-        public static final int cyr_singing_zc=0x7f060020;
-        public static final int cyr_singing_ze=0x7f060021;
-        public static final int empty=0x7f060022;
+        public static final int app_name=0x7f06001e;
+        public static final int auth_google_play_services_client_facebook_display_name=0x7f060044;
+        public static final int auth_google_play_services_client_google_display_name=0x7f060045;
+        public static final int common_android_wear_notification_needs_update_text=0x7f060000;
+        public static final int common_android_wear_update_text=0x7f060001;
+        public static final int common_android_wear_update_title=0x7f060002;
+        public static final int common_google_play_services_api_unavailable_text=0x7f060003;
+        public static final int common_google_play_services_enable_button=0x7f060004;
+        public static final int common_google_play_services_enable_text=0x7f060005;
+        public static final int common_google_play_services_enable_title=0x7f060006;
+        public static final int common_google_play_services_error_notification_requested_by_msg=0x7f060007;
+        public static final int common_google_play_services_install_button=0x7f060008;
+        public static final int common_google_play_services_install_text_phone=0x7f060009;
+        public static final int common_google_play_services_install_text_tablet=0x7f06000a;
+        public static final int common_google_play_services_install_title=0x7f06000b;
+        public static final int common_google_play_services_invalid_account_text=0x7f06000c;
+        public static final int common_google_play_services_invalid_account_title=0x7f06000d;
+        public static final int common_google_play_services_needs_enabling_title=0x7f06000e;
+        public static final int common_google_play_services_network_error_text=0x7f06000f;
+        public static final int common_google_play_services_network_error_title=0x7f060010;
+        public static final int common_google_play_services_notification_needs_update_title=0x7f060011;
+        public static final int common_google_play_services_notification_ticker=0x7f060012;
+        public static final int common_google_play_services_sign_in_failed_text=0x7f060013;
+        public static final int common_google_play_services_sign_in_failed_title=0x7f060014;
+        public static final int common_google_play_services_unknown_issue=0x7f060015;
+        public static final int common_google_play_services_unsupported_text=0x7f060016;
+        public static final int common_google_play_services_unsupported_title=0x7f060017;
+        public static final int common_google_play_services_update_button=0x7f060018;
+        public static final int common_google_play_services_update_text=0x7f060019;
+        public static final int common_google_play_services_update_title=0x7f06001a;
+        public static final int common_google_play_services_updating_text=0x7f06001b;
+        public static final int common_google_play_services_updating_title=0x7f06001c;
+        public static final int common_open_on_phone=0x7f06001d;
+        public static final int cyr_singing_a=0x7f06001f;
+        public static final int cyr_singing_b=0x7f060020;
+        public static final int cyr_singing_ch=0x7f060021;
+        public static final int cyr_singing_d=0x7f060022;
+        public static final int cyr_singing_e=0x7f060023;
+        public static final int cyr_singing_ee=0x7f060024;
+        public static final int cyr_singing_f=0x7f060025;
+        public static final int cyr_singing_g=0x7f060026;
+        public static final int cyr_singing_h=0x7f060027;
+        public static final int cyr_singing_i=0x7f060028;
+        public static final int cyr_singing_k=0x7f060029;
+        public static final int cyr_singing_l=0x7f06002a;
+        public static final int cyr_singing_m=0x7f06002b;
+        public static final int cyr_singing_mgznk=0x7f06002c;
+        public static final int cyr_singing_n=0x7f06002d;
+        public static final int cyr_singing_o=0x7f06002e;
+        public static final int cyr_singing_p=0x7f06002f;
+        public static final int cyr_singing_r=0x7f060030;
+        public static final int cyr_singing_s=0x7f060031;
+        public static final int cyr_singing_sch=0x7f060032;
+        public static final int cyr_singing_sh=0x7f060033;
+        public static final int cyr_singing_t=0x7f060034;
+        public static final int cyr_singing_tvznk=0x7f060035;
+        public static final int cyr_singing_u=0x7f060036;
+        public static final int cyr_singing_v=0x7f060037;
+        public static final int cyr_singing_y=0x7f060038;
+        public static final int cyr_singing_ya=0x7f060039;
+        public static final int cyr_singing_yii=0x7f06003a;
+        public static final int cyr_singing_yo=0x7f06003b;
+        public static final int cyr_singing_yu=0x7f06003c;
+        public static final int cyr_singing_z=0x7f06003d;
+        public static final int cyr_singing_zc=0x7f06003e;
+        public static final int cyr_singing_ze=0x7f06003f;
+        public static final int empty=0x7f060040;
+        public static final int ga_trackingId=0x7f060046;
+        public static final int gcm_defaultSenderId=0x7f060047;
+        public static final int google_app_id=0x7f060048;
+        public static final int nothing_selected=0x7f060041;
+        public static final int progress=0x7f060042;
+        public static final int settings=0x7f060043;
     }
     public static final class style {
         /**  <item name="android:shadowColor">#000000</item>
@@ -205,9 +280,75 @@ public final class R {
     <item name="android:shadowDy">1</item>
     <item name="android:shadowRadius">2</item> 
          */
-        public static final int button=0x7f080000;
+        public static final int button=0x7f090000;
     }
     public static final class xml {
-        public static final int preferences=0x7f040000;
+        public static final int global_tracker=0x7f040000;
+        public static final int preferences=0x7f040001;
     }
+    public static final class styleable {
+        /** Attributes that can be used with a LoadingImageView.
+           <p>Includes the following attributes:</p>
+           <table>
+           <colgroup align="left" />
+           <colgroup align="left" />
+           <tr><th>Attribute</th><th>Description</th></tr>
+           <tr><td><code>{@link #LoadingImageView_circleCrop com.maxistar.morsetrainer:circleCrop}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatio com.maxistar.morsetrainer:imageAspectRatio}</code></td><td></td></tr>
+           <tr><td><code>{@link #LoadingImageView_imageAspectRatioAdjust com.maxistar.morsetrainer:imageAspectRatioAdjust}</code></td><td></td></tr>
+           </table>
+           @see #LoadingImageView_circleCrop
+           @see #LoadingImageView_imageAspectRatio
+           @see #LoadingImageView_imageAspectRatioAdjust
+         */
+        public static final int[] LoadingImageView = {
+            0x7f010000, 0x7f010001, 0x7f010002
+        };
+        /**
+          <p>This symbol is the offset where the {@link com.maxistar.morsetrainer.R.attr#circleCrop}
+          attribute's value can be found in the {@link #LoadingImageView} array.
+
+
+          <p>Must be a boolean value, either "<code>true</code>" or "<code>false</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.maxistar.morsetrainer:circleCrop
+        */
+        public static final int LoadingImageView_circleCrop = 2;
+        /**
+          <p>This symbol is the offset where the {@link com.maxistar.morsetrainer.R.attr#imageAspectRatio}
+          attribute's value can be found in the {@link #LoadingImageView} array.
+
+
+          <p>Must be a floating point value, such as "<code>1.2</code>".
+<p>This may also be a reference to a resource (in the form
+"<code>@[<i>package</i>:]<i>type</i>:<i>name</i></code>") or
+theme attribute (in the form
+"<code>?[<i>package</i>:][<i>type</i>:]<i>name</i></code>")
+containing a value of this type.
+          @attr name com.maxistar.morsetrainer:imageAspectRatio
+        */
+        public static final int LoadingImageView_imageAspectRatio = 1;
+        /**
+          <p>This symbol is the offset where the {@link com.maxistar.morsetrainer.R.attr#imageAspectRatioAdjust}
+          attribute's value can be found in the {@link #LoadingImageView} array.
+
+
+          <p>Must be one of the following constant values.</p>
+<table>
+<colgroup align="left" />
+<colgroup align="left" />
+<colgroup align="left" />
+<tr><th>Constant</th><th>Value</th><th>Description</th></tr>
+<tr><td><code>none</code></td><td>0</td><td></td></tr>
+<tr><td><code>adjust_width</code></td><td>1</td><td></td></tr>
+<tr><td><code>adjust_height</code></td><td>2</td><td></td></tr>
+</table>
+          @attr name com.maxistar.morsetrainer:imageAspectRatioAdjust
+        */
+        public static final int LoadingImageView_imageAspectRatioAdjust = 0;
+    };
 }

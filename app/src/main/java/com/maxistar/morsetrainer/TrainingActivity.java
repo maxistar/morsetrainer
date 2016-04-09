@@ -39,12 +39,16 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
+
 public class TrainingActivity extends Activity {
 	private static final int PROGRESS = 2;
 	private static final int SETTINGS = 3;
 	private static final int REQUEST_PROGRESS = 2;
 	private static final int REQUEST_SETTINGS = 3;
 
+	protected Tracker mTracker = null;
 
 	
 	
@@ -154,7 +158,11 @@ public class TrainingActivity extends Activity {
 		letters_done = new Stack<LetterInfo>();
 		current = letters.pop();
 		showLetter(); // show it
-		
+
+		// Obtain the shared Tracker instance.
+		MorseApplication application = (MorseApplication) getApplication();
+		mTracker = application.getDefaultTracker();
+
 	}
 
 	void showLetter() {
@@ -192,7 +200,6 @@ public class TrainingActivity extends Activity {
 		LetterStatistic s = null;
 
 		for (Map.Entry<Character, MorseCode> entry : chars.entrySet()) {
-			// System.out.println(entry.getKey() + "/" + entry.getValue());
 			l = new LetterInfo();
 			l.character = entry.getKey();
 			l.morse_code = entry.getValue().code;
@@ -207,20 +214,39 @@ public class TrainingActivity extends Activity {
 		}
 	}
 
+	/**
+	 * Returns translation
+	 *
+	 * @param id
+	 * @return
+	 */
+	String l(int id) {
+		return getBaseContext().getResources().getString(id);
+	}
+
 	protected void initLetters() {
 		ArrayList<LetterInfo> letters = new ArrayList<LetterInfo>();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-		if (sharedPreferences.getBoolean("learn_latinica", true)){
+		boolean learnLatinica = sharedPreferences.getBoolean("learn_latinica", true);
+		boolean learnNumbers = sharedPreferences.getBoolean("learn_numbers", true);
+		boolean learnPunctuationSigns = sharedPreferences.getBoolean("learn_punctuation_signs", true);
+		boolean learnCirilic = sharedPreferences.getBoolean("learn_cyrilics", false);
+		boolean savetyCheck = false;
+		if (!learnCirilic && !learnLatinica && !learnNumbers && !learnPunctuationSigns) {
+			savetyCheck = true;
+		}
+
+		if (savetyCheck || learnLatinica){
 			addMorseCodes(letters,Constants.latins);
 		}
-		if (sharedPreferences.getBoolean("learn_numbers", true)){
+		if (learnNumbers){
 			addMorseCodes(letters,Constants.numbers);
 		}
-		if (sharedPreferences.getBoolean("learn_punctuation_signs", true)){
+		if (learnPunctuationSigns){
 			addMorseCodes(letters,Constants.characters);
 		}
-		if (sharedPreferences.getBoolean("learn_cyrilics", false)){
+		if (learnCirilic){
 			addMorseCodes(letters,Constants.cyrilics);
 		}
 		// sort list
@@ -259,12 +285,8 @@ public class TrainingActivity extends Activity {
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-
-		menu.add(0, SETTINGS, 0, "Settings");
-		
-		menu.add(1, PROGRESS, 1, "Progress");
-//				.setIcon(R.drawable.settings);
-
+		menu.add(0, SETTINGS, 0, l(R.string.settings));
+		menu.add(1, PROGRESS, 1, l(R.string.progress));
 		return super.onCreateOptionsMenu(menu);
 	}
 	
@@ -491,7 +513,10 @@ public class TrainingActivity extends Activity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-		
+
+		mTracker.setScreenName("TrainingActivity");
+		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
 		wl.acquire();

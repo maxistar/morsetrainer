@@ -2,6 +2,7 @@ package com.maxistar.morsetrainer;
 
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
@@ -12,24 +13,21 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
+import android.widget.Toast;
+
+import com.google.android.gms.analytics.HitBuilders;
+import com.google.android.gms.analytics.Tracker;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
-	/** Called when the activity is first created. */
-	//Preference mCountOfFilesToRemember;
-	
+	protected Tracker mTracker = null;
 	Preference mVersion;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//setContentView(R.layout.settings);
-		//this.setP
 		addPreferencesFromResource(R.xml.preferences);
 		
-		//get default value for count of files
-		//mCountOfFilesToRemember = this.findPreference("count_of_files_to_remember");
-
 		mVersion = this.findPreference("version_name");
 		PackageInfo pInfo;
 		try {
@@ -39,17 +37,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+
+		// Obtain the shared Tracker instance.
+		MorseApplication application = (MorseApplication) getApplication();
+		mTracker = application.getDefaultTracker();
+
 	}
 	
     @Override
     protected void onResume() {
         super.onResume();
-        // Setup the initial values        
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        
-        //mCountOfFilesToRemember.setSummary("Current value is " + sharedPreferences.getString("count_of_files_to_remember", "")); 
+		mTracker.setScreenName("SettingsActivity");
+		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
-        // Set up a listener whenever a key changes            
+		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -57,16 +58,40 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onPause() {
         super.onPause();
 
-        // Unregister the listener whenever a key changes            
+		// Unregister the listener whenever a key changes
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);    
     }
 
+	protected void showToast(String toast_str) {
+		Context context = getApplicationContext();
+		CharSequence text = toast_str;
+		int duration = Toast.LENGTH_SHORT;
+		Toast toast = Toast.makeText(context, text, duration);
+		toast.show();
+	}
+
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-        //if (key.equals("count_of_files_to_remember")) {
-        //	mCountOfFilesToRemember.setSummary("Current value is " + sharedPreferences.getString(key, "")); 
-        //}
-    }	
+		// check if all kinds of symbols are deselected and show message
+		if (!sharedPreferences.getBoolean("learn_latinica", true)
+				&& !sharedPreferences.getBoolean("learn_numbers", true)
+				&& !sharedPreferences.getBoolean("learn_punctuation_signs", true)
+				&& !sharedPreferences.getBoolean("learn_cyrilics", false)) {
+
+			showToast(l(R.string.nothing_selected));
+		}
+
+    }
+
+	/**
+	 * Returns translation
+	 *
+	 * @param id
+	 * @return
+	 */
+	String l(int id) {
+		return getBaseContext().getResources().getString(id);
+	}
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

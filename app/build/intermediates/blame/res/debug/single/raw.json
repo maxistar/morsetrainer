@@ -1,11 +1,11 @@
 [
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_9.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_9.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_apostrof.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_apostrof.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_9.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_9.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/c.mp3",
@@ -44,24 +44,24 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_s.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/b.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/b.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_i.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_i.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/b.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/b.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_ee.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_ee.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/o.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/o.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/quote.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/quote.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/o.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/o.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_r.mp3",
@@ -92,12 +92,12 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/q.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_j.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_j.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/r7.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/r7.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_j.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_j.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/exclamation.mp3",
@@ -108,12 +108,12 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_question.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_g.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_g.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/r4.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/r4.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_g.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_g.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/z.mp3",
@@ -152,16 +152,16 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/minus.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/p.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/p.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/y.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/y.mp3"
     },
     {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/p.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/p.mp3"
+    },
+    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/gtm_analytics",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.4.0/res/raw/gtm_analytics"
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-analytics/8.3.0/res/raw/gtm_analytics"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/s.mp3",
@@ -204,24 +204,24 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_n.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/g.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/g.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_t.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_t.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/g.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/g.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_7.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_7.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/column.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/column.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/j.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/j.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/column.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/column.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/login.wav",
@@ -268,12 +268,12 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/h.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/u.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/u.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_2.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_2.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/u.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/u.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_ee_2.mp3",
@@ -332,12 +332,12 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_a.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/dialog_error.ogg",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/dialog_error.ogg"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_d.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_d.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/dialog_error.ogg",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/dialog_error.ogg"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/w.mp3",
@@ -384,12 +384,12 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/question.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/dollar.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/dollar.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_p.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_p.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/dollar.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/dollar.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_5.mp3",
@@ -400,12 +400,12 @@
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_f.mp3"
     },
     {
-        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/at.mp3",
-        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/at.mp3"
-    },
-    {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/rus_l.mp3",
         "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/rus_l.mp3"
+    },
+    {
+        "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/at.mp3",
+        "source": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/raw/at.mp3"
     },
     {
         "merged": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/res/merged/debug/raw/e.mp3",
