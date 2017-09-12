@@ -11,14 +11,7 @@
                     "endOffset": 140
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 95,
-                        "endColumn": 39,
-                        "endOffset": 130
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml"
                 }
             },
             {
@@ -30,14 +23,7 @@
                     "endOffset": 179
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 176,
-                        "endColumn": 38,
-                        "endOffset": 210
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml"
                 }
             },
             {
@@ -49,14 +35,7 @@
                     "endOffset": 219
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 294,
-                        "endColumn": 39,
-                        "endOffset": 329
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml"
                 }
             },
             {
@@ -68,14 +47,7 @@
                     "endOffset": 257
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml",
-                    "position": {
-                        "startLine": 7,
-                        "startColumn": 4,
-                        "startOffset": 256,
-                        "endColumn": 37,
-                        "endOffset": 289
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml"
                 }
             },
             {
@@ -87,14 +59,7 @@
                     "endOffset": 298
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 215,
-                        "endColumn": 40,
-                        "endOffset": 251
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml"
                 }
             },
             {
@@ -106,14 +71,7 @@
                     "endOffset": 346
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml",
-                    "position": {
-                        "startLine": 9,
-                        "startColumn": 4,
-                        "startOffset": 334,
-                        "endColumn": 47,
-                        "endOffset": 377
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml"
                 }
             },
             {
@@ -125,14 +83,7 @@
                     "endOffset": 386
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 39,
-                        "endOffset": 90
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml"
                 }
             },
             {
@@ -144,14 +95,7 @@
                     "endOffset": 427
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 135,
-                        "endColumn": 40,
-                        "endOffset": 171
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/color.xml"
                 }
             },
             {
@@ -163,14 +107,7 @@
                     "endOffset": 811
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/version.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 66,
-                        "endOffset": 117
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/version.xml"
                 }
             },
             {
@@ -182,14 +119,7 @@
                     "endOffset": 868
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 56,
-                        "endOffset": 107
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
                 }
             },
             {
@@ -201,14 +131,7 @@
                     "endOffset": 960
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/auth_strings.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 253,
-                        "endColumn": 91,
-                        "endOffset": 340
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/auth_strings.xml"
                 }
             },
             {
@@ -220,14 +143,7 @@
                     "endOffset": 1048
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/auth_strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 109,
-                        "endColumn": 87,
-                        "endOffset": 192
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/auth_strings.xml"
                 }
             },
             {
@@ -239,14 +155,7 @@
                     "endOffset": 1205
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 10,
-                        "startColumn": 4,
-                        "startOffset": 733,
-                        "endColumn": 160,
-                        "endOffset": 889
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -258,14 +167,7 @@
                     "endOffset": 1350
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 60,
-                        "startColumn": 4,
-                        "startOffset": 4602,
-                        "endColumn": 148,
-                        "endOffset": 4746
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -277,14 +179,7 @@
                     "endOffset": 1459
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 52,
-                        "startColumn": 4,
-                        "startOffset": 4026,
-                        "endColumn": 108,
-                        "endOffset": 4130
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -296,14 +191,7 @@
                     "endOffset": 1691
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 99,
-                        "startColumn": 4,
-                        "startOffset": 7585,
-                        "endColumn": 235,
-                        "endOffset": 7816
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -315,14 +203,7 @@
                     "endOffset": 1817
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 44,
-                        "startColumn": 4,
-                        "startOffset": 3483,
-                        "endColumn": 125,
-                        "endOffset": 3604
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -334,14 +215,7 @@
                     "endOffset": 1998
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 39,
-                        "startColumn": 4,
-                        "startOffset": 3087,
-                        "endColumn": 184,
-                        "endOffset": 3267
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -353,14 +227,7 @@
                     "endOffset": 2123
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 35,
-                        "startColumn": 4,
-                        "startOffset": 2811,
-                        "endColumn": 124,
-                        "endOffset": 2931
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -372,14 +239,7 @@
                     "endOffset": 2262
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 16,
-                        "startColumn": 4,
-                        "startOffset": 1266,
-                        "endColumn": 142,
-                        "endOffset": 1404
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -391,14 +251,7 @@
                     "endOffset": 2386
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 31,
-                        "startColumn": 4,
-                        "startOffset": 2540,
-                        "endColumn": 123,
-                        "endOffset": 2659
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -410,14 +263,7 @@
                     "endOffset": 2599
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 24,
-                        "startColumn": 4,
-                        "startOffset": 1843,
-                        "endColumn": 216,
-                        "endOffset": 2055
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -429,14 +275,7 @@
                     "endOffset": 2814
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 28,
-                        "startColumn": 4,
-                        "startOffset": 2225,
-                        "endColumn": 218,
-                        "endOffset": 2439
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -448,14 +287,7 @@
                     "endOffset": 2937
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 20,
-                        "startColumn": 4,
-                        "startOffset": 1556,
-                        "endColumn": 122,
-                        "endOffset": 1674
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -467,14 +299,7 @@
                     "endOffset": 3102
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 80,
-                        "startColumn": 4,
-                        "startOffset": 6084,
-                        "endColumn": 164,
-                        "endOffset": 6244
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -486,14 +311,7 @@
                     "endOffset": 3196
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 77,
-                        "startColumn": 4,
-                        "startOffset": 5869,
-                        "endColumn": 93,
-                        "endOffset": 5958
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -505,14 +323,7 @@
                     "endOffset": 3333
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 13,
-                        "startColumn": 4,
-                        "startOffset": 1033,
-                        "endColumn": 136,
-                        "endOffset": 1165
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -524,14 +335,7 @@
                     "endOffset": 3474
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 74,
-                        "startColumn": 4,
-                        "startOffset": 5611,
-                        "endColumn": 140,
-                        "endOffset": 5747
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -543,14 +347,7 @@
                     "endOffset": 3564
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 71,
-                        "startColumn": 4,
-                        "startOffset": 5408,
-                        "endColumn": 89,
-                        "endOffset": 5493
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -562,14 +359,7 @@
                     "endOffset": 3712
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 8,
-                        "startColumn": 4,
-                        "startOffset": 449,
-                        "endColumn": 147,
-                        "endOffset": 592
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -581,14 +371,7 @@
                     "endOffset": 3815
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 206,
-                        "endColumn": 102,
-                        "endOffset": 304
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -600,14 +383,7 @@
                     "endOffset": 3966
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 105,
-                        "startColumn": 4,
-                        "startOffset": 8155,
-                        "endColumn": 150,
-                        "endOffset": 8301
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -619,14 +395,7 @@
                     "endOffset": 4058
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 102,
-                        "startColumn": 4,
-                        "startOffset": 7940,
-                        "endColumn": 91,
-                        "endOffset": 8027
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -638,14 +407,7 @@
                     "endOffset": 4169
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 84,
-                        "startColumn": 4,
-                        "startOffset": 6385,
-                        "endColumn": 110,
-                        "endOffset": 6491
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -657,14 +419,7 @@
                     "endOffset": 4388
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 90,
-                        "startColumn": 4,
-                        "startOffset": 6861,
-                        "endColumn": 222,
-                        "endOffset": 7079
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -676,14 +431,7 @@
                     "endOffset": 4483
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 87,
-                        "startColumn": 4,
-                        "startOffset": 6629,
-                        "endColumn": 94,
-                        "endOffset": 6719
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -695,14 +443,7 @@
                     "endOffset": 4588
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 93,
-                        "startColumn": 4,
-                        "startOffset": 7178,
-                        "endColumn": 104,
-                        "endOffset": 7278
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -714,14 +455,7 @@
                     "endOffset": 4769
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 56,
-                        "startColumn": 4,
-                        "startOffset": 4285,
-                        "endColumn": 184,
-                        "endOffset": 4465
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -733,14 +467,7 @@
                     "endOffset": 4894
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 48,
-                        "startColumn": 4,
-                        "startOffset": 3755,
-                        "endColumn": 124,
-                        "endOffset": 3875
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -752,14 +479,7 @@
                     "endOffset": 5069
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 68,
-                        "startColumn": 4,
-                        "startOffset": 5120,
-                        "endColumn": 178,
-                        "endOffset": 5294
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -771,14 +491,7 @@
                     "endOffset": 5174
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 64,
-                        "startColumn": 4,
-                        "startOffset": 4881,
-                        "endColumn": 104,
-                        "endOffset": 4981
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -790,14 +503,7 @@
                     "endOffset": 5237
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml",
-                    "position": {
-                        "startLine": 96,
-                        "startColumn": 4,
-                        "startOffset": 7378,
-                        "endColumn": 62,
-                        "endOffset": 7436
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/intermediates/exploded-aar/com.google.android.gms/play-services-basement/8.3.0/res/values/common_strings.xml"
                 }
             },
             {
@@ -811,11 +517,11 @@
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 7,
+                        "startLine": 41,
                         "startColumn": 4,
-                        "startOffset": 355,
+                        "startOffset": 2241,
                         "endColumn": 48,
-                        "endOffset": 399
+                        "endOffset": 2285
                     }
                 }
             },
@@ -830,11 +536,11 @@
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 8,
+                        "startLine": 42,
                         "startColumn": 4,
-                        "startOffset": 404,
+                        "startOffset": 2290,
                         "endColumn": 70,
-                        "endOffset": 470
+                        "endOffset": 2356
                     }
                 }
             },
@@ -843,17 +549,17 @@
                     "startLine": 47,
                     "startColumn": 4,
                     "startOffset": 5362,
-                    "endColumn": 75,
-                    "endOffset": 5433
+                    "endColumn": 73,
+                    "endOffset": 5431
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 31,
+                        "startLine": 43,
                         "startColumn": 4,
-                        "startOffset": 1902,
-                        "endColumn": 75,
-                        "endOffset": 1973
+                        "startOffset": 2361,
+                        "endColumn": 73,
+                        "endOffset": 2430
                     }
                 }
             },
@@ -861,18 +567,18 @@
                 "to": {
                     "startLine": 48,
                     "startColumn": 4,
-                    "startOffset": 5438,
-                    "endColumn": 51,
-                    "endOffset": 5485
+                    "startOffset": 5436,
+                    "endColumn": 75,
+                    "endOffset": 5507
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 11,
+                        "startLine": 67,
                         "startColumn": 4,
-                        "startOffset": 607,
-                        "endColumn": 51,
-                        "endOffset": 654
+                        "startOffset": 3868,
+                        "endColumn": 75,
+                        "endOffset": 3939
                     }
                 }
             },
@@ -880,18 +586,18 @@
                 "to": {
                     "startLine": 49,
                     "startColumn": 4,
-                    "startOffset": 5490,
-                    "endColumn": 46,
-                    "endOffset": 5532
+                    "startOffset": 5512,
+                    "endColumn": 51,
+                    "endOffset": 5559
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 12,
+                        "startLine": 44,
                         "startColumn": 4,
-                        "startOffset": 659,
-                        "endColumn": 46,
-                        "endOffset": 701
+                        "startOffset": 2435,
+                        "endColumn": 51,
+                        "endOffset": 2482
                     }
                 }
             },
@@ -899,18 +605,18 @@
                 "to": {
                     "startLine": 50,
                     "startColumn": 4,
-                    "startOffset": 5537,
-                    "endColumn": 75,
-                    "endOffset": 5608
+                    "startOffset": 5564,
+                    "endColumn": 46,
+                    "endOffset": 5606
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 37,
+                        "startLine": 45,
                         "startColumn": 4,
-                        "startOffset": 2346,
-                        "endColumn": 75,
-                        "endOffset": 2417
+                        "startOffset": 2487,
+                        "endColumn": 46,
+                        "endOffset": 2529
                     }
                 }
             },
@@ -918,18 +624,18 @@
                 "to": {
                     "startLine": 51,
                     "startColumn": 4,
-                    "startOffset": 5613,
-                    "endColumn": 56,
-                    "endOffset": 5665
+                    "startOffset": 5611,
+                    "endColumn": 75,
+                    "endOffset": 5682
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 28,
+                        "startLine": 70,
                         "startColumn": 4,
-                        "startOffset": 1684,
-                        "endColumn": 56,
-                        "endOffset": 1736
+                        "startOffset": 4089,
+                        "endColumn": 75,
+                        "endOffset": 4160
                     }
                 }
             },
@@ -937,18 +643,18 @@
                 "to": {
                     "startLine": 52,
                     "startColumn": 4,
-                    "startOffset": 5670,
-                    "endColumn": 65,
-                    "endOffset": 5731
+                    "startOffset": 5687,
+                    "endColumn": 56,
+                    "endOffset": 5739
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 10,
+                        "startLine": 46,
                         "startColumn": 4,
-                        "startOffset": 541,
-                        "endColumn": 65,
-                        "endOffset": 602
+                        "startOffset": 2534,
+                        "endColumn": 56,
+                        "endOffset": 2586
                     }
                 }
             },
@@ -956,18 +662,18 @@
                 "to": {
                     "startLine": 53,
                     "startColumn": 4,
-                    "startOffset": 5736,
-                    "endColumn": 53,
-                    "endOffset": 5785
+                    "startOffset": 5744,
+                    "endColumn": 65,
+                    "endOffset": 5805
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 29,
+                        "startLine": 47,
                         "startColumn": 4,
-                        "startOffset": 1741,
-                        "endColumn": 53,
-                        "endOffset": 1790
+                        "startOffset": 2591,
+                        "endColumn": 65,
+                        "endOffset": 2652
                     }
                 }
             },
@@ -975,18 +681,18 @@
                 "to": {
                     "startLine": 54,
                     "startColumn": 4,
-                    "startOffset": 5790,
-                    "endColumn": 46,
-                    "endOffset": 5832
+                    "startOffset": 5810,
+                    "endColumn": 53,
+                    "endOffset": 5859
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 16,
+                        "startLine": 48,
                         "startColumn": 4,
-                        "startOffset": 925,
-                        "endColumn": 46,
-                        "endOffset": 967
+                        "startOffset": 2657,
+                        "endColumn": 53,
+                        "endOffset": 2706
                     }
                 }
             },
@@ -994,18 +700,18 @@
                 "to": {
                     "startLine": 55,
                     "startColumn": 4,
-                    "startOffset": 5837,
-                    "endColumn": 81,
-                    "endOffset": 5914
+                    "startOffset": 5864,
+                    "endColumn": 46,
+                    "endOffset": 5906
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 18,
+                        "startLine": 49,
                         "startColumn": 4,
-                        "startOffset": 1063,
-                        "endColumn": 81,
-                        "endOffset": 1140
+                        "startOffset": 2711,
+                        "endColumn": 46,
+                        "endOffset": 2753
                     }
                 }
             },
@@ -1013,18 +719,18 @@
                 "to": {
                     "startLine": 56,
                     "startColumn": 4,
-                    "startOffset": 5919,
-                    "endColumn": 54,
-                    "endOffset": 5969
+                    "startOffset": 5911,
+                    "endColumn": 74,
+                    "endOffset": 5981
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 19,
+                        "startLine": 50,
                         "startColumn": 4,
-                        "startOffset": 1145,
-                        "endColumn": 54,
-                        "endOffset": 1195
+                        "startOffset": 2758,
+                        "endColumn": 74,
+                        "endOffset": 2828
                     }
                 }
             },
@@ -1032,18 +738,18 @@
                 "to": {
                     "startLine": 57,
                     "startColumn": 4,
-                    "startOffset": 5974,
-                    "endColumn": 59,
-                    "endOffset": 6029
+                    "startOffset": 5986,
+                    "endColumn": 81,
+                    "endOffset": 6063
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 20,
+                        "startLine": 51,
                         "startColumn": 4,
-                        "startOffset": 1200,
-                        "endColumn": 59,
-                        "endOffset": 1255
+                        "startOffset": 2833,
+                        "endColumn": 81,
+                        "endOffset": 2910
                     }
                 }
             },
@@ -1051,18 +757,18 @@
                 "to": {
                     "startLine": 58,
                     "startColumn": 4,
-                    "startOffset": 6034,
-                    "endColumn": 63,
-                    "endOffset": 6093
+                    "startOffset": 6068,
+                    "endColumn": 54,
+                    "endOffset": 6118
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 36,
+                        "startLine": 52,
                         "startColumn": 4,
-                        "startOffset": 2282,
-                        "endColumn": 63,
-                        "endOffset": 2341
+                        "startOffset": 2915,
+                        "endColumn": 54,
+                        "endOffset": 2965
                     }
                 }
             },
@@ -1070,18 +776,18 @@
                 "to": {
                     "startLine": 59,
                     "startColumn": 4,
-                    "startOffset": 6098,
-                    "endColumn": 52,
-                    "endOffset": 6146
+                    "startOffset": 6123,
+                    "endColumn": 59,
+                    "endOffset": 6178
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 21,
+                        "startLine": 53,
                         "startColumn": 4,
-                        "startOffset": 1260,
-                        "endColumn": 52,
-                        "endOffset": 1308
+                        "startOffset": 2970,
+                        "endColumn": 59,
+                        "endOffset": 3025
                     }
                 }
             },
@@ -1089,18 +795,18 @@
                 "to": {
                     "startLine": 60,
                     "startColumn": 4,
-                    "startOffset": 6151,
+                    "startOffset": 6183,
                     "endColumn": 57,
-                    "endOffset": 6204
+                    "endOffset": 6236
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 22,
+                        "startLine": 54,
                         "startColumn": 4,
-                        "startOffset": 1313,
+                        "startOffset": 3030,
                         "endColumn": 57,
-                        "endOffset": 1366
+                        "endOffset": 3083
                     }
                 }
             },
@@ -1108,18 +814,18 @@
                 "to": {
                     "startLine": 61,
                     "startColumn": 4,
-                    "startOffset": 6209,
-                    "endColumn": 70,
-                    "endOffset": 6275
+                    "startOffset": 6241,
+                    "endColumn": 52,
+                    "endOffset": 6289
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 23,
+                        "startLine": 55,
                         "startColumn": 4,
-                        "startOffset": 1371,
-                        "endColumn": 70,
-                        "endOffset": 1437
+                        "startOffset": 3088,
+                        "endColumn": 52,
+                        "endOffset": 3136
                     }
                 }
             },
@@ -1127,18 +833,18 @@
                 "to": {
                     "startLine": 62,
                     "startColumn": 4,
-                    "startOffset": 6280,
-                    "endColumn": 62,
-                    "endOffset": 6338
+                    "startOffset": 6294,
+                    "endColumn": 70,
+                    "endOffset": 6360
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 24,
+                        "startLine": 56,
                         "startColumn": 4,
-                        "startOffset": 1442,
-                        "endColumn": 62,
-                        "endOffset": 1500
+                        "startOffset": 3141,
+                        "endColumn": 70,
+                        "endOffset": 3207
                     }
                 }
             },
@@ -1146,18 +852,18 @@
                 "to": {
                     "startLine": 63,
                     "startColumn": 4,
-                    "startOffset": 6343,
-                    "endColumn": 69,
-                    "endOffset": 6408
+                    "startOffset": 6365,
+                    "endColumn": 73,
+                    "endOffset": 6434
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 25,
+                        "startLine": 57,
                         "startColumn": 4,
-                        "startOffset": 1505,
-                        "endColumn": 69,
-                        "endOffset": 1570
+                        "startOffset": 3212,
+                        "endColumn": 73,
+                        "endOffset": 3281
                     }
                 }
             },
@@ -1165,18 +871,18 @@
                 "to": {
                     "startLine": 64,
                     "startColumn": 4,
-                    "startOffset": 6413,
-                    "endColumn": 75,
-                    "endOffset": 6484
+                    "startOffset": 6439,
+                    "endColumn": 62,
+                    "endOffset": 6497
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 33,
+                        "startLine": 58,
                         "startColumn": 4,
-                        "startOffset": 2054,
-                        "endColumn": 75,
-                        "endOffset": 2125
+                        "startOffset": 3286,
+                        "endColumn": 62,
+                        "endOffset": 3344
                     }
                 }
             },
@@ -1184,18 +890,18 @@
                 "to": {
                     "startLine": 65,
                     "startColumn": 4,
-                    "startOffset": 6489,
-                    "endColumn": 75,
-                    "endOffset": 6560
+                    "startOffset": 6502,
+                    "endColumn": 69,
+                    "endOffset": 6567
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 32,
+                        "startLine": 59,
                         "startColumn": 4,
-                        "startOffset": 1978,
-                        "endColumn": 75,
-                        "endOffset": 2049
+                        "startOffset": 3349,
+                        "endColumn": 69,
+                        "endOffset": 3414
                     }
                 }
             },
@@ -1203,18 +909,18 @@
                 "to": {
                     "startLine": 66,
                     "startColumn": 4,
-                    "startOffset": 6565,
-                    "endColumn": 46,
-                    "endOffset": 6607
+                    "startOffset": 6572,
+                    "endColumn": 75,
+                    "endOffset": 6643
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 26,
+                        "startLine": 68,
                         "startColumn": 4,
-                        "startOffset": 1575,
-                        "endColumn": 46,
-                        "endOffset": 1617
+                        "startOffset": 3944,
+                        "endColumn": 75,
+                        "endOffset": 4015
                     }
                 }
             },
@@ -1222,18 +928,18 @@
                 "to": {
                     "startLine": 67,
                     "startColumn": 4,
-                    "startOffset": 6612,
-                    "endColumn": 93,
-                    "endOffset": 6701
+                    "startOffset": 6648,
+                    "endColumn": 46,
+                    "endOffset": 6690
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 34,
+                        "startLine": 60,
                         "startColumn": 4,
-                        "startOffset": 2130,
-                        "endColumn": 93,
-                        "endOffset": 2219
+                        "startOffset": 3419,
+                        "endColumn": 46,
+                        "endOffset": 3461
                     }
                 }
             },
@@ -1241,18 +947,18 @@
                 "to": {
                     "startLine": 68,
                     "startColumn": 4,
-                    "startOffset": 6706,
-                    "endColumn": 61,
-                    "endOffset": 6763
+                    "startOffset": 6695,
+                    "endColumn": 68,
+                    "endOffset": 6759
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 27,
+                        "startLine": 69,
                         "startColumn": 4,
-                        "startOffset": 1622,
-                        "endColumn": 61,
-                        "endOffset": 1679
+                        "startOffset": 4020,
+                        "endColumn": 68,
+                        "endOffset": 4084
                     }
                 }
             },
@@ -1260,18 +966,18 @@
                 "to": {
                     "startLine": 69,
                     "startColumn": 4,
-                    "startOffset": 6768,
-                    "endColumn": 65,
-                    "endOffset": 6829
+                    "startOffset": 6764,
+                    "endColumn": 61,
+                    "endOffset": 6821
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 9,
+                        "startLine": 61,
                         "startColumn": 4,
-                        "startOffset": 475,
-                        "endColumn": 65,
-                        "endOffset": 536
+                        "startOffset": 3466,
+                        "endColumn": 61,
+                        "endOffset": 3523
                     }
                 }
             },
@@ -1279,18 +985,18 @@
                 "to": {
                     "startLine": 70,
                     "startColumn": 4,
-                    "startOffset": 6834,
-                    "endColumn": 90,
-                    "endOffset": 6920
+                    "startOffset": 6826,
+                    "endColumn": 69,
+                    "endOffset": 6891
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 17,
+                        "startLine": 62,
                         "startColumn": 4,
-                        "startOffset": 972,
-                        "endColumn": 90,
-                        "endOffset": 1058
+                        "startOffset": 3528,
+                        "endColumn": 69,
+                        "endOffset": 3593
                     }
                 }
             },
@@ -1298,18 +1004,18 @@
                 "to": {
                     "startLine": 71,
                     "startColumn": 4,
-                    "startOffset": 6925,
-                    "endColumn": 56,
-                    "endOffset": 6977
+                    "startOffset": 6896,
+                    "endColumn": 65,
+                    "endOffset": 6957
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 39,
+                        "startLine": 63,
                         "startColumn": 4,
-                        "startOffset": 2477,
-                        "endColumn": 56,
-                        "endOffset": 2529
+                        "startOffset": 3598,
+                        "endColumn": 65,
+                        "endOffset": 3659
                     }
                 }
             },
@@ -1317,18 +1023,18 @@
                 "to": {
                     "startLine": 72,
                     "startColumn": 4,
-                    "startOffset": 6982,
-                    "endColumn": 57,
-                    "endOffset": 7035
+                    "startOffset": 6962,
+                    "endColumn": 59,
+                    "endOffset": 7017
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 35,
+                        "startLine": 64,
                         "startColumn": 4,
-                        "startOffset": 2224,
-                        "endColumn": 57,
-                        "endOffset": 2277
+                        "startOffset": 3664,
+                        "endColumn": 59,
+                        "endOffset": 3719
                     }
                 }
             },
@@ -1336,18 +1042,18 @@
                 "to": {
                     "startLine": 73,
                     "startColumn": 4,
-                    "startOffset": 7040,
-                    "endColumn": 47,
-                    "endOffset": 7083
+                    "startOffset": 7022,
+                    "endColumn": 72,
+                    "endOffset": 7090
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 13,
+                        "startLine": 65,
                         "startColumn": 4,
-                        "startOffset": 706,
-                        "endColumn": 47,
-                        "endOffset": 749
+                        "startOffset": 3724,
+                        "endColumn": 72,
+                        "endOffset": 3792
                     }
                 }
             },
@@ -1355,18 +1061,18 @@
                 "to": {
                     "startLine": 74,
                     "startColumn": 4,
-                    "startOffset": 7088,
-                    "endColumn": 54,
-                    "endOffset": 7138
+                    "startOffset": 7095,
+                    "endColumn": 56,
+                    "endOffset": 7147
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 38,
+                        "startLine": 72,
                         "startColumn": 4,
-                        "startOffset": 2422,
-                        "endColumn": 54,
-                        "endOffset": 2472
+                        "startOffset": 4220,
+                        "endColumn": 56,
+                        "endOffset": 4272
                     }
                 }
             },
@@ -1374,18 +1080,18 @@
                 "to": {
                     "startLine": 75,
                     "startColumn": 4,
-                    "startOffset": 7143,
-                    "endColumn": 70,
-                    "endOffset": 7209
+                    "startOffset": 7152,
+                    "endColumn": 54,
+                    "endOffset": 7202
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 15,
+                        "startLine": 71,
                         "startColumn": 4,
-                        "startOffset": 854,
-                        "endColumn": 70,
-                        "endOffset": 920
+                        "startOffset": 4165,
+                        "endColumn": 54,
+                        "endOffset": 4215
                     }
                 }
             },
@@ -1393,18 +1099,18 @@
                 "to": {
                     "startLine": 76,
                     "startColumn": 4,
-                    "startOffset": 7214,
-                    "endColumn": 106,
-                    "endOffset": 7316
+                    "startOffset": 7207,
+                    "endColumn": 70,
+                    "endOffset": 7273
                 },
                 "from": {
                     "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
                     "position": {
-                        "startLine": 30,
+                        "startLine": 66,
                         "startColumn": 4,
-                        "startOffset": 1795,
-                        "endColumn": 106,
-                        "endOffset": 1897
+                        "startOffset": 3797,
+                        "endColumn": 70,
+                        "endOffset": 3863
                     }
                 }
             },
@@ -1412,173 +1118,481 @@
                 "to": {
                     "startLine": 77,
                     "startColumn": 4,
-                    "startOffset": 7321,
-                    "endColumn": 99,
-                    "endOffset": 7416
+                    "startOffset": 7278,
+                    "endColumn": 26,
+                    "endOffset": 7300
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 14,
-                        "startColumn": 4,
-                        "startOffset": 754,
-                        "endColumn": 99,
-                        "endOffset": 849
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 78,
                     "startColumn": 4,
-                    "startOffset": 7421,
-                    "endColumn": 26,
-                    "endOffset": 7443
+                    "startOffset": 7305,
+                    "endColumn": 76,
+                    "endOffset": 7377
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 112,
-                        "endColumn": 34,
-                        "endOffset": 142
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/generated/res/google-services/debug/values/values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 79,
                     "startColumn": 4,
-                    "startOffset": 7448,
-                    "endColumn": 76,
-                    "endOffset": 7520
+                    "startOffset": 7382,
+                    "endColumn": 81,
+                    "endOffset": 7459
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/generated/res/google-services/debug/values/values.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endColumn": 76,
-                        "endOffset": 127
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/generated/res/google-services/debug/values/values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 80,
                     "startColumn": 4,
-                    "startOffset": 7525,
-                    "endColumn": 81,
-                    "endOffset": 7602
+                    "startOffset": 7464,
+                    "endColumn": 102,
+                    "endOffset": 7562
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/generated/res/google-services/debug/values/values.xml",
-                    "position": {
-                        "startLine": 3,
-                        "startColumn": 4,
-                        "startOffset": 132,
-                        "endColumn": 81,
-                        "endOffset": 209
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/generated/res/google-services/debug/values/values.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 81,
                     "startColumn": 4,
-                    "startOffset": 7607,
-                    "endColumn": 102,
-                    "endOffset": 7705
+                    "startOffset": 7567,
+                    "endColumn": 115,
+                    "endOffset": 7678
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/build/generated/res/google-services/debug/values/values.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 214,
-                        "endColumn": 102,
-                        "endOffset": 312
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 82,
                     "startColumn": 4,
-                    "startOffset": 7710,
-                    "endColumn": 115,
-                    "endOffset": 7821
+                    "startOffset": 7683,
+                    "endColumn": 45,
+                    "endOffset": 7724
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 4,
-                        "startColumn": 4,
-                        "startOffset": 147,
-                        "endColumn": 115,
-                        "endOffset": 258
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 83,
                     "startColumn": 4,
-                    "startOffset": 7826,
+                    "startOffset": 7729,
                     "endColumn": 45,
-                    "endOffset": 7867
+                    "endOffset": 7770
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 6,
-                        "startColumn": 4,
-                        "startOffset": 309,
-                        "endColumn": 45,
-                        "endOffset": 350
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 84,
                     "startColumn": 4,
-                    "startOffset": 7872,
-                    "endColumn": 45,
-                    "endOffset": 7913
+                    "startOffset": 7775,
+                    "endColumn": 43,
+                    "endOffset": 7814
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml",
-                    "position": {
-                        "startLine": 5,
-                        "startColumn": 4,
-                        "startOffset": 263,
-                        "endColumn": 45,
-                        "endOffset": 304
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
                 }
             },
             {
                 "to": {
                     "startLine": 85,
                     "startColumn": 4,
-                    "startOffset": 7918,
-                    "endLine": 94,
-                    "endColumn": 9,
-                    "endOffset": 8340
+                    "startOffset": 7819,
+                    "endColumn": 67,
+                    "endOffset": 7882
                 },
                 "from": {
-                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/styles.xml",
-                    "position": {
-                        "startLine": 2,
-                        "startColumn": 4,
-                        "startOffset": 55,
-                        "endLine": 11,
-                        "endColumn": 9,
-                        "endOffset": 477
-                    }
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 86,
+                    "startColumn": 4,
+                    "startOffset": 7887,
+                    "endColumn": 49,
+                    "endOffset": 7932
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 87,
+                    "startColumn": 4,
+                    "startOffset": 7937,
+                    "endColumn": 31,
+                    "endOffset": 7964
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 88,
+                    "startColumn": 4,
+                    "startOffset": 7969,
+                    "endColumn": 59,
+                    "endOffset": 8024
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 89,
+                    "startColumn": 4,
+                    "startOffset": 8029,
+                    "endColumn": 47,
+                    "endOffset": 8072
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 90,
+                    "startColumn": 4,
+                    "startOffset": 8077,
+                    "endColumn": 31,
+                    "endOffset": 8104
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 91,
+                    "startColumn": 4,
+                    "startOffset": 8109,
+                    "endColumn": 85,
+                    "endOffset": 8190
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 92,
+                    "startColumn": 4,
+                    "startOffset": 8195,
+                    "endColumn": 75,
+                    "endOffset": 8266
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 93,
+                    "startColumn": 4,
+                    "startOffset": 8271,
+                    "endColumn": 68,
+                    "endOffset": 8335
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 94,
+                    "startColumn": 4,
+                    "startOffset": 8340,
+                    "endColumn": 53,
+                    "endOffset": 8389
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 95,
+                    "startColumn": 4,
+                    "startOffset": 8394,
+                    "endColumn": 74,
+                    "endOffset": 8464
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 96,
+                    "startColumn": 4,
+                    "startOffset": 8469,
+                    "endColumn": 74,
+                    "endOffset": 8539
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 97,
+                    "startColumn": 4,
+                    "startOffset": 8544,
+                    "endColumn": 65,
+                    "endOffset": 8605
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 98,
+                    "startColumn": 4,
+                    "startOffset": 8610,
+                    "endColumn": 65,
+                    "endOffset": 8671
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 99,
+                    "startColumn": 4,
+                    "startOffset": 8676,
+                    "endColumn": 53,
+                    "endOffset": 8725
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 100,
+                    "startColumn": 4,
+                    "startOffset": 8730,
+                    "endColumn": 65,
+                    "endOffset": 8791
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 101,
+                    "startColumn": 4,
+                    "startOffset": 8796,
+                    "endColumn": 50,
+                    "endOffset": 8842
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 102,
+                    "startColumn": 4,
+                    "startOffset": 8847,
+                    "endColumn": 74,
+                    "endOffset": 8917
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 103,
+                    "startColumn": 4,
+                    "startOffset": 8922,
+                    "endColumn": 48,
+                    "endOffset": 8966
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 104,
+                    "startColumn": 4,
+                    "startOffset": 8971,
+                    "endColumn": 56,
+                    "endOffset": 9023
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 105,
+                    "startColumn": 4,
+                    "startOffset": 9028,
+                    "endColumn": 31,
+                    "endOffset": 9055
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 106,
+                    "startColumn": 4,
+                    "startOffset": 9060,
+                    "endColumn": 50,
+                    "endOffset": 9106
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 107,
+                    "startColumn": 4,
+                    "startOffset": 9111,
+                    "endColumn": 34,
+                    "endOffset": 9141
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 108,
+                    "startColumn": 4,
+                    "startOffset": 9146,
+                    "endColumn": 58,
+                    "endOffset": 9200
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 109,
+                    "startColumn": 4,
+                    "startOffset": 9205,
+                    "endColumn": 74,
+                    "endOffset": 9275
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 110,
+                    "startColumn": 4,
+                    "startOffset": 9280,
+                    "endColumn": 71,
+                    "endOffset": 9347
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 111,
+                    "startColumn": 4,
+                    "startOffset": 9352,
+                    "endColumn": 71,
+                    "endOffset": 9419
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 112,
+                    "startColumn": 4,
+                    "startOffset": 9424,
+                    "endColumn": 67,
+                    "endOffset": 9487
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 113,
+                    "startColumn": 4,
+                    "startOffset": 9492,
+                    "endColumn": 31,
+                    "endOffset": 9519
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 114,
+                    "startColumn": 4,
+                    "startOffset": 9524,
+                    "endColumn": 31,
+                    "endOffset": 9551
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 115,
+                    "startColumn": 4,
+                    "startOffset": 9556,
+                    "endColumn": 54,
+                    "endOffset": 9606
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/strings.xml"
+                }
+            },
+            {
+                "to": {
+                    "startLine": 116,
+                    "startColumn": 4,
+                    "startOffset": 9611,
+                    "endLine": 125,
+                    "endColumn": 9,
+                    "endOffset": 10033
+                },
+                "from": {
+                    "file": "/home/maxim/StudioProjects/Morze2Text/app/src/main/res/values/styles.xml"
                 }
             }
         ]

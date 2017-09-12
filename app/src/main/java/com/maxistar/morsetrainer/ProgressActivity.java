@@ -78,15 +78,15 @@ public class ProgressActivity extends ListActivity {
 	}	
 	
 	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars){
-		LetterInfo l = null;
-		LetterStatistic s = null;
+		LetterInfo l;
+		LetterStatistic s;
 
 		for (Map.Entry<Character, MorseCode> entry : chars.entrySet()) {
-			// System.out.println(entry.getKey() + "/" + entry.getValue());
 			l = new LetterInfo();
 			l.character = entry.getKey();
 			l.morse_code = entry.getValue().code;
 			l.sound_res = entry.getValue().sound_res;
+			l.morse_singing_id = entry.getValue().singing;
 
 			if (history.containsKey(entry.getKey())) {
 				s = history.get(entry.getKey());
@@ -109,10 +109,10 @@ public class ProgressActivity extends ListActivity {
 	protected void initLetters() {
 		values = new ArrayList<LetterInfo>();
         
-		addMorseCodes(values,Constants.latins);
-		addMorseCodes(values,Constants.numbers);
-		addMorseCodes(values,Constants.characters);
-		addMorseCodes(values,Constants.cyrilics);
+		addMorseCodes(values, Constants.latins);
+		addMorseCodes(values, Constants.numbers);
+		addMorseCodes(values, Constants.characters);
+		addMorseCodes(values, Constants.cyrilics);
 
 
 		/*
@@ -141,35 +141,25 @@ public class ProgressActivity extends ListActivity {
 
 		@Override
 		public View getView(int position, View convertView, ViewGroup parent) {
-
 			View v = convertView;
-
 			if (v == null) {
-
 				LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-
 				v = vi.inflate(R.layout.progress_item, null);
-
 			}
 
 			LetterInfo d = values.get(position);
 
 			if (d != null) {
-
 				TextView tv = (TextView) v.findViewById(R.id.letter);
 				tv.setText(""+d.character);
 				tv = (TextView) v.findViewById(R.id.code);
 				tv.setText(d.morse_code);
-				tv = (TextView) v.findViewById(R.id.lang_destination);
-				//tv.setText(d.destination);
-				//tv = (TextView) v.findViewById(R.id.words);
-				//tv.setText(Html.fromHtml(String.format(DStrings.HTML_WORDS_MEANINGS_LEARN_ERRORS,d.words,
-				//		d.meanings,d.learn,d.errors)));
-						
+				if (d.morse_singing_id != 0) {
+					tv = (TextView) v.findViewById(R.id.lang_destination);
+					tv.setText(d.morse_singing_id);
+				}
 			}
-
 			return v;
-
 		}
 	}
 	

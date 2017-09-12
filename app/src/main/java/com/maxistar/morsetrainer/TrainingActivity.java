@@ -85,6 +85,7 @@ public class TrainingActivity extends Activity {
 	TextView morze_text;
 	TextView hint_text;
 	TextView type_text;
+	TextView singing_text;
 
 	Map<Character, LetterStatistic> history = null;
 	Stack<LetterInfo> letters = null;
@@ -132,7 +133,7 @@ public class TrainingActivity extends Activity {
 		morze_text = (TextView) this.findViewById(R.id.textView2);
 		hint_text = (TextView) this.findViewById(R.id.textView3);
 		type_text = (TextView) this.findViewById(R.id.textView4);
-
+		singing_text = (TextView) this.findViewById(R.id.singing);
 
 		Button b1 = (Button) this.findViewById(R.id.button1);
 		b1.setOnClickListener(new OnClickListener() {
@@ -183,6 +184,7 @@ public class TrainingActivity extends Activity {
 		this.morze_text.setText("");
 		this.morze_text.setTextColor(this.getResources()
 				.getColor(R.color.white));
+		this.singing_text.setText("");
 
 		pool.play(current.stream_id, 1, 1, 1, 0, 1);
 	}
@@ -204,6 +206,7 @@ public class TrainingActivity extends Activity {
 			l.character = entry.getKey();
 			l.morse_code = entry.getValue().code;
 			l.sound_res = entry.getValue().sound_res;
+			l.morse_singing_id = entry.getValue().singing;
 
 			if (history.containsKey(entry.getKey())) {
 				s = history.get(entry.getKey());
@@ -447,6 +450,10 @@ public class TrainingActivity extends Activity {
 			if (!correctSoFar()) {
 				pool.play(this.wrong_sound,1,1,1,0,1);
 				this.morze_text.setText("");
+
+				if (this.current.morse_singing_id != 0) {
+					this.singing_text.setText(this.current.morse_singing_id);
+				}
 				hint_text.setVisibility(View.VISIBLE);
 				hint_text.setText(this.formatCode(this.current.morse_code));
 				
@@ -640,10 +647,18 @@ public class TrainingActivity extends Activity {
 	static class MorseCode {
 		String code;
 		int sound_res;
+		int singing;
 
 		MorseCode(String code, int sound_res) {
 			this.code = code;
 			this.sound_res = sound_res;
+			this.singing = 0;
+		}
+
+		MorseCode(String code, int sound_res, int singing_res) {
+			this.code = code;
+			this.sound_res = sound_res;
+			this.singing = singing_res;
 		}
 	}
 }

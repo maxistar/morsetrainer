@@ -47,7 +47,7 @@
         android:paddingRight="10dp"
         android:paddingTop="0dp"
         android:text="•"
-        android:textColor="#ff0000"
+        android:textColor="@color/red"
         android:textSize="30dp" />
     
     <TextView
@@ -61,19 +61,19 @@
         android:paddingTop="10dp"
         android:textAppearance="?android:attr/textAppearanceMedium" />    
     
-    <!-- <TextView
-        android:id="@+id/textView4"
+    <TextView
+        android:id="@+id/singing"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
-        android:layout_below="@id/textView1"
+        android:layout_below="@id/textView4"
         android:height="50dp"
         android:paddingBottom="10dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="0dp"
         android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />-->    
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
     <Button
         android:layout_below="@id/textView2"
@@ -113,7 +113,5 @@
         android:textColor="@color/black"
         android:text="–"
         style="@style/button" />
-
-
     
 </RelativeLayout>

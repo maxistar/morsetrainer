@@ -1,7 +1,5 @@
 package com.maxistar.morsetrainer;
 
-
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;

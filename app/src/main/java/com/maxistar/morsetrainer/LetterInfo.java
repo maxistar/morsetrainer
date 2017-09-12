@@ -10,4 +10,5 @@ class LetterInfo {
 	int sound_res = 0;
 	int stream_id = 0;
 	int morse_sound_id = 0;
+	int morse_singing_id = 0;
 }
