@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
 import android.preference.PreferenceActivity;
@@ -40,6 +41,20 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 		MorseApplication application = (MorseApplication) getApplication();
 		mTracker = application.getDefaultTracker();
 
+		Preference mPrivacy;
+		mPrivacy = this.findPreference("privacy");
+
+		mPrivacy.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+			@Override
+			public boolean onPreferenceClick(Preference preference) {
+
+				Intent intent = new Intent(Intent.ACTION_VIEW);
+				intent.setData(Uri.parse("https://morze.maxistar.me/legal/privatepolicy/"));
+				startActivity(intent);
+
+				return false;
+			}
+		});
 	}
 	
     @Override

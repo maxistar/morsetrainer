@@ -32,6 +32,10 @@
         <com.maxistar.morsetrainer.AboutBox
 			android:title="About Morse Teacher"  
 			android:summary="just shortly about the application"
-			android:dialogTitle="About" /> 
+			android:dialogTitle="About" />
+		<Preference
+			android:key="privacy"
+			android:summary="https://morze.maxistar.me/legal/privatepolicy/"
+			android:title="Privacy Policy" />
         </PreferenceCategory>
 </PreferenceScreen>
