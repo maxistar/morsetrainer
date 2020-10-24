@@ -8,7 +8,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.io.OutputStream;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -16,7 +15,6 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
-
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -26,11 +24,9 @@ import android.media.AudioManager;
 import android.media.AudioTrack;
 import android.media.SoundPool;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -38,11 +34,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
-public class TrainingActivity extends Activity {
+public class TrainingActivity extends Activity
+{
 	private static final int PROGRESS = 2;
 	private static final int SETTINGS = 3;
 	private static final int REQUEST_PROGRESS = 2;
@@ -197,7 +193,7 @@ public class TrainingActivity extends Activity {
 		toast.show();
 	}
 	
-	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars){
+	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars) {
 		LetterInfo l = null;
 		LetterStatistic s = null;
 
@@ -240,16 +236,16 @@ public class TrainingActivity extends Activity {
 			savetyCheck = true;
 		}
 
-		if (savetyCheck || learnLatinica){
+		if (savetyCheck || learnLatinica) {
 			addMorseCodes(letters,Constants.latins);
 		}
-		if (learnNumbers){
+		if (learnNumbers) {
 			addMorseCodes(letters,Constants.numbers);
 		}
-		if (learnPunctuationSigns){
+		if (learnPunctuationSigns) {
 			addMorseCodes(letters,Constants.characters);
 		}
-		if (learnCirilic){
+		if (learnCirilic) {
 			addMorseCodes(letters,Constants.cyrilics);
 		}
 		// sort list
@@ -275,15 +271,17 @@ public class TrainingActivity extends Activity {
 			if (counter >= this.count_chars_to_learn)
 				break;
 			counter++;
-			ss.stream_id = pool.load(this.getApplicationContext(),
-					ss.sound_res, 1);
+			ss.stream_id = pool.load(
+					this.getApplicationContext(),
+					ss.sound_res,
+					1
+			);
 
 			ss.morse_sound_id = this.getMorseSound(ss.morse_code);
 
 			this.letters.push(ss);
 		}
 		Collections.reverse(this.letters);
- 
 	}
 
 	@Override
@@ -417,7 +415,6 @@ public class TrainingActivity extends Activity {
 			FileInputStream fileIn = context.openFileInput(filename);
 			objectIn = new ObjectInputStream(fileIn);
 			object = objectIn.readObject();
-			// fileIn.getFD().sync();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -433,12 +430,12 @@ public class TrainingActivity extends Activity {
 	}
 
 	protected void clickDit() {
-		pool.play(this.dip_sound, (float)0.5, (float)0.5, 1, 0, 1);
+		pool.play(this.dip_sound, (float) 0.5, (float) 0.5, 1, 0, 1);
 		clickButton('·');
 	}
 
 	protected void clickDash() {
-		pool.play(this.dash_sound, (float)0.5, (float)0.5, 1, 0, 1);
+		pool.play(this.dash_sound, (float) 0.5, (float) 0.5, 1, 0, 1);
 		clickButton('-');
 	}
 
@@ -525,7 +522,7 @@ public class TrainingActivity extends Activity {
 		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "My Tag");
+		wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "morse:MY_WAKE_TAG");
 		wl.acquire();
 		
 		/*
@@ -566,8 +563,9 @@ public class TrainingActivity extends Activity {
 
 		double dash_sample[] = new double[dash_numSamples];
 		for (int i = 0; i < dash_numSamples; ++i) {
-			dash_sample[i] = Math.sin(2 * Math.PI * i
-					/ (sampleRate / freqOfTone));
+			dash_sample[i] = Math.sin(
+				2 * Math.PI * i / (sampleRate / freqOfTone)
+			);
 		}
 
 		// convert to 16 bit pcm sound array

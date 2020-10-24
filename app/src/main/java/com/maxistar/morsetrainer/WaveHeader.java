@@ -257,14 +257,14 @@ public class WaveHeader {
     }
 
     private static void writeInt(OutputStream out, int val) throws IOException {
-        out.write(val >> 0);
+        out.write(val);
         out.write(val >> 8);
         out.write(val >> 16);
         out.write(val >> 24);
     }
 
     private static void writeShort(OutputStream out, short val) throws IOException {
-        out.write(val >> 0);
+        out.write(val);
         out.write(val >> 8);
     }
     

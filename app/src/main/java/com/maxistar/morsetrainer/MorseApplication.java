@@ -1,12 +1,12 @@
 package com.maxistar.morsetrainer;
 
 import android.app.Application;
-
 import com.google.android.gms.analytics.GoogleAnalytics;
 import com.google.android.gms.analytics.Tracker;
 
 
-public class MorseApplication extends Application {
+public class MorseApplication extends Application
+{
     private Tracker mTracker;
 
     /**

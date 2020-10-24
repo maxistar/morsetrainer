@@ -16,7 +16,7 @@ public class AboutBox extends DialogPreference
 	}
  
 	@Override
-	protected void onPrepareDialogBuilder(AlertDialog.Builder builder){
+	protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
 	    // Data has changed, notify so UI can be refreshed!
 		builder.setTitle("About");
 		builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {

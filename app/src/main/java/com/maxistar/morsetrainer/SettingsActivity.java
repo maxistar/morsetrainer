@@ -47,11 +47,9 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 		mPrivacy.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
 			@Override
 			public boolean onPreferenceClick(Preference preference) {
-
 				Intent intent = new Intent(Intent.ACTION_VIEW);
 				intent.setData(Uri.parse("https://morze.maxistar.me/legal/privatepolicy/"));
 				startActivity(intent);
-
 				return false;
 			}
 		});
@@ -114,5 +112,4 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 		}
 		return super.onKeyDown(keyCode, event);
 	}
- 
 }

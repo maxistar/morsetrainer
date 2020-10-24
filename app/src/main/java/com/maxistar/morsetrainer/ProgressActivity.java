@@ -9,9 +9,7 @@ import java.util.Map;
 
 import android.app.ListActivity;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -47,8 +45,8 @@ public class ProgressActivity extends ListActivity {
 	}
 	
 	protected Map<Character, LetterStatistic> getLearningInfo() {
-		Map<Character, LetterStatistic> map = (HashMap<Character, LetterStatistic>) this
-				.readObjectFromFile(this, "history");
+		Map<Character, LetterStatistic> map = (HashMap<Character, LetterStatistic>)
+				this.readObjectFromFile(this, "history");
 		if (map == null) {
 			map = new HashMap<Character, LetterStatistic>();
 		}
@@ -62,7 +60,6 @@ public class ProgressActivity extends ListActivity {
 			FileInputStream fileIn = context.openFileInput(filename);
 			objectIn = new ObjectInputStream(fileIn);
 			object = objectIn.readObject();
-			// fileIn.getFD().sync();
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -133,7 +130,6 @@ public class ProgressActivity extends ListActivity {
 	}
 	
 	public class ProgressAdapter extends ArrayAdapter<LetterInfo> {
-		
 
 		public ProgressAdapter(Context context, int textViewResourceId) {
 			super(context, textViewResourceId, values);
@@ -151,7 +147,7 @@ public class ProgressActivity extends ListActivity {
 
 			if (d != null) {
 				TextView tv = (TextView) v.findViewById(R.id.letter);
-				tv.setText(""+d.character);
+				tv.setText("" + d.character);
 				tv = (TextView) v.findViewById(R.id.code);
 				tv.setText(d.morse_code);
 				if (d.morse_singing_id != 0) {
@@ -162,5 +158,4 @@ public class ProgressActivity extends ListActivity {
 			return v;
 		}
 	}
-	
 }

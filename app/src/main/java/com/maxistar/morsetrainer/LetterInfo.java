@@ -1,7 +1,8 @@
 package com.maxistar.morsetrainer;
 
 
-class LetterInfo {
+class LetterInfo
+{
 	Character character = null;
 	String morse_code = null;
 	boolean correct = true;
