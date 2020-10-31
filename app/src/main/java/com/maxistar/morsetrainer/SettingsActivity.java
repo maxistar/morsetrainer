@@ -33,7 +33,6 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
 			mVersion.setSummary(pInfo.versionName);
 		} catch (NameNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
@@ -75,9 +74,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 
 	protected void showToast(String toast_str) {
 		Context context = getApplicationContext();
-		CharSequence text = toast_str;
 		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(context, text, duration);
+		Toast toast = Toast.makeText(context, toast_str, duration);
 		toast.show();
 	}
 
@@ -97,8 +95,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 	/**
 	 * Returns translation
 	 *
-	 * @param id
-	 * @return
+	 * @param id Text ID
+	 * @return String
 	 */
 	String l(int id) {
 		return getBaseContext().getResources().getString(id);

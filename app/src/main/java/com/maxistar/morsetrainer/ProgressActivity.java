@@ -48,7 +48,7 @@ public class ProgressActivity extends ListActivity {
 		Map<Character, LetterStatistic> map = (HashMap<Character, LetterStatistic>)
 				this.readObjectFromFile(this, "history");
 		if (map == null) {
-			map = new HashMap<Character, LetterStatistic>();
+			map = new HashMap<>();
 		}
 		return map;
 	}
@@ -104,29 +104,12 @@ public class ProgressActivity extends ListActivity {
 
 
 	protected void initLetters() {
-		values = new ArrayList<LetterInfo>();
+		values = new ArrayList<>();
         
 		addMorseCodes(values, Constants.latins);
 		addMorseCodes(values, Constants.numbers);
 		addMorseCodes(values, Constants.characters);
 		addMorseCodes(values, Constants.cyrilics);
-
-
-		/*
-		int counter = 0;
-		this.letters = new Stack<LetterInfo>();
-		for (LetterInfo ss : letters) {
-			if (counter >= this.count_chars_to_learn)
-				break;
-			counter++;
-			ss.stream_id = pool.load(this.getApplicationContext(),
-					ss.sound_res, 1);
-
-			ss.morse_sound_id = this.getMorseSound(ss.morse_code);
-
-			this.letters.push(ss);
-		}*/
-
 	}
 	
 	public class ProgressAdapter extends ArrayAdapter<LetterInfo> {

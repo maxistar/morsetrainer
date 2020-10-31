@@ -21,7 +21,6 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.media.AudioManager;
-import android.media.AudioTrack;
 import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
@@ -33,7 +32,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
@@ -41,7 +39,6 @@ public class TrainingActivity extends Activity
 {
 	private static final int PROGRESS = 2;
 	private static final int SETTINGS = 3;
-	private static final int REQUEST_PROGRESS = 2;
 	private static final int REQUEST_SETTINGS = 3;
 
 	protected Tracker mTracker = null;
@@ -57,26 +54,19 @@ public class TrainingActivity extends Activity
 	private final int pause_numSamples = (int) (sampleRate * pause_duration);
 	//private final double pause_sample[] = new double[pause_numSamples];
 
-	private final double freqOfTone = 440; // hz
-
-	private final int count_chars_to_learn = 5;
-	private final int repeat_to_remember = 3;
-	private final int corrects_to_be_learned = 3;
-
-	private final byte generatedSndPause[] = new byte[2 * pause_numSamples];
+	private final byte[] generatedSndPause = new byte[2 * pause_numSamples];
 
 	private final int dash_numSamples = (int) (sampleRate * dash_duration);
-	private final byte generatedSndDash[] = new byte[2 * dash_numSamples];
+	private final byte[] generatedSndDash = new byte[2 * dash_numSamples];
 
 	private final int dip_numSamples = (int) (sampleRate * dip_duration);
-	private final byte generatedSndDip[] = new byte[2 * dip_numSamples];
+	private final byte[] generatedSndDip = new byte[2 * dip_numSamples];
 
 	boolean generated = false; // shows if sounds generated
 
 	PowerManager.WakeLock wl;
 	
 	Handler handler = new Handler();
-	AudioTrack audioTrack = null;
 	TextView letter;
 	TextView morze_text;
 	TextView hint_text;
@@ -95,7 +85,6 @@ public class TrainingActivity extends Activity
 	int correct_sound = 0;
 	int wrong_sound = 0;
 	SoundPool pool;
-	SoundPool pool2;
 	int dash_sound = 0;
 	int dip_sound = 0;
 
@@ -152,7 +141,7 @@ public class TrainingActivity extends Activity
 		initLetters();
 
 		// use stack?
-		letters_done = new Stack<LetterInfo>();
+		letters_done = new Stack<>();
 		current = letters.pop();
 		showLetter(); // show it
 
@@ -165,18 +154,18 @@ public class TrainingActivity extends Activity
 	void showLetter() {
 
 		if (Constants.latins.containsKey(current.character)) {
-			this.type_text.setText("latins");
+			this.type_text.setText(R.string.latins);
 		} else if (Constants.numbers.containsKey(current.character)) {
-			this.type_text.setText("number");
+			this.type_text.setText(R.string.number);
 		} else if (Constants.characters.containsKey(current.character)) {
-			this.type_text.setText("character");
+			this.type_text.setText(R.string.character);
 		} else if (Constants.cyrilics.containsKey(current.character)) {
-			this.type_text.setText("cyrilic");
+			this.type_text.setText(R.string.cyrilic);
 		} else {
-			this.type_text.setText("unknown");
+			this.type_text.setText(R.string.unknown);
 		}
 
-		letter.setText("" + current.character);
+		letter.setText(String.valueOf(current.character));
 		this.morze_text.setText("");
 		this.morze_text.setTextColor(this.getResources()
 				.getColor(R.color.white));
@@ -184,18 +173,10 @@ public class TrainingActivity extends Activity
 
 		pool.play(current.stream_id, 1, 1, 1, 0, 1);
 	}
-
-	protected void showToast(String toast_str) {
-		Context context = getApplicationContext();
-		CharSequence text = toast_str;
-		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(context, text, duration);
-		toast.show();
-	}
 	
 	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars) {
-		LetterInfo l = null;
-		LetterStatistic s = null;
+		LetterInfo l;
+		LetterStatistic s;
 
 		for (Map.Entry<Character, MorseCode> entry : chars.entrySet()) {
 			l = new LetterInfo();
@@ -216,15 +197,15 @@ public class TrainingActivity extends Activity
 	/**
 	 * Returns translation
 	 *
-	 * @param id
-	 * @return
+	 * @param id ID
+	 * @return String
 	 */
 	String l(int id) {
 		return getBaseContext().getResources().getString(id);
 	}
 
 	protected void initLetters() {
-		ArrayList<LetterInfo> letters = new ArrayList<LetterInfo>();
+		ArrayList<LetterInfo> letters = new ArrayList<>();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
 		boolean learnLatinica = sharedPreferences.getBoolean("learn_latinica", true);
@@ -266,9 +247,10 @@ public class TrainingActivity extends Activity
 		});
 
 		int counter = 0;
-		this.letters = new Stack<LetterInfo>();
+		this.letters = new Stack<>();
 		for (LetterInfo ss : letters) {
-			if (counter >= this.count_chars_to_learn)
+			int count_chars_to_learn = 5;
+			if (counter >= count_chars_to_learn)
 				break;
 			counter++;
 			ss.stream_id = pool.load(
@@ -327,13 +309,11 @@ public class TrainingActivity extends Activity
 		if (!file.exists()) {
 			// create it
 			try {
-				int i;
-				char c;
-				for (i = 0; i < morse_code.length(); i++) {
+				for (int i = 0; i < morse_code.length(); i++) {
 					if (i != 0) { // add pause
 						outputStream.write(this.generatedSndPause);
 					}
-					c = morse_code.charAt(i);
+					char c = morse_code.charAt(i);
 					if (c == '·') {
 						outputStream.write(this.generatedSndDip);
 					} else { // dash
@@ -350,7 +330,7 @@ public class TrainingActivity extends Activity
 	}
 
 	void saveHistory() {
-		LetterInfo i = null;
+		LetterInfo i;
 		// pool.release();
 		while (!letters_done.empty()) {
 			i = letters_done.pop();
@@ -365,7 +345,8 @@ public class TrainingActivity extends Activity
 					s.count_corrects = 0;
 				} else {
 					s.count_corrects++;
-					if (s.count_corrects >= this.corrects_to_be_learned) {
+					int corrects_to_be_learned = 3;
+					if (s.count_corrects >= corrects_to_be_learned) {
 						s.learned = true;
 					}
 				}
@@ -378,10 +359,10 @@ public class TrainingActivity extends Activity
 	}
 
 	protected Map<Character, LetterStatistic> getLearningInfo() {
-		Map<Character, LetterStatistic> map = (HashMap<Character, LetterStatistic>) this
+		HashMap<Character, LetterStatistic> map = (HashMap<Character, LetterStatistic>) this
 				.readObjectFromFile(this, "history");
 		if (map == null) {
-			map = new HashMap<Character, LetterStatistic>();
+			map = new HashMap<>();
 		}
 		return map;
 	}
@@ -489,7 +470,8 @@ public class TrainingActivity extends Activity
 
 	void showNextLetter() {
 
-		if (this.repeat < this.repeat_to_remember && this.is_error) {
+		int repeat_to_remember = 3;
+		if (this.repeat < repeat_to_remember && this.is_error) {
 			this.repeat++;
 		} else {
 			this.is_error = false;
@@ -522,8 +504,10 @@ public class TrainingActivity extends Activity
 		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "morse:MY_WAKE_TAG");
-		wl.acquire();
+		if (pm != null) {
+			wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "morse:MY_WAKE_TAG");
+			wl.acquire(1000);
+		}
 		
 		/*
 		 * // Use a new tread as this can take a while final Thread thread = new
@@ -545,7 +529,9 @@ public class TrainingActivity extends Activity
 		if (generated)
 			return;
 
-		double dip_sample[] = new double[dip_numSamples];
+		double[] dip_sample = new double[dip_numSamples];
+		// hz
+		double freqOfTone = 440;
 		for (int i = 0; i < dip_numSamples; ++i) {
 			dip_sample[i] = Math.sin(2 * Math.PI * i
 					/ (sampleRate / freqOfTone));
@@ -561,7 +547,7 @@ public class TrainingActivity extends Activity
 			generatedSndDip[idx++] = (byte) ((val & 0xff00) >>> 8);
 		}
 
-		double dash_sample[] = new double[dash_numSamples];
+		double[] dash_sample = new double[dash_numSamples];
 		for (int i = 0; i < dash_numSamples; ++i) {
 			dash_sample[i] = Math.sin(
 				2 * Math.PI * i / (sampleRate / freqOfTone)
@@ -579,7 +565,7 @@ public class TrainingActivity extends Activity
 			generatedSndDash[idx++] = (byte) ((val & 0xff00) >>> 8);
 		}
 
-		double space_sample[] = new double[pause_numSamples];
+		double[] space_sample = new double[pause_numSamples];
 		for (int i = 0; i < pause_numSamples; ++i) {
 			space_sample[i] = 0;
 		}
@@ -606,13 +592,8 @@ public class TrainingActivity extends Activity
 		generateSounds(); //todo refactor this!
 		saveWav(generatedSndDash, "_dash.wav");
 	}
-
-	public static void writeShortLE(DataOutputStream out, short value) throws IOException {
-		  out.writeByte(value & 0xFF);
-		  out.writeByte((value >> 8) & 0xFF);
-	}
 	
-	void saveWav(byte buffer[], String filename) {
+	void saveWav(byte[] buffer, String filename) {
 		DataOutputStream out;
 		try {
 			FileOutputStream fileOut = this.getApplicationContext()
@@ -629,8 +610,6 @@ public class TrainingActivity extends Activity
 			fileOut.getFD().sync();
 		} catch (IOException e) {
 			e.printStackTrace();
-		} finally {
-
 		}
 	}
 

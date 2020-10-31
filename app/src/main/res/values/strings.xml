@@ -39,6 +39,13 @@
     <string name="singing_yu"></string>
     <string name="singing_ya"></string>
 
+    <string name="latins">latins</string>
+    <string name="number">number</string>
+    <string name="character">character</string>
+    <string name="cyrilic">cyrilic</string>
+    <string name="unknown">unknown</string>
+
+
     <string name="cyr_singing_a">ай-даа</string>
     <string name="cyr_singing_b">баа-ки-те-кут, бей-ба-ра-бан</string>
     <string name="cyr_singing_c">цаа-пли-наа-ши, цаа-пли-цаа-пли</string>

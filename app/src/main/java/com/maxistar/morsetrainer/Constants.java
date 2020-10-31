@@ -5,7 +5,7 @@ import java.util.TreeMap;
 import com.maxistar.morsetrainer.TrainingActivity.MorseCode;
 
 public class Constants {
-	public static final Map<Character, MorseCode> latins = new TreeMap<Character, MorseCode>();
+	public static final Map<Character, MorseCode> latins = new TreeMap<>();
 	static {
 		latins.put('A', new MorseCode("·-", R.raw.a, R.string.singing_a));
 		latins.put('B', new MorseCode("-···", R.raw.b, R.string.singing_b));
@@ -35,7 +35,7 @@ public class Constants {
 		latins.put('Z', new MorseCode("--··", R.raw.z, R.string.singing_z));
 	}
 	
-	public static final Map<Character, MorseCode> numbers = new TreeMap<Character, MorseCode>();
+	public static final Map<Character, MorseCode> numbers = new TreeMap<>();
 	static {
 		numbers.put('1', new MorseCode("·----", R.raw.r1));
 		numbers.put('2', new MorseCode("··---", R.raw.r2));
@@ -49,7 +49,7 @@ public class Constants {
 		numbers.put('0', new MorseCode("-----", R.raw.r0));		
 	}
 	
-	public static final Map<Character, MorseCode> characters = new TreeMap<Character, MorseCode>();
+	public static final Map<Character, MorseCode> characters = new TreeMap<>();
 	static {
 		characters.put('.', new MorseCode("·-·-·-", R.raw.point));
 		characters.put(':', new MorseCode("---···", R.raw.column));
@@ -71,7 +71,7 @@ public class Constants {
 		characters.put('@', new MorseCode("·--·-·", R.raw.at));		
 	}
 
-	public static final Map<Character, MorseCode> cyrilics = new TreeMap<Character, MorseCode>();
+	public static final Map<Character, MorseCode> cyrilics = new TreeMap<>();
 	static {
 		cyrilics.put('А', new MorseCode("·-", R.raw.rus_a, R.string.cyr_singing_a));
 		cyrilics.put('Б', new MorseCode("-···", R.raw.rus_b, R.string.cyr_singing_b));
