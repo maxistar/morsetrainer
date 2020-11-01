@@ -2,23 +2,25 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 26
+    compileSdkVersion 30
     //buildToolsVersion "22.0.1"
 
     defaultConfig {
         applicationId "com.maxistar.morsetrainer"
-        minSdkVersion 9
-        targetSdkVersion 26
+        minSdkVersion 14
+        targetSdkVersion 30
+
     }
 
     buildTypes {
         release {
             minifyEnabled false
+
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
 
 }
 dependencies {
-    compile 'com.google.android.gms:play-services-analytics:8.3.0'
+    implementation 'com.google.android.gms:play-services-analytics:17.0.0'
 }
