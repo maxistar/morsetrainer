@@ -78,4 +78,9 @@
     <string name="cyr_singing_ee">э-ле-роо-ни-ки, э-ле-ктроо-ни-ки</string>
     <string name="cyr_singing_yu">ю-ли-аа-наа</string>
     <string name="cyr_singing_ya">я-маал-я-маал</string>
+
+    <string name="Appearance">Appearance</string>
+    <string name="Click_to_change_language">сlick to change language of interface</string>
+    <string name="Language">Language</string>
+    <string name="Choose_Language">Choose Language</string>
 </resources>

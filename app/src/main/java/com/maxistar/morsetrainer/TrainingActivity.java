@@ -88,10 +88,16 @@ public class TrainingActivity extends Activity
 	int dash_sound = 0;
 	int dip_sound = 0;
 
+	SettingsService settingsService;
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+
+		settingsService = SettingsService.getInstance(this.getApplicationContext());
+		settingsService.applyLocale(this.getBaseContext());
+
 		pool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
 
 

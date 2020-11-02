@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.OnSharedPreferenceChangeListener;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.res.Configuration;
 import android.net.Uri;
 import android.os.Bundle;
 import android.preference.Preference;
@@ -17,16 +18,20 @@ import android.widget.Toast;
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
+import java.util.Locale;
+
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
 	protected Tracker mTracker = null;
 	Preference mVersion;
+	SettingsService settingsService;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		addPreferencesFromResource(R.xml.preferences);
-		
+		settingsService = SettingsService.getInstance(getApplicationContext());
+
 		mVersion = this.findPreference("version_name");
 		PackageInfo pInfo;
 		try {
@@ -90,7 +95,32 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 			showToast(l(R.string.nothing_selected));
 		}
 
+		if (SettingsService.SETTING_LANGUAGE.equals(key)) {
+			String lang = sharedPreferences.getString(SettingsService.SETTING_LANGUAGE, SettingsService.EN);
+			setLocale(lang);
+			SettingsService.setLanguageChangedFlag();
+		}
+		settingsService.reloadSettings(this.getApplicationContext());
+
     }
+
+	public void setLocale(String lang) {
+		Locale locale2 = new Locale(lang);
+		Locale.setDefault(locale2);
+		Configuration config2 = new Configuration();
+		config2.locale = locale2;
+
+		// updating locale
+		//getApplicationContext().getResources().updateConfiguration(config2, null);
+		getBaseContext().getResources().updateConfiguration(config2, null);
+		showPreferences();
+	}
+
+	protected void showPreferences(){
+		Intent intent = new Intent(this, SettingsActivity.class);
+		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+		startActivity(intent);
+	}
 
 	/**
 	 * Returns translation

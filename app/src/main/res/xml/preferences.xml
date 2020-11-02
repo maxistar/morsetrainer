@@ -22,7 +22,18 @@
 			android:title="Cyrilic Letters"  
 			android:summary="learn cyrilic letters" 
 			android:defaultValue="false" />        
-    </PreferenceCategory> 
+    </PreferenceCategory>
+	<PreferenceCategory
+		android:title="@string/Appearance">
+		<ListPreference
+			android:entries="@array/language_names"
+			android:entryValues="@array/language_values"
+			android:key="language"
+			android:summary="@string/Click_to_change_language"
+			android:title="@string/Language"
+			android:dialogTitle="@string/Choose_Language"
+			/>
+	</PreferenceCategory>
     <PreferenceCategory 
         android:title="About">
         <Preference 

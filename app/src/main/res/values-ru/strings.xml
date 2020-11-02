@@ -79,4 +79,9 @@
     <string name="cyr_singing_ya">я-маал-я-маал</string>
 
     <!-- http://zapominalki.ru/enciklopediya-zapominalok/zapominalki-azbuki-morze/ -->
+
+    <string name="Appearance">Внешний вид</string>
+    <string name="Click_to_change_language">нажмите чтобы сменить язык</string>
+    <string name="Language">Язык</string>
+    <string name="Choose_Language">Выберите язык</string>
 </resources>
