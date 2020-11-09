@@ -84,4 +84,5 @@
     <string name="Click_to_change_language">нажмите чтобы сменить язык</string>
     <string name="Language">Язык</string>
     <string name="Choose_Language">Выберите язык</string>
+    <string name="training">Тренировка</string>
 </resources>

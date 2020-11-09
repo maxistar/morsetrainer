@@ -116,7 +116,7 @@ public class TrainingActivity extends Activity
 		correct_sound = pool.load(this.getApplicationContext(),R.raw.dialog_information,1);
 		wrong_sound = pool.load(this.getApplicationContext(),R.raw.dialog_error,1);
 
-		setContentView(R.layout.main);
+		setContentView(R.layout.activity_trainig);
 
 		this.history = getLearningInfo();
 

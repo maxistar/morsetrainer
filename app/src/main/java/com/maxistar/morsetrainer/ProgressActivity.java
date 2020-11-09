@@ -31,7 +31,7 @@ public class ProgressActivity extends ListActivity {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.progress);
+		setContentView(R.layout.activity_progress);
 		
 		this.history = getLearningInfo();
 		initLetters();

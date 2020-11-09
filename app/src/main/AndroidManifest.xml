@@ -2,32 +2,34 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.maxistar.morsetrainer"
     android:versionCode="8"
-    android:versionName="1.6.1" >
+    android:versionName="1.6.1">
 
-	<uses-permission android:name="android.permission.WAKE_LOCK" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    
     <application
         android:name=".MorseApplication"
         android:icon="@drawable/icon"
-        android:label="@string/app_name" >
-        <activity
-            android:name=".TrainingActivity"
-            android:label="@string/app_name" >
+        android:label="@string/app_name">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
+            android:name=".TrainingActivity"
+            android:label="@string/app_name">
+        </activity>
+        <activity
             android:name=".SettingsActivity"
-            android:label="@string/app_name" >
-        </activity> 
+            android:label="@string/app_name">
+        </activity>
         <activity
             android:name=".ProgressActivity"
-            android:label="@string/app_name" >
+            android:label="@string/app_name">
         </activity>
     </application>
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
 </manifest>
