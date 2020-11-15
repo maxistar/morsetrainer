@@ -18,8 +18,6 @@ import android.widget.TextView;
 
 import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
-import com.maxistar.morsetrainer.TrainingActivity.LetterStatistic;
-import com.maxistar.morsetrainer.TrainingActivity.MorseCode;
 
 public class ProgressActivity extends ListActivity {
 	
@@ -102,7 +100,6 @@ public class ProgressActivity extends ListActivity {
 		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
 	}
 
-
 	protected void initLetters() {
 		values = new ArrayList<>();
         
@@ -137,6 +134,14 @@ public class ProgressActivity extends ListActivity {
 					tv = (TextView) v.findViewById(R.id.lang_destination);
 					tv.setText(d.morse_singing_id);
 				}
+				TextView learned = (TextView) v.findViewById(R.id.learned);
+				if (d.learned) {
+					learned.setText("learned");
+				} else {
+					learned.setText("to learn");
+				}
+				TextView countTries = (TextView) v.findViewById(R.id.count_tries);
+				countTries.setText(String.valueOf(d.count_tries));
 			}
 			return v;
 		}

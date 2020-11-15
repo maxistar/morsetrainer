@@ -1,65 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:gravity="right"
-    android:orientation="vertical"
-    android:padding="5dp">
+	android:layout_width="match_parent"
+	android:layout_height="wrap_content"
+	android:gravity="right"
+	android:orientation="vertical"
+	android:padding="5dp">
 
-     <TextView android:id="@+id/letter"
-         android:textSize="16sp"
-         android:textStyle="bold"
-         android:text="@string/empty"
-         android:layout_width="match_parent"
-         android:layout_height="wrap_content"
-         android:padding="2dp"
-         />
+	<TextView android:id="@+id/letter"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:text="@string/empty"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="2dp"
+		/>
+
+	<TextView android:id="@+id/learned"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:text="@string/empty"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="2dp"
+		/>
+
+	<TextView android:id="@+id/count_tries"
+		android:textSize="16sp"
+		android:textStyle="bold"
+		android:text="@string/empty"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:padding="2dp"
+		/>
 
 	<FrameLayout
-	    android:layout_width="match_parent"
-	    android:layout_height="wrap_content" >	    
-	    
-	<LinearLayout
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="left" >
-		
-		<TextView
-		    android:id="@+id/code"
-		    android:layout_width="wrap_content"
-		    android:layout_height="wrap_content"
-		    android:paddingRight="2dp"
-		    android:text=""
-		    android:textSize="16sp"
-		     />
-	</LinearLayout>
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content" >
 
-	<LinearLayout
-	    android:layout_width="wrap_content"
-	    android:layout_height="wrap_content"
-	    android:layout_gravity="right" >
-     
-		<TextView
-	    	android:id="@+id/lang_source"
-	    	android:layout_width="wrap_content"
-	    	android:layout_height="wrap_content"
-	    	android:paddingRight="5dp"
-	    	android:text="@string/empty"
-	    	android:textSize="16sp" />
-
-		<TextView
-			android:id="@+id/lang_destination"
+		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:text="@string/empty"
-			android:textSize="16sp" />
+			android:layout_gravity="left" >
 
-	</LinearLayout>     
+			<TextView
+				android:id="@+id/code"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingRight="2dp"
+				android:text=""
+				android:textSize="16sp"
+				/>
+		</LinearLayout>
 
+		<LinearLayout
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:layout_gravity="right" >
 
-	    
+			<TextView
+				android:id="@+id/lang_source"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:paddingRight="5dp"
+				android:text="@string/empty"
+				android:textSize="16sp" />
+
+			<TextView
+				android:id="@+id/lang_destination"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:text="@string/empty"
+				android:textSize="16sp" />
+		</LinearLayout>
+
 	</FrameLayout>
 
 
-	
+
 </LinearLayout>

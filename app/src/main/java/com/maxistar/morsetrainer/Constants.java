@@ -2,7 +2,6 @@ package com.maxistar.morsetrainer;
 
 import java.util.Map;
 import java.util.TreeMap;
-import com.maxistar.morsetrainer.TrainingActivity.MorseCode;
 
 public class Constants {
 	public static final Map<Character, MorseCode> latins = new TreeMap<>();

@@ -135,7 +135,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
 		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-			Intent intent = new Intent(this, TrainingActivity.class);
+			Intent intent = new Intent(this, MainActivity.class);
 			startActivity(intent);
 		}
 		return super.onKeyDown(keyCode, event);

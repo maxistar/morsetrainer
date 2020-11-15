@@ -7,6 +7,8 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
+import java.io.File;
+
 public class MainActivity extends Activity {
 
     private static final int TRAINING = 1;
@@ -24,7 +26,12 @@ public class MainActivity extends Activity {
 
         Button progressButton = findViewById(R.id.button_progress);
         progressButton.setOnClickListener(view -> startActivity(new Intent(getBaseContext(), ProgressActivity.class)));
+
+
+
     }
+
+
 
     /**
      * Returns translation
@@ -49,8 +56,10 @@ public class MainActivity extends Activity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case SETTINGS:
-                Intent intent = new Intent(this.getBaseContext(),
-                        SettingsActivity.class);
+                Intent intent = new Intent(
+                    this.getBaseContext(),
+                    SettingsActivity.class
+                );
                 this.startActivityForResult(intent, REQUEST_SETTINGS);
                 return true;
             case PROGRESS:
