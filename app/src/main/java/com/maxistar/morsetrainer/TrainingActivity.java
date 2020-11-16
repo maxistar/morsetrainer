@@ -21,14 +21,8 @@ import com.google.android.gms.analytics.HitBuilders;
 import com.google.android.gms.analytics.Tracker;
 
 import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.HashMap;
 import java.util.Map;
 import java.util.Stack;
 
@@ -39,9 +33,6 @@ public class TrainingActivity extends Activity
 	private static final int REQUEST_SETTINGS = 3;
 
 	protected Tracker mTracker = null;
-
-	
-	
 
 	PowerManager.WakeLock wl;
 	
@@ -69,14 +60,14 @@ public class TrainingActivity extends Activity
 
 	SettingsService settingsService;
 
-	SoundGenerator soundGenerator;
+	private SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
+
+	private HistoryPersistenseService historyPersistenseService
+			= ServiceLocator.getInstance().getHistoryPersistenseSerice();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-
-		soundGenerator = new SoundGenerator();
-		soundGenerator.generateSounds();
 
 		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
@@ -99,7 +90,7 @@ public class TrainingActivity extends Activity
 
 		setContentView(R.layout.activity_trainig);
 
-		this.history = getLearningInfo();
+		this.history = historyPersistenseService.getLearningInfo(this.getApplicationContext());
 
 		letter = this.findViewById(R.id.textView1);
 		morze_text = this.findViewById(R.id.textView2);
@@ -185,26 +176,26 @@ public class TrainingActivity extends Activity
 		ArrayList<LetterInfo> letters = new ArrayList<>();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-		boolean learnLatinica = sharedPreferences.getBoolean("learn_latinica", true);
-		boolean learnNumbers = sharedPreferences.getBoolean("learn_numbers", true);
-		boolean learnPunctuationSigns = sharedPreferences.getBoolean("learn_punctuation_signs", true);
-		boolean learnCirilic = sharedPreferences.getBoolean("learn_cyrilics", false);
+		boolean learnLatinica = sharedPreferences.getBoolean(SettingsService.LEARN_LATINICA, true);
+		boolean learnNumbers = sharedPreferences.getBoolean(SettingsService.LEARN_NUMBERS, true);
+		boolean learnPunctuationSigns = sharedPreferences.getBoolean(SettingsService.LEARN_PUNCTUATION_SIGNS, true);
+		boolean learnCirilic = sharedPreferences.getBoolean(SettingsService.LEARN_CYRILICS, false);
 		boolean savetyCheck = false;
 		if (!learnCirilic && !learnLatinica && !learnNumbers && !learnPunctuationSigns) {
 			savetyCheck = true;
 		}
 
 		if (savetyCheck || learnLatinica) {
-			addMorseCodes(letters,Constants.latins);
+			addMorseCodes(letters, Constants.latins);
 		}
 		if (learnNumbers) {
-			addMorseCodes(letters,Constants.numbers);
+			addMorseCodes(letters, Constants.numbers);
 		}
 		if (learnPunctuationSigns) {
-			addMorseCodes(letters,Constants.characters);
+			addMorseCodes(letters, Constants.characters);
 		}
 		if (learnCirilic) {
-			addMorseCodes(letters,Constants.cyrilics);
+			addMorseCodes(letters, Constants.cyrilics);
 		}
 		// sort list
 		// first less shown
@@ -291,59 +282,7 @@ public class TrainingActivity extends Activity
 				this.history.put(i.character, s);
 			}
 		}
-		this.writeObjectToFile(this, this.history, "history");
-	}
-
-	protected Map<Character, LetterStatistic> getLearningInfo() {
-		HashMap<Character, LetterStatistic> map = (HashMap<Character, LetterStatistic>) this
-				.readObjectFromFile(this, "history");
-		if (map == null) {
-			map = new HashMap<>();
-		}
-		return map;
-	}
-
-	public void writeObjectToFile(Context context, Object object,
-			String filename) {
-		ObjectOutputStream objectOut = null;
-		try {
-			FileOutputStream fileOut = context.openFileOutput(filename,
-					Activity.MODE_PRIVATE);
-			objectOut = new ObjectOutputStream(fileOut);
-			objectOut.writeObject(object);
-			fileOut.getFD().sync();
-		} catch (IOException e) {
-			e.printStackTrace();
-		} finally {
-			if (objectOut != null) {
-				try {
-					objectOut.close();
-				} catch (IOException e) {
-					// do nowt
-				}
-			}
-		}
-	}
-
-	public Object readObjectFromFile(Context context, String filename) {
-		ObjectInputStream objectIn = null;
-		Object object = null;
-		try {
-			FileInputStream fileIn = context.openFileInput(filename);
-			objectIn = new ObjectInputStream(fileIn);
-			object = objectIn.readObject();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (objectIn != null) {
-				try {
-					objectIn.close();
-				} catch (IOException e) {
-					// do nowt
-				}
-			}
-		}
-		return object;
+		this.historyPersistenseService.saveLearningInfo(this.getApplicationContext(), this.history);
 	}
 
 	protected void clickDit() {
@@ -379,14 +318,15 @@ public class TrainingActivity extends Activity
 		} else { // done ok
 			hint_text.setVisibility(View.GONE);
 			this.user_code = "";
-			this.morze_text.setTextColor(this.getResources().getColor(
-					R.color.green));
-			pool.play(this.correct_sound,1,1,1,0,1);
+			this.morze_text.setTextColor(
+				this.getResources().getColor(
+					R.color.green
+				)
+			);
+			pool.play(this.correct_sound, 1, 1, 1, 0, 1);
 			handler.postDelayed(this::showNextLetter, 1000);
-
 			// shedule new letter
 		}
-
 	}
 	
 	String formatCode(String code){
@@ -395,7 +335,6 @@ public class TrainingActivity extends Activity
 	}
 
 	void showNextLetter() {
-
 		int repeat_to_remember = 3;
 		if (this.repeat < repeat_to_remember && this.is_error) {
 			this.repeat++;
@@ -449,7 +388,4 @@ public class TrainingActivity extends Activity
 		super.onPause();
 		wl.release();
 	}
-	
-
-
 }

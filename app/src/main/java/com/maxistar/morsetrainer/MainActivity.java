@@ -7,8 +7,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
 
-import java.io.File;
-
 public class MainActivity extends Activity {
 
     private static final int TRAINING = 1;
@@ -16,9 +14,14 @@ public class MainActivity extends Activity {
     private static final int SETTINGS = 3;
     private static final int REQUEST_SETTINGS = 3;
 
+    private SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        soundGenerator.generateSounds();
+
         setContentView(R.layout.activity_main);
 
         Button trainingButton = findViewById(R.id.button_training);
@@ -26,8 +29,6 @@ public class MainActivity extends Activity {
 
         Button progressButton = findViewById(R.id.button_progress);
         progressButton.setOnClickListener(view -> startActivity(new Intent(getBaseContext(), ProgressActivity.class)));
-
-
 
     }
 

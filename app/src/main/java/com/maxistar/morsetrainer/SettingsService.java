@@ -10,6 +10,14 @@ import java.util.Locale;
 public class SettingsService {
     public static final String SETTING_LANGUAGE = "language";
 
+    public static final String LEARN_LATINICA = "learn_latinica";
+
+    public static final String LEARN_NUMBERS = "learn_numbers";
+
+    public static final String LEARN_PUNCTUATION_SIGNS = "learn_punctuation_signs";
+
+    public static final String LEARN_CYRILICS = "learn_cyrilics";
+
     public static final String EMPTY = "";
 
     public static final String EN = "en";

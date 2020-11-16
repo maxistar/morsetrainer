@@ -1,10 +1,6 @@
 package com.maxistar.morsetrainer;
 
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.ObjectInputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Map;
 
 import android.app.ListActivity;
@@ -26,12 +22,15 @@ public class ProgressActivity extends ListActivity {
 	Map<Character, LetterStatistic> history = null;
 	protected Tracker mTracker = null;
 
+	private HistoryPersistenseService historyPersistenseService
+			= ServiceLocator.getInstance().getHistoryPersistenseSerice();
+
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_progress);
 		
-		this.history = getLearningInfo();
+		this.history = historyPersistenseService.getLearningInfo(this.getApplicationContext());
 		initLetters();
 		
 		adapter = new ProgressAdapter(this, R.layout.progress_item);
@@ -41,36 +40,6 @@ public class ProgressActivity extends ListActivity {
 		mTracker = application.getDefaultTracker();
 
 	}
-	
-	protected Map<Character, LetterStatistic> getLearningInfo() {
-		Map<Character, LetterStatistic> map = (HashMap<Character, LetterStatistic>)
-				this.readObjectFromFile(this, "history");
-		if (map == null) {
-			map = new HashMap<>();
-		}
-		return map;
-	}
-	
-	public Object readObjectFromFile(Context context, String filename) {
-		ObjectInputStream objectIn = null;
-		Object object = null;
-		try {
-			FileInputStream fileIn = context.openFileInput(filename);
-			objectIn = new ObjectInputStream(fileIn);
-			object = objectIn.readObject();
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			if (objectIn != null) {
-				try {
-					objectIn.close();
-				} catch (IOException e) {
-					// do nowt
-				}
-			}
-		}
-		return object;
-	}	
 	
 	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars){
 		LetterInfo l;
