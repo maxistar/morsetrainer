@@ -15,16 +15,14 @@ import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
-	protected Tracker mTracker = null;
 	Preference mVersion;
 	SettingsService settingsService;
+
+	TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -41,9 +39,7 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
 			e.printStackTrace();
 		}
 
-		// Obtain the shared Tracker instance.
-		MorseApplication application = (MorseApplication) getApplication();
-		mTracker = application.getDefaultTracker();
+		trackerService.initTracker((MorseApplication) getApplication());
 
 		Preference mPrivacy;
 		mPrivacy = this.findPreference("privacy");
@@ -62,8 +58,8 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     @Override
     protected void onResume() {
         super.onResume();
-		mTracker.setScreenName("SettingsActivity");
-		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+
+		trackerService.track("SettingsActivity");
 
 		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);

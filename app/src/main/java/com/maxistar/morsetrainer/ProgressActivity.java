@@ -12,18 +12,16 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 public class ProgressActivity extends ListActivity {
 	
 	ProgressAdapter adapter;
 	ArrayList<LetterInfo> values;
 	Map<Character, LetterStatistic> history = null;
-	protected Tracker mTracker = null;
 
 	private HistoryPersistenseService historyPersistenseService
 			= ServiceLocator.getInstance().getHistoryPersistenseSerice();
+
+	private TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -35,10 +33,8 @@ public class ProgressActivity extends ListActivity {
 		
 		adapter = new ProgressAdapter(this, R.layout.progress_item);
 		setListAdapter(adapter);
-		// Obtain the shared Tracker instance.
-		MorseApplication application = (MorseApplication) getApplication();
-		mTracker = application.getDefaultTracker();
 
+		trackerService.initTracker((MorseApplication) getApplication());
 	}
 	
 	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars){
@@ -64,9 +60,7 @@ public class ProgressActivity extends ListActivity {
 	@Override
 	protected void onResume() {
 		super.onResume();
-
-		mTracker.setScreenName("ProgressActivity");
-		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+		trackerService.track("ProgressActivity");
 	}
 
 	protected void initLetters() {

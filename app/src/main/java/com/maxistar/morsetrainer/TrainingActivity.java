@@ -17,9 +17,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import com.google.android.gms.analytics.HitBuilders;
-import com.google.android.gms.analytics.Tracker;
-
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -32,7 +29,7 @@ public class TrainingActivity extends Activity
 	private static final int SETTINGS = 3;
 	private static final int REQUEST_SETTINGS = 3;
 
-	protected Tracker mTracker = null;
+	private static final String TRACKING_ACTIITY_NAME = "TrainingActivity";
 
 	PowerManager.WakeLock wl;
 	
@@ -64,6 +61,8 @@ public class TrainingActivity extends Activity
 
 	private HistoryPersistenseService historyPersistenseService
 			= ServiceLocator.getInstance().getHistoryPersistenseSerice();
+
+	private TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -113,10 +112,7 @@ public class TrainingActivity extends Activity
 		current = letters.pop();
 		showLetter(); // show it
 
-		// Obtain the shared Tracker instance.
-		MorseApplication application = (MorseApplication) getApplication();
-		mTracker = application.getDefaultTracker();
-
+		trackerService.initTracker((MorseApplication) getApplication());
 	}
 
 	void showLetter() {
@@ -365,8 +361,7 @@ public class TrainingActivity extends Activity
 	protected void onResume() {
 		super.onResume();
 
-		mTracker.setScreenName("TrainingActivity");
-		mTracker.send(new HitBuilders.ScreenViewBuilder().build());
+		trackerService.track(TRACKING_ACTIITY_NAME);
 
 		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 		if (pm != null) {

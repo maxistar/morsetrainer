@@ -21,4 +21,8 @@ public class ServiceLocator {
     HistoryPersistenseService getHistoryPersistenseSerice() {
         return new HistoryPersistenseService();
     }
+
+    TrackerService getTrackerService() {
+        return new TrackerService();
+    }
 }
