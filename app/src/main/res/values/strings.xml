@@ -84,4 +84,8 @@
     <string name="Language">Language</string>
     <string name="Choose_Language">Choose Language</string>
     <string name="training">Training</string>
+
+    <string name="about">About</string>
+    <string name="continue_button">Continue</string>
+    <string name="about_text">Simple morse trainer with sound feedback written by Max Starikov http://maxistar.ru</string>
 </resources>

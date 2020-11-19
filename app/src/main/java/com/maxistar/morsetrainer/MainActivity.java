@@ -32,42 +32,27 @@ public class MainActivity extends Activity {
 
     }
 
-
-
-    /**
-     * Returns translation
-     *
-     * @param id ID
-     * @return String
-     */
-    String l(int id) {
-        return getBaseContext().getResources().getString(id);
-    }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        menu.add(0, TRAINING, 0, l(R.string.training));
-        menu.add(1, PROGRESS, 1, l(R.string.progress));
-        menu.add(2, SETTINGS, 2, l(R.string.settings));
-        return super.onCreateOptionsMenu(menu);
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case SETTINGS:
+            case R.id.menu_settings:
                 Intent intent = new Intent(
-                    this.getBaseContext(),
-                    SettingsActivity.class
+                        this.getBaseContext(),
+                        SettingsActivity.class
                 );
                 this.startActivityForResult(intent, REQUEST_SETTINGS);
                 return true;
-            case PROGRESS:
-                this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
-                return true;
-            case TRAINING:
+            case R.id.menu_training:
                 this.startActivity(new Intent(this.getBaseContext(), TrainingActivity.class));
+                return true;
+            case R.id.menu_prograss:
+                this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
                 return true;
         }
         return super.onOptionsItemSelected(item);

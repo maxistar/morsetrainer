@@ -18,15 +18,15 @@ public class AboutBox extends DialogPreference
 	@Override
 	protected void onPrepareDialogBuilder(AlertDialog.Builder builder) {
 	    // Data has changed, notify so UI can be refreshed!
-		builder.setTitle("About");
-		builder.setPositiveButton("Continue", new DialogInterface.OnClickListener() {
+		builder.setTitle(R.string.about);
+		builder.setPositiveButton(R.string.continue_button, new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int whichButton) {
 				
 			}
 		});
 		
 		final SpannableString s = 
-              new SpannableString("Simple morse trainer with sound feedback written by Max Starikov http://maxistar.ru");
+              new SpannableString(getContext().getResources().getString(R.string.about_text));
 		Linkify.addLinks(s, Linkify.WEB_URLS);
 		
 		builder.setMessage(s);

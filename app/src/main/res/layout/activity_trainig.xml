@@ -14,7 +14,6 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentTop="true"
         android:ems="10"
-        android:height="45dp"
         android:paddingBottom="0dp"
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
@@ -77,25 +76,21 @@
         android:text="Medium Text"
         android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:layout_below="@id/textView2"
-        android:id="@+id/button3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="0dp"
-        android:width="10dp"
-        android:visibility="invisible"
+    <View
+        android:id="@+id/divider"
+        android:layout_width="10dp"
+        android:layout_height="match_parent"
         android:layout_centerHorizontal="true"
-        android:text=""
-        android:background="@color/black" />
+        />
+
 
     <Button
         android:id="@+id/button2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/button3"
+        android:layout_below="@id/textView2"
         android:layout_alignParentLeft="true"
-        android:layout_toLeftOf="@id/button3"
+        android:layout_toLeftOf="@id/divider"
         android:paddingTop="80dp"
         android:paddingBottom="80dp"
         android:text="•"
@@ -109,11 +104,12 @@
         android:paddingBottom="80dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignTop="@id/button3"
+        android:layout_below="@id/textView2"
         android:layout_alignParentRight="true"
-        android:layout_toRightOf="@id/button3"
+        android:layout_toRightOf="@id/divider"
         android:textColor="@color/black"
         android:text="–"
         style="@style/button" />
-    
+
+
 </RelativeLayout>

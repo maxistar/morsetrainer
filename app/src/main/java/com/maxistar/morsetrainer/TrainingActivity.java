@@ -233,23 +233,23 @@ public class TrainingActivity extends Activity
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(0, SETTINGS, 0, l(R.string.settings));
-		menu.add(1, PROGRESS, 1, l(R.string.progress));
-		return super.onCreateOptionsMenu(menu);
+		getMenuInflater().inflate(R.menu.training_menu, menu);
+		return true;
 	}
-	
-	
+
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case SETTINGS:
-			Intent intent = new Intent(this.getBaseContext(),
-					SettingsActivity.class);
-			this.startActivityForResult(intent, REQUEST_SETTINGS);
-			return true;
-		case PROGRESS:
-			this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
-			return true;
+			case R.id.menu_settings:
+				Intent intent = new Intent(
+						this.getBaseContext(),
+						SettingsActivity.class
+				);
+				this.startActivityForResult(intent, REQUEST_SETTINGS);
+				return true;
+			case R.id.menu_prograss:
+				this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
+				return true;
 		}
 		return super.onOptionsItemSelected(item);
 	}
