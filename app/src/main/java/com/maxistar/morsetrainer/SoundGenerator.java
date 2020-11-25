@@ -142,6 +142,13 @@ public class SoundGenerator {
         return res;
     }
 
+    /**
+     *
+     * @param pool
+     * @param context
+     * @param morse_code
+     * @return
+     */
     int getMorseSound(SoundPool pool, Context context, String morse_code) {
         // make filename
         String filename = this.getMorseCodeFilename(morse_code);

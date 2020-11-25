@@ -25,4 +25,8 @@ public class ServiceLocator {
     TrackerService getTrackerService() {
         return new TrackerService();
     }
+
+    SoundPlayer getSoundPlayer() {
+        return new SoundPlayer();
+    }
 }

@@ -5,8 +5,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
-import android.media.AudioManager;
-import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
@@ -17,7 +15,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
@@ -25,8 +22,6 @@ import java.util.Stack;
 
 public class TrainingActivity extends Activity
 {
-	private static final int PROGRESS = 2;
-	private static final int SETTINGS = 3;
 	private static final int REQUEST_SETTINGS = 3;
 
 	private static final String TRACKING_ACTIITY_NAME = "TrainingActivity";
@@ -35,7 +30,7 @@ public class TrainingActivity extends Activity
 	
 	Handler handler = new Handler();
 	TextView letter;
-	TextView morze_text;
+	TextView morse_text;
 	TextView hint_text;
 	TextView type_text;
 	TextView singing_text;
@@ -49,11 +44,7 @@ public class TrainingActivity extends Activity
 	LetterInfo current = null;
 	String user_code = "";
 	int repeat = 0;
-	int correct_sound = 0;
-	int wrong_sound = 0;
-	SoundPool pool;
-	int dash_sound = 0;
-	int dip_sound = 0;
+
 
 	SettingsService settingsService;
 
@@ -61,6 +52,8 @@ public class TrainingActivity extends Activity
 
 	private HistoryPersistenseService historyPersistenseService
 			= ServiceLocator.getInstance().getHistoryPersistenseSerice();
+
+	private SoundPlayer soundPlayer = ServiceLocator.getInstance().getSoundPlayer();
 
 	private TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
 
@@ -73,26 +66,17 @@ public class TrainingActivity extends Activity
 		settingsService = SettingsService.getInstance(this.getApplicationContext());
 		settingsService.applyLocale(this.getBaseContext());
 
-		pool = new SoundPool(5, AudioManager.STREAM_MUSIC, 0);
-
 		soundGenerator.initSounds(this.getApplicationContext());
 
+		soundPlayer.initSounds(this.getApplicationContext());
 
-		File file = this.getApplicationContext().getFileStreamPath("_dash.wav");
-		dash_sound = pool.load(file.getAbsolutePath(), 1);
-
-		file = this.getApplicationContext().getFileStreamPath("_dip.wav");
-		dip_sound = pool.load(file.getAbsolutePath(), 1);
-
-		correct_sound = pool.load(this.getApplicationContext(),R.raw.dialog_information,1);
-		wrong_sound = pool.load(this.getApplicationContext(),R.raw.dialog_error,1);
 
 		setContentView(R.layout.activity_trainig);
 
 		this.history = historyPersistenseService.getLearningInfo(this.getApplicationContext());
 
 		letter = this.findViewById(R.id.textView1);
-		morze_text = this.findViewById(R.id.textView2);
+		morse_text = this.findViewById(R.id.textView2);
 		hint_text = this.findViewById(R.id.textView3);
 		type_text = this.findViewById(R.id.textView4);
 		singing_text = this.findViewById(R.id.singing);
@@ -130,12 +114,12 @@ public class TrainingActivity extends Activity
 		}
 
 		letter.setText(String.valueOf(current.character));
-		this.morze_text.setText("");
-		this.morze_text.setTextColor(this.getResources()
+		this.morse_text.setText("");
+		this.morse_text.setTextColor(this.getResources()
 				.getColor(R.color.white));
 		this.singing_text.setText("");
 
-		pool.play(current.stream_id, 1, 1, 1, 0, 1);
+		soundPlayer.playSound(current.stream_id);
 	}
 	
 	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars) {
@@ -151,21 +135,13 @@ public class TrainingActivity extends Activity
 
 			if (history.containsKey(entry.getKey())) {
 				s = history.get(entry.getKey());
-				l.count_tries = s.count_tries;
-				l.learned = s.learned;
+				if (s != null) {
+					l.count_tries = s.count_tries;
+					l.learned = s.learned;
+				}
 			}
 			letters.add(l);
 		}
-	}
-
-	/**
-	 * Returns translation
-	 *
-	 * @param id ID
-	 * @return String
-	 */
-	String l(int id) {
-		return getBaseContext().getResources().getString(id);
 	}
 
 	protected void initLetters() {
@@ -198,12 +174,15 @@ public class TrainingActivity extends Activity
 		// then shortest
 		// then learned
 		Collections.sort(letters, (o1, o2) -> {
-			if (o1.count_tries != o2.count_tries)
+			if (o1.count_tries != o2.count_tries) {
 				return o1.count_tries - o2.count_tries;
-			if (o1.morse_code.length() != o2.morse_code.length())
+			}
+			if (o1.morse_code.length() != o2.morse_code.length()) {
 				return o1.morse_code.length() - o2.morse_code.length();
-			if (o1.learned != o2.learned)
+			}
+			if (o1.learned != o2.learned) {
 				return o1.learned ? -1 : 1;
+			}
 			return 0;
 		});
 
@@ -211,17 +190,21 @@ public class TrainingActivity extends Activity
 		this.letters = new Stack<>();
 		for (LetterInfo ss : letters) {
 			int count_chars_to_learn = 5;
-			if (counter >= count_chars_to_learn)
+			if (counter >= count_chars_to_learn) {
 				break;
+			}
+
 			counter++;
-			ss.stream_id = pool.load(
+
+			ss.stream_id =
+					soundPlayer.getPool().load(
 					this.getApplicationContext(),
 					ss.sound_res,
 					1
 			);
 
 			ss.morse_sound_id = this.soundGenerator.getMorseSound(
-					pool,
+					soundPlayer.getPool(),
 					this.getApplicationContext(),
 					ss.morse_code
 			);
@@ -259,18 +242,20 @@ public class TrainingActivity extends Activity
 		// pool.release();
 		while (!letters_done.empty()) {
 			i = letters_done.pop();
-			pool.unload(i.stream_id);
+			soundPlayer.unload(i.stream_id);
 
 			if (this.history.containsKey(i.character)) {
 				LetterStatistic s = this.history.get(i.character);
-				s.count_tries++;
-				if (!i.correct) {
-					s.count_corrects = 0;
-				} else {
-					s.count_corrects++;
-					int corrects_to_be_learned = 3;
-					if (s.count_corrects >= corrects_to_be_learned) {
-						s.learned = true;
+				if (s != null) {
+					s.count_tries++;
+					if (!i.correct) {
+						s.count_corrects = 0;
+					} else {
+						s.count_corrects++;
+						int corrects_to_be_learned = 3;
+						if (s.count_corrects >= corrects_to_be_learned) {
+							s.learned = true;
+						}
 					}
 				}
 			} else {
@@ -282,23 +267,23 @@ public class TrainingActivity extends Activity
 	}
 
 	protected void clickDit() {
-		pool.play(this.dip_sound, (float) 0.5, (float) 0.5, 1, 0, 1);
+		soundPlayer.playDitSound();
 		clickButton('·');
 	}
 
 	protected void clickDash() {
-		pool.play(this.dash_sound, (float) 0.5, (float) 0.5, 1, 0, 1);
+		soundPlayer.playDashSound();
 		clickButton('-');
 	}
 
 	protected void clickButton(Character ch) {
 		this.user_code = this.user_code + ch;
-		this.morze_text.setText(this.user_code);
+		this.morse_text.setText(this.user_code);
 		if (!this.user_code.equals(this.current.morse_code)) {
 			// this.morzeText //make red!
 			if (!correctSoFar()) {
-				pool.play(this.wrong_sound,1,1,1,0,1);
-				this.morze_text.setText("");
+				soundPlayer.playWrongSound();
+				this.morse_text.setText("");
 
 				if (this.current.morse_singing_id != 0) {
 					this.singing_text.setText(this.current.morse_singing_id);
@@ -309,23 +294,23 @@ public class TrainingActivity extends Activity
 				this.current.correct = false;
 				this.is_error = true;
 				this.user_code = ""; // try again
-				handler.postDelayed(() -> pool.play(current.morse_sound_id, 1, 1, 1, 0, 1), 500);
+				handler.postDelayed(() -> soundPlayer.playSound(current.morse_sound_id), 500);
 			}
 		} else { // done ok
 			hint_text.setVisibility(View.GONE);
 			this.user_code = "";
-			this.morze_text.setTextColor(
+			this.morse_text.setTextColor(
 				this.getResources().getColor(
 					R.color.green
 				)
 			);
-			pool.play(this.correct_sound, 1, 1, 1, 0, 1);
+			soundPlayer.playCorrectSound();
 			handler.postDelayed(this::showNextLetter, 1000);
 			// shedule new letter
 		}
 	}
 	
-	String formatCode(String code){
+	String formatCode(String code) {
 		//return code.replace('', '');
 		return code;
 	}
@@ -349,10 +334,13 @@ public class TrainingActivity extends Activity
 	}
 
 	protected boolean correctSoFar() {
-		if (this.user_code.length() > this.current.morse_code.length())
+		if (this.user_code.length() > this.current.morse_code.length()) {
 			return false;
-		String substring = this.current.morse_code.substring(0,
-				this.user_code.length());// get substring of master string same
+		}
+		String substring = this.current.morse_code.substring(
+				0,
+				this.user_code.length()
+		);                                  // get substring of master string same
 											// length as userinput
 		return substring.equals(this.user_code);
 	}
@@ -368,14 +356,6 @@ public class TrainingActivity extends Activity
 			wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "morse:MY_WAKE_TAG");
 			wl.acquire(1000);
 		}
-		
-		/*
-		 * // Use a new tread as this can take a while final Thread thread = new
-		 * Thread(new Runnable() { public void run() { genTone();
-		 * handler.post(new Runnable() {
-		 * 
-		 * public void run() { playSound(); } }); } }); thread.start();
-		 */
 	}
 	
 	@Override
