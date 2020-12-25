@@ -50,8 +50,10 @@ public class ProgressActivity extends ListActivity {
 
 			if (history.containsKey(entry.getKey())) {
 				s = history.get(entry.getKey());
-				l.count_tries = s.count_tries;
-				l.learned = s.learned;
+				if (s != null) {
+					l.count_tries = s.count_tries;
+					l.learned = s.learned;
+				}
 			}
 			letters.add(l);
 		}
@@ -83,18 +85,19 @@ public class ProgressActivity extends ListActivity {
 			View v = convertView;
 			if (v == null) {
 				LayoutInflater vi = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-				v = vi.inflate(R.layout.progress_item, null);
+				ViewGroup group = null;
+				v = vi.inflate(R.layout.progress_item, group);
 			}
 
 			LetterInfo d = values.get(position);
 
 			if (d != null) {
-				TextView tv = (TextView) v.findViewById(R.id.letter);
-				tv.setText("" + d.character);
-				tv = (TextView) v.findViewById(R.id.code);
+				TextView tv = v.findViewById(R.id.letter);
+				tv.setText(String.valueOf(d.character));
+				tv = v.findViewById(R.id.code);
 				tv.setText(d.morse_code);
 				if (d.morse_singing_id != 0) {
-					tv = (TextView) v.findViewById(R.id.morse_singing);
+					tv = v.findViewById(R.id.morse_singing);
 					tv.setText(d.morse_singing_id);
 				}
 				//TextView learned = (TextView) v.findViewById(R.id.learned);

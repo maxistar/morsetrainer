@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:orientation="vertical"
@@ -18,9 +19,11 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="10dp"
-        android:text="A"
-        android:textSize="30dp"
-        android:typeface="serif" />
+        android:text=""
+        android:textSize="30sp"
+        android:typeface="serif"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
 
     <TextView
         android:id="@+id/textView2"
@@ -33,8 +36,9 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="0dp"
-        android:text="•---"
-        android:textSize="30dp" />
+        android:text=""
+        android:textSize="30sp"
+        android:layout_alignParentStart="true" />
     
     <TextView
         android:id="@+id/textView3"
@@ -47,9 +51,10 @@
         android:paddingLeft="10dp"
         android:paddingRight="10dp"
         android:paddingTop="0dp"
-        android:text="•"
+        android:text=""
         android:textColor="@color/red"
-        android:textSize="30dp" />
+        android:textSize="30sp"
+        android:layout_alignParentEnd="true" />
     
     <TextView
         android:id="@+id/textView4"
@@ -59,8 +64,12 @@
         android:layout_alignParentRight="true"
         android:text="Medium Text"
         android:paddingRight="20dp"
+        android:paddingLeft="20dp"
         android:paddingTop="10dp"
-        android:textAppearance="?android:attr/textAppearanceMedium" />    
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentEnd="true"
+        android:paddingEnd="20dp"
+        android:paddingStart="20dp" />
     
     <TextView
         android:id="@+id/singing"
@@ -74,7 +83,8 @@
         android:paddingRight="10dp"
         android:paddingTop="0dp"
         android:text="Medium Text"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:layout_alignParentEnd="true" />
 
     <View
         android:id="@+id/divider"
@@ -92,10 +102,11 @@
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/divider"
         android:layout_alignBottom="@id/divider2"
-        android:text="•"
+        android:text=""
         android:textColor="@color/black"
         style="@style/button"
-	/> 
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@id/divider" />
     
     <Button
         android:id="@+id/button1"
@@ -108,8 +119,10 @@
         android:layout_toRightOf="@id/divider"
         android:textColor="@color/black"
         android:layout_alignBottom="@id/divider2"
-        android:text="–"
-        style="@style/button" />
+        android:text=""
+        style="@style/button"
+        android:layout_alignParentEnd="true"
+        android:layout_toEndOf="@id/divider" />
 
     <View
         android:id="@+id/divider2"

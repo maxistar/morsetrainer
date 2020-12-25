@@ -1,5 +1,6 @@
 package com.maxistar.morsetrainer;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -48,16 +49,17 @@ public class TrainingActivity extends Activity
 
 	SettingsService settingsService;
 
-	private SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
+	private final SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
 
-	private HistoryPersistenseService historyPersistenseService
+	private final HistoryPersistenseService historyPersistenseService
 			= ServiceLocator.getInstance().getHistoryPersistenseSerice();
 
-	private SoundPlayer soundPlayer = ServiceLocator.getInstance().getSoundPlayer();
+	private final SoundPlayer soundPlayer = ServiceLocator.getInstance().getSoundPlayer();
 
-	private TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
+	private final TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
 
 	@Override
+	@SuppressLint("SourceLockedOrientationActivity")
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
@@ -224,17 +226,15 @@ public class TrainingActivity extends Activity
 
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-		switch (item.getItemId()) {
-			case R.id.menu_settings:
-				Intent intent = new Intent(
-						this.getBaseContext(),
-						SettingsActivity.class
-				);
-				this.startActivityForResult(intent, REQUEST_SETTINGS);
-				return true;
-			case R.id.menu_prograss:
-				this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
-				return true;
+		int itemId = item.getItemId();
+		if (itemId == R.id.menu_settings) {
+			Intent intent = new Intent(
+					this.getBaseContext(),
+					SettingsActivity.class
+			);
+			this.startActivityForResult(intent, REQUEST_SETTINGS);
+		} else if (itemId == R.id.menu_prograss) {
+			this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
 		}
 		return super.onOptionsItemSelected(item);
 	}

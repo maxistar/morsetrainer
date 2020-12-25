@@ -139,23 +139,30 @@ class SvgScaler {
 
 class androidResizer {
 	var $modes = array(
-		'ldpi'=>0.75,
-		'mdpi'=>1,
-		'hdpi'=>1.5,
-		'xhdpi'=>2,
+		'ldpi' => 0.75,
+		'mdpi' => 1,
+		'hdpi' => 1.5,
+		'xhdpi' => 2,
+		'xxhdpi' => 3,
+        'xxxhdpi' => 4
 	);
 	
 	
 	
-	function resize($name,$scale=1){
-		foreach($this->modes as $mode=>$k){
-			$s = new SvgScaler($name.'.svg');
+	function resize($name, $scale = 1) {
+		foreach($this->modes as $mode => $k) {
+            $scaledSvgFile = __DIR__ . '/scaled/'.$mode.'_'.$name.'.svg';
+			$s = new SvgScaler(__DIR__ . '/icons/' . $name . '.svg');
 			$s->scale($k*$scale);
-			$s->save('resized/'.$mode.'_'.$name.'.svg');
+			$s->save($scaledSvgFile);
 
 			//now resterize
-			system('java -jar ~/software/batik/batik-rasterizer.jar '.'resized/'.$mode.'_'.$name.'.svg');
-			copy('resized/'.$mode.'_'.$name.'.png','../res/drawable-'.$mode.'/'.$name.'.png');
+			system('java -jar ~/bin/batik-1.11/batik-rasterizer-1.11.jar ' . $scaledSvgFile);
+			$targetFolder = __DIR__ . '/scaled/drawable-' . $mode;
+			if (!is_dir($targetFolder)) {
+                mkdir($targetFolder);
+            }
+            copy(__DIR__ . '/scaled/'.$mode.'_'.$name.'.png', __DIR__ . '/scaled/drawable-' . $mode . '/' . $name . '.png');
 		}
 	}
 	

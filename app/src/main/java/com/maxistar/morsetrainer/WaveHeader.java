@@ -19,6 +19,7 @@ package com.maxistar.morsetrainer;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.util.Locale;
 
 /**
  * This class represents the header of a WAVE format audio file, which usually
@@ -31,17 +32,13 @@ import java.io.OutputStream;
  * <li> numBytes - size of audio data after this header, in bytes.
  * </ul>
  * 
- * Not yet ready to be supported, so
- * @hide
- * 
+ *
  * taken from here 
  */
 public class WaveHeader {
     
     // follows WAVE format in http://ccrma.stanford.edu/courses/422/projects/WaveFormat
 
-    private static final String TAG = "WaveHeader";
-    
     private static final int HEADER_LENGTH = 44;
     
     /** Indicates PCM format. */
@@ -50,7 +47,7 @@ public class WaveHeader {
     public static final short FORMAT_ALAW = 6;
     /** Indicates ULAW format. */
     public static final short FORMAT_ULAW = 7;
-    
+
     private short mFormat;
     private short mNumChannels;
     private int mSampleRate;
@@ -267,10 +264,11 @@ public class WaveHeader {
         out.write(val);
         out.write(val >> 8);
     }
-    
+
     @Override
     public String toString() {
         return String.format(
+                Locale.getDefault(),
                 "WaveHeader format=%d numChannels=%d sampleRate=%d bitsPerSample=%d numBytes=%d",
                 mFormat, mNumChannels, mSampleRate, mBitsPerSample, mNumBytes);
     }

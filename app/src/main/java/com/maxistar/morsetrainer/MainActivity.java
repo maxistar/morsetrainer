@@ -9,12 +9,9 @@ import android.widget.Button;
 
 public class MainActivity extends Activity {
 
-    private static final int TRAINING = 1;
-    private static final int PROGRESS = 2;
-    private static final int SETTINGS = 3;
     private static final int REQUEST_SETTINGS = 3;
 
-    private SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
+    private final SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,16 +49,13 @@ public class MainActivity extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.menu_settings:
-                showSettings();
-                return true;
-            case R.id.menu_training:
-                this.startActivity(new Intent(this.getBaseContext(), TrainingActivity.class));
-                return true;
-            case R.id.menu_prograss:
-                this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
-                return true;
+        int itemId = item.getItemId();
+        if (itemId == R.id.menu_settings) {
+            showSettings();
+        } else if (itemId == R.id.menu_training) {
+            this.startActivity(new Intent(this.getBaseContext(), TrainingActivity.class));
+        } else if (itemId == R.id.menu_prograss) {
+            this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
         }
         return super.onOptionsItemSelected(item);
     }

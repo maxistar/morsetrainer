@@ -16,7 +16,7 @@
             android:id="@+id/text_source_language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Letter"
+            android:text="@string/letter"
             android:textColor="@color/black"
             android:textSize="16sp"
             android:textStyle="bold" />
@@ -25,7 +25,7 @@
             android:id="@+id/text_destination_language"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="code"
+            android:text="@string/code"
             android:textColor="@color/black"
             android:textSize="16sp" />
     </LinearLayout>

@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 	android:layout_width="match_parent"
 	android:layout_height="wrap_content"
-	android:gravity="right"
+	android:gravity="end"
 	android:orientation="vertical"
 	android:padding="5dp">
 
@@ -22,22 +22,24 @@
 		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_gravity="left" >
+			android:layout_gravity="start" >
 
 			<TextView
 				android:id="@+id/code"
 				android:layout_width="wrap_content"
 				android:layout_height="wrap_content"
 				android:paddingRight="2dp"
+				android:paddingLeft="2dp"
 				android:text=""
 				android:textSize="16sp"
-				/>
+				android:paddingEnd="2dp"
+				android:paddingStart="2dp" />
 		</LinearLayout>
 
 		<LinearLayout
 			android:layout_width="wrap_content"
 			android:layout_height="wrap_content"
-			android:layout_gravity="right" >
+			android:layout_gravity="end" >
 
 			<TextView
 				android:id="@+id/morse_singing"

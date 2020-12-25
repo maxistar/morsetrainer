@@ -85,6 +85,9 @@
     <string name="Language">Язык</string>
     <string name="Choose_Language">Выберите язык</string>
     <string name="training">Тренировка</string>
+    <string name="letter">Символ</string>
+    <string name="code">код</string>
+
 
     <string name="about">About</string>
     <string name="continue_button">Continue</string>

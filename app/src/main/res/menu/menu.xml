@@ -5,18 +5,15 @@
         android:id="@+id/menu_training"
         android:orderInCategory="1"
         app:showAsAction="never"
-        android:title="@string/training"
-        android:icon="@drawable/icon"/>
+        android:title="@string/training"/>
     <item
         android:id="@+id/menu_prograss"
         android:orderInCategory="2"
         app:showAsAction="never"
-        android:title="@string/progress"
-        android:icon="@drawable/icon"/>
+        android:title="@string/progress"/>
     <item
         android:id="@+id/menu_settings"
         android:orderInCategory="1"
         app:showAsAction="never"
-        android:title="@string/settings"
-        android:icon="@drawable/icon"/>
+        android:title="@string/settings"/>
 </menu>
