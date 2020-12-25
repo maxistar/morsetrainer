@@ -32,12 +32,12 @@
     <string name="singing_x">X marks the SPOT, EX-tra ex-PENSE</string>
     <string name="singing_y">WHY did I DIE?, YEL-low YO-YO</string>
     <string name="singing_z">ZSA ZSA did it, </string>
-    <string name="singing_ch"></string>
+    <!--<string name="singing_ch"></string>
     <string name="singing_sh"></string>
     <string name="singing_tvznk"></string>
     <string name="singing_ee"></string>
     <string name="singing_yu"></string>
-    <string name="singing_ya"></string>
+    <string name="singing_ya"></string>-->
 
     <string name="latins">"latins"</string>
     <string name="number">number</string>

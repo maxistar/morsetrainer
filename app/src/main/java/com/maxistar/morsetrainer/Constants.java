@@ -47,6 +47,20 @@ public class Constants {
 		numbers.put('9', new MorseCode("----·", R.raw.r9));
 		numbers.put('0', new MorseCode("-----", R.raw.r0));		
 	}
+
+	public static final Map<Character, MorseCode> numbers_rus = new TreeMap<>();
+	static {
+		numbers.put('1', new MorseCode("·----", R.raw.rus_1));
+		numbers.put('2', new MorseCode("··---", R.raw.rus_2));
+		numbers.put('3', new MorseCode("···--", R.raw.rus_3));
+		numbers.put('4', new MorseCode("····-", R.raw.rus_4));
+		numbers.put('5', new MorseCode("·····", R.raw.rus_5));
+		numbers.put('6', new MorseCode("-····", R.raw.rus_6));
+		numbers.put('7', new MorseCode("--···", R.raw.rus_7));
+		numbers.put('8', new MorseCode("---··", R.raw.rus_8));
+		numbers.put('9', new MorseCode("----·", R.raw.rus_9));
+		numbers.put('0', new MorseCode("-----", R.raw.rus_0));
+	}
 	
 	public static final Map<Character, MorseCode> characters = new TreeMap<>();
 	static {
@@ -68,6 +82,28 @@ public class Constants {
 		characters.put('$', new MorseCode("···-··-", R.raw.dollar));
 		characters.put('&', new MorseCode("·-···", R.raw.and));
 		characters.put('@', new MorseCode("·--·-·", R.raw.at));		
+	}
+
+	public static final Map<Character, MorseCode> characters_rus = new TreeMap<>();
+	static {
+		characters.put('.', new MorseCode("·-·-·-", R.raw.rus_point));
+		characters.put(':', new MorseCode("---···", R.raw.rus_column));
+		characters.put(',', new MorseCode("--··--", R.raw.rus_coma));
+		characters.put(';', new MorseCode("-·-·-·", R.raw.rus_semicolumn));
+		characters.put('?', new MorseCode("··--··", R.raw.rus_question));
+		characters.put('=', new MorseCode("-···-", R.raw.rus_equals));
+		characters.put('\'', new MorseCode("·----·", R.raw.rus_apostrof));
+		characters.put('+', new MorseCode("·-·-·", R.raw.plus));
+		characters.put('!', new MorseCode("-·-·--", R.raw.rus_exclamation));
+		characters.put('-', new MorseCode("-····-", R.raw.minus));
+		characters.put('/', new MorseCode("-··-·", R.raw.rus_slash));
+		characters.put('_', new MorseCode("··--·-", R.raw.understroke));
+		characters.put('(', new MorseCode("-·--·", R.raw.rus_opening_parenthis));
+		characters.put('"', new MorseCode("·-··-·", R.raw.quote));
+		characters.put(')', new MorseCode("-·--·-", R.raw.rus_closing_parenthis));
+		characters.put('$', new MorseCode("···-··-", R.raw.dollar));
+		characters.put('&', new MorseCode("·-···", R.raw.rus_and));
+		characters.put('@', new MorseCode("·--·-·", R.raw.at));
 	}
 
 	public static final Map<Character, MorseCode> cyrilics = new TreeMap<>();
