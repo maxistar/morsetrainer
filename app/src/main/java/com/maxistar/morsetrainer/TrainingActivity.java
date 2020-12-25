@@ -196,18 +196,20 @@ public class TrainingActivity extends Activity
 
 			counter++;
 
-			ss.stream_id =
-					soundPlayer.getPool().load(
-					this.getApplicationContext(),
-					ss.sound_res,
-					1
-			);
+			if (soundPlayer.isSoundPresented()) {
+				ss.stream_id =
+						soundPlayer.getPool().load(
+								this.getApplicationContext(),
+								ss.sound_res,
+								1
+						);
 
-			ss.morse_sound_id = this.soundGenerator.getMorseSound(
-					soundPlayer.getPool(),
-					this.getApplicationContext(),
-					ss.morse_code
-			);
+				ss.morse_sound_id = this.soundGenerator.getMorseSound(
+						soundPlayer.getPool(),
+						this.getApplicationContext(),
+						ss.morse_code
+				);
+			}
 
 			this.letters.push(ss);
 		}
@@ -350,17 +352,26 @@ public class TrainingActivity extends Activity
 		super.onResume();
 
 		trackerService.track(TRACKING_ACTIITY_NAME);
-
-		PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-		if (pm != null) {
-			wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "morse:MY_WAKE_TAG");
-			wl.acquire(1000);
+		try {
+			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+			if (pm != null) {
+				wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "morse:MY_WAKE_TAG");
+				wl.acquire(1000);
+			}
+		} catch (Exception e) {
+			//can not acquire wake log
 		}
 	}
 	
 	@Override
 	protected void onPause() {
 		super.onPause();
-		wl.release();
+		try {
+			if (wl != null) {
+				wl.release();
+			}
+		} catch (Exception e) {
+			//can not release wake log
+		}
 	}
 }

@@ -30,6 +30,10 @@ public class MainActivity extends Activity {
         Button progressButton = findViewById(R.id.button_progress);
         progressButton.setOnClickListener(view -> startActivity(new Intent(getBaseContext(), ProgressActivity.class)));
 
+        Button progressSettings = findViewById(R.id.button_settings);
+        if (progressSettings != null) {
+            progressSettings.setOnClickListener(view -> showSettings());
+        }
     }
 
     @Override
@@ -38,15 +42,19 @@ public class MainActivity extends Activity {
         return true;
     }
 
+    private void showSettings() {
+        Intent intent = new Intent(
+                this.getBaseContext(),
+                SettingsActivity.class
+        );
+        this.startActivityForResult(intent, REQUEST_SETTINGS);
+    }
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_settings:
-                Intent intent = new Intent(
-                        this.getBaseContext(),
-                        SettingsActivity.class
-                );
-                this.startActivityForResult(intent, REQUEST_SETTINGS);
+                showSettings();
                 return true;
             case R.id.menu_training:
                 this.startActivity(new Intent(this.getBaseContext(), TrainingActivity.class));

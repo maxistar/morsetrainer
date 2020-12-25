@@ -94,17 +94,17 @@ public class ProgressActivity extends ListActivity {
 				tv = (TextView) v.findViewById(R.id.code);
 				tv.setText(d.morse_code);
 				if (d.morse_singing_id != 0) {
-					tv = (TextView) v.findViewById(R.id.lang_destination);
+					tv = (TextView) v.findViewById(R.id.morse_singing);
 					tv.setText(d.morse_singing_id);
 				}
-				TextView learned = (TextView) v.findViewById(R.id.learned);
-				if (d.learned) {
-					learned.setText("learned");
-				} else {
-					learned.setText("to learn");
-				}
-				TextView countTries = (TextView) v.findViewById(R.id.count_tries);
-				countTries.setText(String.valueOf(d.count_tries));
+				//TextView learned = (TextView) v.findViewById(R.id.learned);
+				//if (d.learned) {
+				//	learned.setText("learned");
+				//} else {
+				//	learned.setText("to learn");
+				//}
+				//TextView countTries = (TextView) v.findViewById(R.id.count_tries);
+				//countTries.setText(String.valueOf(d.count_tries));
 			}
 			return v;
 		}
