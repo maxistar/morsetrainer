@@ -1,4 +1,4 @@
-package com.maxistar.morsetrainer;
+package com.maxistar.morsetrainer.activities;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -16,6 +16,19 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.maxistar.morsetrainer.Constants;
+import com.maxistar.morsetrainer.HistoryPersistenseService;
+import com.maxistar.morsetrainer.model.LetterInfo;
+import com.maxistar.morsetrainer.LetterStatistic;
+import com.maxistar.morsetrainer.MorseApplication;
+import com.maxistar.morsetrainer.model.MorseCode;
+import com.maxistar.morsetrainer.R;
+import com.maxistar.morsetrainer.ServiceLocator;
+import com.maxistar.morsetrainer.SettingsService;
+import com.maxistar.morsetrainer.SoundGenerator;
+import com.maxistar.morsetrainer.SoundPlayer;
+import com.maxistar.morsetrainer.TrackerService;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Map;
@@ -25,7 +38,7 @@ public class TrainingActivity extends Activity
 {
 	private static final int REQUEST_SETTINGS = 3;
 
-	private static final String TRACKING_ACTIITY_NAME = "TrainingActivity";
+	private static final String TRACKING_ACTIVITY_NAME = "TrainingActivity";
 
 	PowerManager.WakeLock wl;
 	
@@ -351,7 +364,7 @@ public class TrainingActivity extends Activity
 	protected void onResume() {
 		super.onResume();
 
-		trackerService.track(TRACKING_ACTIITY_NAME);
+		trackerService.track(TRACKING_ACTIVITY_NAME);
 		try {
 			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
 			if (pm != null) {

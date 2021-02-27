@@ -1,4 +1,4 @@
-package com.maxistar.morsetrainer;
+package com.maxistar.morsetrainer.activities;
 
 import android.content.Context;
 import android.content.Intent;
@@ -14,6 +14,12 @@ import android.preference.PreferenceActivity;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.widget.Toast;
+
+import com.maxistar.morsetrainer.MorseApplication;
+import com.maxistar.morsetrainer.R;
+import com.maxistar.morsetrainer.ServiceLocator;
+import com.maxistar.morsetrainer.SettingsService;
+import com.maxistar.morsetrainer.TrackerService;
 
 import java.util.Locale;
 

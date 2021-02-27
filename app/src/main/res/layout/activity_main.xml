@@ -7,7 +7,7 @@
     android:paddingTop="15dp"
     android:paddingLeft="15dp"
     android:paddingRight="15dp"
-    tools:context=".MainActivity">
+    tools:context=".activities.MainActivity">
 
 
     <Button

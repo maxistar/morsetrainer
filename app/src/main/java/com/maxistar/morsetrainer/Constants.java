@@ -1,5 +1,7 @@
 package com.maxistar.morsetrainer;
 
+import com.maxistar.morsetrainer.model.MorseCode;
+
 import java.util.Map;
 import java.util.TreeMap;
 

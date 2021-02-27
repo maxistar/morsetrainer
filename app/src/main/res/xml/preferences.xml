@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" android:key="preferences" >
    <PreferenceCategory 
-        android:title="What to learn">
+        android:title="@string/preferencesWhatToLearn">
         <CheckBoxPreference  
 			android:key="learn_latinica"  
-			android:title="Latinic Letters"  
-			android:summary="learn latinic letters" 
+			android:title="@string/preferencesLatinCharacters"
+			android:summary="@string/preferencesLearnLatin"
 			android:defaultValue="true" />
         <CheckBoxPreference  
 			android:key="learn_numbers"  
-			android:title="Numbers"  
-			android:summary="learn numbers" 
+			android:title="@string/preferencesNumbers"
+			android:summary="@string/preferencesLearnNumbers"
 			android:defaultValue="true" />
         <CheckBoxPreference  
 			android:key="learn_punctuation_signs"  
-			android:title="Punctuation Signs"  
-			android:summary="learn punctuation signs" 
+			android:title="@string/preferencesPunctation"
+			android:summary="@string/preferencesLearnPuctation"
 			android:defaultValue="true" />
         <CheckBoxPreference  
 			android:key="learn_cyrilics"  
-			android:title="Cyrilic Letters"  
-			android:summary="learn cyrilic letters" 
+			android:title="@string/preferencesCyrillic"
+			android:summary="@string/preferencesLearnCyrillic"
 			android:defaultValue="false" />        
     </PreferenceCategory>
 	<PreferenceCategory
@@ -35,18 +35,18 @@
 			/>
 	</PreferenceCategory>
     <PreferenceCategory 
-        android:title="About">
+        android:title="@string/preferencesAbout">
         <Preference 
             android:key="version_name"
             android:summary=""
-            android:title="Version" />
+            android:title="@string/preferencesVersion" />
         <com.maxistar.morsetrainer.AboutBox
-			android:title="About Morse Teacher"  
-			android:summary="just shortly about the application"
-			android:dialogTitle="About" />
+			android:title="@string/preferencesAbout"
+			android:summary="@string/preferencesAboutSummary"
+			android:dialogTitle="@string/preferencesAboutApp" />
 		<Preference
 			android:key="privacy"
 			android:summary="https://morze.maxistar.me/legal/privatepolicy/"
-			android:title="Privacy Policy" />
+			android:title="@string/preferencesPrivacyPolicy" />
         </PreferenceCategory>
 </PreferenceScreen>

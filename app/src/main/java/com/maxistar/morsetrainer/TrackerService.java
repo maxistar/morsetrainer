@@ -9,11 +9,11 @@ public class TrackerService {
     TrackerService() {
     }
 
-    void initTracker(MorseApplication application) {
+    public void initTracker(MorseApplication application) {
         mTracker = application.getDefaultTracker();
     }
 
-    void track(String name) {
+    public void track(String name) {
         mTracker.setScreenName(name);
         mTracker.send(new HitBuilders.ScreenViewBuilder().build());
     }

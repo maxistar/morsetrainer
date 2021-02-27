@@ -14,19 +14,19 @@ public class ServiceLocator {
         return instance;
     }
 
-    SoundGenerator getSoundGenerator() {
+    public SoundGenerator getSoundGenerator() {
         return new SoundGenerator();
     }
 
-    HistoryPersistenseService getHistoryPersistenseSerice() {
+    public HistoryPersistenseService getHistoryPersistenseSerice() {
         return new HistoryPersistenseService();
     }
 
-    TrackerService getTrackerService() {
+    public TrackerService getTrackerService() {
         return new TrackerService();
     }
 
-    SoundPlayer getSoundPlayer() {
+    public SoundPlayer getSoundPlayer() {
         return new SoundPlayer();
     }
 }

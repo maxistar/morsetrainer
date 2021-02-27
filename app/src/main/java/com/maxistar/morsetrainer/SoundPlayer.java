@@ -23,7 +23,7 @@ public class SoundPlayer {
 
     boolean presented = false;
 
-    void initSounds(Context context) {
+    public void initSounds(Context context) {
         presented = isAudioPresented(context);
 
         if (!presented) {
@@ -74,27 +74,27 @@ public class SoundPlayer {
         return false;
     }
 
-    boolean isSoundPresented() {
+    public boolean isSoundPresented() {
         return presented;
     }
 
-    void playDitSound() {
+    public void playDitSound() {
         playSoundById(this.dip_sound, LOW_VOLUME);
     }
 
-    void playDashSound() {
+    public void playDashSound() {
         playSoundById(this.dash_sound, LOW_VOLUME);
     }
 
-    void playSound(int streamId) {
+    public void playSound(int streamId) {
         playSoundById(streamId, FULL_VOLUME);
     }
 
-    void playWrongSound() {
+    public void playWrongSound() {
         playSoundById(this.wrong_sound, FULL_VOLUME);
     }
 
-    void playCorrectSound() {
+    public void playCorrectSound() {
         playSoundById(this.correct_sound, FULL_VOLUME);
     }
 
@@ -110,7 +110,7 @@ public class SoundPlayer {
         }
     }
 
-    void unload(int streamId) {
+    public void unload(int streamId) {
         if (!presented) {
             return;
         }
@@ -118,7 +118,7 @@ public class SoundPlayer {
         pool.unload(streamId);
     }
 
-    SoundPool getPool() {
+    public SoundPool getPool() {
         return pool;
     }
 }

@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="language_names" translatable="false">
-        <item>System</item>
-        <item>English</item>
-        <item>Русский</item>
+    <string-array name="language_names">
+        <item>@string/languageDefault</item>
+        <item>@string/languageEnglish</item>
+        <item>@string/languageRussian</item>
+        <item>@string/languageSpanish</item>
     </string-array>
 
     <string-array name="language_values" translatable="false">
         <item></item>
         <item>en</item>
         <item>ru</item>
-        </string-array>
+        <item>es</item>
+    </string-array>
 </resources>

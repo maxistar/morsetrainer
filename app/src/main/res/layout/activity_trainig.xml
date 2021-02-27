@@ -101,7 +101,7 @@
         android:layout_alignParentLeft="true"
         android:layout_toLeftOf="@id/divider"
         android:layout_alignBottom="@id/divider2"
-        android:text=""
+        android:text="@string/dot"
         android:textColor="@color/black"
         style="@style/button"
         android:layout_alignParentStart="true"
@@ -118,7 +118,7 @@
         android:layout_toRightOf="@id/divider"
         android:textColor="@color/black"
         android:layout_alignBottom="@id/divider2"
-        android:text=""
+        android:text="@string/dash"
         style="@style/button"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@id/divider" />

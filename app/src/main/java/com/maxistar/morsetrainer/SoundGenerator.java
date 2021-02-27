@@ -32,7 +32,7 @@ public class SoundGenerator {
     boolean generated = false; // shows if sounds generated
 
 
-    void generateSounds() {
+    public void generateSounds() {
         if (generated)
             return;
 
@@ -90,7 +90,7 @@ public class SoundGenerator {
 
     }
 
-    void initSounds(Context context) {
+    public void initSounds(Context context) {
         File file = context.getFileStreamPath("_dash.wav");
         if (!file.exists()) {
             createDashSound(context);
@@ -149,7 +149,7 @@ public class SoundGenerator {
      * @param morse_code Morse Code
      * @return int Code of the sound
      */
-    int getMorseSound(SoundPool pool, Context context, String morse_code) {
+    public int getMorseSound(SoundPool pool, Context context, String morse_code) {
         // make filename
         String filename = this.getMorseCodeFilename(morse_code);
         generateSounds();

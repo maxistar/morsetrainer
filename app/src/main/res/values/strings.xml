@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Morse Audio Trainer</string>
-    <string name="empty"></string>
     <string name="nothing_selected">Nothing is selected! please select which characters you want to learn!</string>
     <string name="settings">Settings</string>
     <string name="progress">Progress</string>
-
+    <string name="empty" translatable="false">" "</string>
     <string name="singing_a">al-FA</string>
     <string name="singing_b">BE a good boy, BOB is the man</string>
     <string name="singing_c">CO-ca CO-la</string>
@@ -84,10 +83,30 @@
     <string name="Language">Language</string>
     <string name="Choose_Language">Choose Language</string>
     <string name="training">Training</string>
-    <string name="letter">Letter</string>
+    <string name="letter">Character</string>
     <string name="code">code</string>
 
     <string name="about">About</string>
     <string name="continue_button">Continue</string>
     <string name="about_text">Simple morse trainer with sound feedback written by Max Starikov http://maxistar.ru</string>
+    <string name="languageDefault">System</string>
+    <string name="languageRussian">Russian</string>
+    <string name="languageSpanish">Spanish</string>
+    <string name="languageEnglish">English</string>
+    <string name="preferencesAbout">About</string>
+    <string name="preferencesAboutApp">About Morse Teacher</string>
+    <string name="preferencesAboutSummary">just shortly about the application</string>
+    <string name="preferencesPrivacyPolicy">Privacy Policy</string>
+    <string name="preferencesVersion">Version</string>
+    <string name="preferencesWhatToLearn">What to learn</string>
+    <string name="preferencesLatinCharacters">Latin Charactes</string>
+    <string name="preferencesLearnLatin">learn latin letters</string>
+    <string name="preferencesNumbers">Numbers</string>
+    <string name="preferencesLearnNumbers">learn numbers</string>
+    <string name="preferencesPunctation">punctuation marks</string>
+    <string name="preferencesLearnPuctation">learn punctuation marks</string>
+    <string name="preferencesCyrillic">Cyrillic Letters</string>
+    <string name="preferencesLearnCyrillic">learn cyrillic letters</string>
+    <string name="dash" translatable="false">-</string>
+    <string name="dot" translatable="false">.</string>
 </resources>

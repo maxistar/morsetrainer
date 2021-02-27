@@ -1,4 +1,4 @@
-package com.maxistar.morsetrainer;
+package com.maxistar.morsetrainer.activities;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,6 +6,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Button;
+
+import com.maxistar.morsetrainer.R;
+import com.maxistar.morsetrainer.ServiceLocator;
+import com.maxistar.morsetrainer.SoundGenerator;
 
 public class MainActivity extends Activity {
 

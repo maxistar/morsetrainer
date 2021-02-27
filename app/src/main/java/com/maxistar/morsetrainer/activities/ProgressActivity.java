@@ -1,4 +1,4 @@
-package com.maxistar.morsetrainer;
+package com.maxistar.morsetrainer.activities;
 
 import java.util.ArrayList;
 import java.util.Map;
@@ -11,6 +11,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
+
+import com.maxistar.morsetrainer.Constants;
+import com.maxistar.morsetrainer.HistoryPersistenseService;
+import com.maxistar.morsetrainer.model.LetterInfo;
+import com.maxistar.morsetrainer.LetterStatistic;
+import com.maxistar.morsetrainer.MorseApplication;
+import com.maxistar.morsetrainer.model.MorseCode;
+import com.maxistar.morsetrainer.R;
+import com.maxistar.morsetrainer.ServiceLocator;
+import com.maxistar.morsetrainer.TrackerService;
 
 public class ProgressActivity extends ListActivity {
 	
