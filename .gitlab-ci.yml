@@ -1,6 +1,8 @@
 stages:
-  - build
-build:
-  stage: build
+  - test
+test:
+  stage: test
   script:
-    - echo "Building"
+    - echo "Compile project"
+    - export PATH=${GRADLE_HOME}/bin:${ANDROID_SDK_ROOT}/tools/bin:${PATH}
+    - gradle build
