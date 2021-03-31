@@ -1,5 +1,6 @@
 package com.maxistar.morsetrainer.activities;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,7 +12,10 @@ import com.maxistar.morsetrainer.R;
 import com.maxistar.morsetrainer.ServiceLocator;
 import com.maxistar.morsetrainer.SoundGenerator;
 
-public class MainActivity extends Activity {
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
+
+public class MainActivity extends AppCompatActivity {
 
     private static final int REQUEST_SETTINGS = 3;
 
@@ -37,9 +41,16 @@ public class MainActivity extends Activity {
         }
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu, menu);
+
+        if(menu instanceof MenuBuilder){
+            MenuBuilder m = (MenuBuilder) menu;
+            m.setOptionalIconsVisible(true);
+        }
+
         return true;
     }
 

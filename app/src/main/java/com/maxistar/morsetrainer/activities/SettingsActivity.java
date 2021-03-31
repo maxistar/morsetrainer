@@ -25,49 +25,49 @@ import java.util.Locale;
 
 public class SettingsActivity extends PreferenceActivity implements OnSharedPreferenceChangeListener {
 
-	Preference mVersion;
-	SettingsService settingsService;
+    Preference mVersion;
+    SettingsService settingsService;
 
-	TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
-	
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		addPreferencesFromResource(R.xml.preferences);
-		settingsService = SettingsService.getInstance(getApplicationContext());
+    TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
 
-		mVersion = this.findPreference("version_name");
-		PackageInfo pInfo;
-		try {
-			pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
-			mVersion.setSummary(pInfo.versionName);
-		} catch (NameNotFoundException e) {
-			e.printStackTrace();
-		}
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        addPreferencesFromResource(R.xml.preferences);
+        settingsService = SettingsService.getInstance(getApplicationContext());
 
-		trackerService.initTracker((MorseApplication) getApplication());
+        mVersion = this.findPreference("version_name");
+        PackageInfo pInfo;
+        try {
+            pInfo = getPackageManager().getPackageInfo(getPackageName(), 0);
+            mVersion.setSummary(pInfo.versionName);
+        } catch (NameNotFoundException e) {
+            e.printStackTrace();
+        }
 
-		Preference mPrivacy;
-		mPrivacy = this.findPreference("privacy");
+        trackerService.initTracker((MorseApplication) getApplication());
 
-		mPrivacy.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
-			@Override
-			public boolean onPreferenceClick(Preference preference) {
-				Intent intent = new Intent(Intent.ACTION_VIEW);
-				intent.setData(Uri.parse("https://morze.maxistar.me/legal/privatepolicy/"));
-				startActivity(intent);
-				return false;
-			}
-		});
-	}
-	
+        Preference mPrivacy;
+        mPrivacy = this.findPreference("privacy");
+
+        mPrivacy.setOnPreferenceClickListener(new Preference.OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                Intent intent = new Intent(Intent.ACTION_VIEW);
+                intent.setData(Uri.parse("https://morze.maxistar.me/legal/privatepolicy/"));
+                startActivity(intent);
+                return false;
+            }
+        });
+    }
+
     @Override
     protected void onResume() {
         super.onResume();
 
-		trackerService.track("SettingsActivity");
+        trackerService.track("SettingsActivity");
 
-		SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
         sharedPreferences.registerOnSharedPreferenceChangeListener(this);
     }
 
@@ -75,71 +75,71 @@ public class SettingsActivity extends PreferenceActivity implements OnSharedPref
     protected void onPause() {
         super.onPause();
 
-		// Unregister the listener whenever a key changes
+        // Unregister the listener whenever a key changes
         PreferenceManager.getDefaultSharedPreferences(this).unregisterOnSharedPreferenceChangeListener(this);    
     }
 
-	protected void showToast(String toast_str) {
-		Context context = getApplicationContext();
-		int duration = Toast.LENGTH_SHORT;
-		Toast toast = Toast.makeText(context, toast_str, duration);
-		toast.show();
-	}
+    protected void showToast(String toast_str) {
+        Context context = getApplicationContext();
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, toast_str, duration);
+        toast.show();
+    }
 
     public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
 
-		// check if all kinds of symbols are deselected and show message
-		if (!sharedPreferences.getBoolean("learn_latinica", true)
-				&& !sharedPreferences.getBoolean("learn_numbers", true)
-				&& !sharedPreferences.getBoolean("learn_punctuation_signs", true)
-				&& !sharedPreferences.getBoolean("learn_cyrilics", false)) {
+        // check if all kinds of symbols are deselected and show message
+        if (!sharedPreferences.getBoolean("learn_latinica", true)
+                && !sharedPreferences.getBoolean("learn_numbers", true)
+                && !sharedPreferences.getBoolean("learn_punctuation_signs", true)
+                && !sharedPreferences.getBoolean("learn_cyrilics", false)) {
 
-			showToast(l(R.string.nothing_selected));
-		}
+            showToast(l(R.string.nothing_selected));
+        }
 
-		if (SettingsService.SETTING_LANGUAGE.equals(key)) {
-			String lang = sharedPreferences.getString(SettingsService.SETTING_LANGUAGE, SettingsService.EN);
-			setLocale(lang);
-			SettingsService.setLanguageChangedFlag();
-		}
-		settingsService.reloadSettings(this.getApplicationContext());
+        if (SettingsService.SETTING_LANGUAGE.equals(key)) {
+            String lang = sharedPreferences.getString(SettingsService.SETTING_LANGUAGE, SettingsService.EN);
+            setLocale(lang);
+            SettingsService.setLanguageChangedFlag();
+        }
+        settingsService.reloadSettings(this.getApplicationContext());
 
     }
 
-	public void setLocale(String lang) {
-		Locale locale2 = new Locale(lang);
-		Locale.setDefault(locale2);
-		Configuration config2 = new Configuration();
-		config2.locale = locale2;
+    public void setLocale(String lang) {
+        Locale locale2 = new Locale(lang);
+        Locale.setDefault(locale2);
+        Configuration config2 = new Configuration();
+        config2.locale = locale2;
 
-		// updating locale
-		//getApplicationContext().getResources().updateConfiguration(config2, null);
-		getBaseContext().getResources().updateConfiguration(config2, null);
-		showPreferences();
-	}
+        // updating locale
+        //getApplicationContext().getResources().updateConfiguration(config2, null);
+        getBaseContext().getResources().updateConfiguration(config2, null);
+        showPreferences();
+    }
 
-	protected void showPreferences(){
-		Intent intent = new Intent(this, SettingsActivity.class);
-		intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-		startActivity(intent);
-	}
+    protected void showPreferences(){
+        Intent intent = new Intent(this, SettingsActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+    }
 
-	/**
-	 * Returns translation
-	 *
-	 * @param id Text ID
-	 * @return String
-	 */
-	String l(int id) {
-		return getBaseContext().getResources().getString(id);
-	}
+    /**
+     * Returns translation
+     *
+     * @param id Text ID
+     * @return String
+     */
+    String l(int id) {
+        return getBaseContext().getResources().getString(id);
+    }
 
-	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		if ((keyCode == KeyEvent.KEYCODE_BACK)) {
-			Intent intent = new Intent(this, MainActivity.class);
-			startActivity(intent);
-		}
-		return super.onKeyDown(keyCode, event);
-	}
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if ((keyCode == KeyEvent.KEYCODE_BACK)) {
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

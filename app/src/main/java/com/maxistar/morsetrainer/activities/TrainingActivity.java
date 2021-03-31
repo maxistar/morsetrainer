@@ -34,357 +34,367 @@ import java.util.Collections;
 import java.util.Map;
 import java.util.Stack;
 
-public class TrainingActivity extends Activity
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.view.menu.MenuBuilder;
+
+public class TrainingActivity extends AppCompatActivity
 {
-	private static final int REQUEST_SETTINGS = 3;
+    private static final int REQUEST_SETTINGS = 3;
 
-	private static final String TRACKING_ACTIVITY_NAME = "TrainingActivity";
+    private static final String TRACKING_ACTIVITY_NAME = "TrainingActivity";
 
-	PowerManager.WakeLock wl;
-	
-	Handler handler = new Handler();
-	TextView letter;
-	TextView morse_text;
-	TextView hint_text;
-	TextView type_text;
-	TextView singing_text;
+    PowerManager.WakeLock wl;
 
-	Map<Character, LetterStatistic> history = null;
-	Stack<LetterInfo> letters = null;
-	Stack<LetterInfo> letters_done = null;
+    Handler handler = new Handler();
+    TextView letter;
+    TextView morse_text;
+    TextView hint_text;
+    TextView type_text;
+    TextView singing_text;
 
-	boolean is_error = false; // true if no errors done
+    Map<Character, LetterStatistic> history = null;
+    Stack<LetterInfo> letters = null;
+    Stack<LetterInfo> letters_done = null;
 
-	LetterInfo current = null;
-	String user_code = "";
-	int repeat = 0;
+    boolean is_error = false; // true if no errors done
 
-
-	SettingsService settingsService;
-
-	private final SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
-
-	private final HistoryPersistenseService historyPersistenseService
-			= ServiceLocator.getInstance().getHistoryPersistenseSerice();
-
-	private final SoundPlayer soundPlayer = ServiceLocator.getInstance().getSoundPlayer();
-
-	private final TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
-
-	@Override
-	@SuppressLint("SourceLockedOrientationActivity")
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
-		setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-
-		settingsService = SettingsService.getInstance(this.getApplicationContext());
-		settingsService.applyLocale(this.getBaseContext());
-
-		soundGenerator.initSounds(this.getApplicationContext());
-
-		soundPlayer.initSounds(this.getApplicationContext());
+    LetterInfo current = null;
+    String user_code = "";
+    int repeat = 0;
 
 
-		setContentView(R.layout.activity_trainig);
+    SettingsService settingsService;
 
-		this.history = historyPersistenseService.getLearningInfo(this.getApplicationContext());
+    private final SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
 
-		letter = this.findViewById(R.id.textView1);
-		morse_text = this.findViewById(R.id.textView2);
-		hint_text = this.findViewById(R.id.textView3);
-		type_text = this.findViewById(R.id.textView4);
-		singing_text = this.findViewById(R.id.singing);
+    private final HistoryPersistenseService historyPersistenseService
+            = ServiceLocator.getInstance().getHistoryPersistenseSerice();
 
-		Button b1 = this.findViewById(R.id.button1);
-		b1.setOnClickListener(v -> clickDash());
+    private final SoundPlayer soundPlayer = ServiceLocator.getInstance().getSoundPlayer();
 
-		Button b2 = this.findViewById(R.id.button2);
-		b2.setOnClickListener(v -> clickDit());
+    private final TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
 
-		hint_text.setVisibility(View.GONE);
+    @Override
+    @SuppressLint("SourceLockedOrientationActivity")
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
 
-		initLetters();
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
-		// use stack?
-		letters_done = new Stack<>();
-		current = letters.pop();
-		showLetter(); // show it
+        settingsService = SettingsService.getInstance(this.getApplicationContext());
+        settingsService.applyLocale(this.getBaseContext());
 
-		trackerService.initTracker((MorseApplication) getApplication());
-	}
+        soundGenerator.initSounds(this.getApplicationContext());
 
-	void showLetter() {
+        soundPlayer.initSounds(this.getApplicationContext());
 
-		if (Constants.latins.containsKey(current.character)) {
-			this.type_text.setText(R.string.latins);
-		} else if (Constants.numbers.containsKey(current.character)) {
-			this.type_text.setText(R.string.number);
-		} else if (Constants.characters.containsKey(current.character)) {
-			this.type_text.setText(R.string.character);
-		} else if (Constants.cyrilics.containsKey(current.character)) {
-			this.type_text.setText(R.string.cyrilic);
-		} else {
-			this.type_text.setText(R.string.unknown);
-		}
 
-		letter.setText(String.valueOf(current.character));
-		this.morse_text.setText("");
-		this.morse_text.setTextColor(this.getResources()
-				.getColor(R.color.white));
-		this.singing_text.setText("");
+        setContentView(R.layout.activity_trainig);
 
-		soundPlayer.playSound(current.stream_id);
-	}
-	
-	protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars) {
-		LetterInfo l;
-		LetterStatistic s;
+        this.history = historyPersistenseService.getLearningInfo(this.getApplicationContext());
 
-		for (Map.Entry<Character, MorseCode> entry : chars.entrySet()) {
-			l = new LetterInfo();
-			l.character = entry.getKey();
-			l.morse_code = entry.getValue().code;
-			l.sound_res = entry.getValue().sound_res;
-			l.morse_singing_id = entry.getValue().singing;
+        letter = this.findViewById(R.id.textView1);
+        morse_text = this.findViewById(R.id.textView2);
+        hint_text = this.findViewById(R.id.textView3);
+        type_text = this.findViewById(R.id.textView4);
+        singing_text = this.findViewById(R.id.singing);
 
-			if (history.containsKey(entry.getKey())) {
-				s = history.get(entry.getKey());
-				if (s != null) {
-					l.count_tries = s.count_tries;
-					l.learned = s.learned;
-				}
-			}
-			letters.add(l);
-		}
-	}
+        Button b1 = this.findViewById(R.id.button1);
+        b1.setOnClickListener(v -> clickDash());
 
-	protected void initLetters() {
-		ArrayList<LetterInfo> letters = new ArrayList<>();
+        Button b2 = this.findViewById(R.id.button2);
+        b2.setOnClickListener(v -> clickDit());
+
+        hint_text.setVisibility(View.GONE);
+
+        initLetters();
+
+        // use stack?
+        letters_done = new Stack<>();
+        current = letters.pop();
+        showLetter(); // show it
+
+        trackerService.initTracker((MorseApplication) getApplication());
+    }
+
+    void showLetter() {
+
+        if (Constants.latins.containsKey(current.character)) {
+            this.type_text.setText(R.string.latins);
+        } else if (Constants.numbers.containsKey(current.character)) {
+            this.type_text.setText(R.string.number);
+        } else if (Constants.characters.containsKey(current.character)) {
+            this.type_text.setText(R.string.character);
+        } else if (Constants.cyrilics.containsKey(current.character)) {
+            this.type_text.setText(R.string.cyrilic);
+        } else {
+            this.type_text.setText(R.string.unknown);
+        }
+
+        letter.setText(String.valueOf(current.character));
+        this.morse_text.setText("");
+        this.morse_text.setTextColor(this.getResources()
+                .getColor(R.color.white));
+        this.singing_text.setText("");
+
+        soundPlayer.playSound(current.stream_id);
+    }
+
+    protected void addMorseCodes(ArrayList<LetterInfo> letters, Map<Character, MorseCode> chars) {
+        LetterInfo l;
+        LetterStatistic s;
+
+        for (Map.Entry<Character, MorseCode> entry : chars.entrySet()) {
+            l = new LetterInfo();
+            l.character = entry.getKey();
+            l.morse_code = entry.getValue().code;
+            l.sound_res = entry.getValue().sound_res;
+            l.morse_singing_id = entry.getValue().singing;
+
+            if (history.containsKey(entry.getKey())) {
+                s = history.get(entry.getKey());
+                if (s != null) {
+                    l.count_tries = s.count_tries;
+                    l.learned = s.learned;
+                }
+            }
+            letters.add(l);
+        }
+    }
+
+    protected void initLetters() {
+        ArrayList<LetterInfo> letters = new ArrayList<>();
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
 
-		boolean learnLatinica = sharedPreferences.getBoolean(SettingsService.LEARN_LATINICA, true);
-		boolean learnNumbers = sharedPreferences.getBoolean(SettingsService.LEARN_NUMBERS, true);
-		boolean learnPunctuationSigns = sharedPreferences.getBoolean(SettingsService.LEARN_PUNCTUATION_SIGNS, true);
-		boolean learnCirilic = sharedPreferences.getBoolean(SettingsService.LEARN_CYRILICS, false);
-		boolean savetyCheck = false;
-		if (!learnCirilic && !learnLatinica && !learnNumbers && !learnPunctuationSigns) {
-			savetyCheck = true;
-		}
+        boolean learnLatinica = sharedPreferences.getBoolean(SettingsService.LEARN_LATINICA, true);
+        boolean learnNumbers = sharedPreferences.getBoolean(SettingsService.LEARN_NUMBERS, true);
+        boolean learnPunctuationSigns = sharedPreferences.getBoolean(SettingsService.LEARN_PUNCTUATION_SIGNS, true);
+        boolean learnCirilic = sharedPreferences.getBoolean(SettingsService.LEARN_CYRILICS, false);
+        boolean savetyCheck = false;
+        if (!learnCirilic && !learnLatinica && !learnNumbers && !learnPunctuationSigns) {
+            savetyCheck = true;
+        }
 
-		if (savetyCheck || learnLatinica) {
-			addMorseCodes(letters, Constants.latins);
-		}
-		if (learnNumbers) {
-			addMorseCodes(letters, Constants.numbers);
-		}
-		if (learnPunctuationSigns) {
-			addMorseCodes(letters, Constants.characters);
-		}
-		if (learnCirilic) {
-			addMorseCodes(letters, Constants.cyrilics);
-		}
-		// sort list
-		// first less shown
-		// then shortest
-		// then learned
-		Collections.sort(letters, (o1, o2) -> {
-			if (o1.count_tries != o2.count_tries) {
-				return o1.count_tries - o2.count_tries;
-			}
-			if (o1.morse_code.length() != o2.morse_code.length()) {
-				return o1.morse_code.length() - o2.morse_code.length();
-			}
-			if (o1.learned != o2.learned) {
-				return o1.learned ? -1 : 1;
-			}
-			return 0;
-		});
+        if (savetyCheck || learnLatinica) {
+            addMorseCodes(letters, Constants.latins);
+        }
+        if (learnNumbers) {
+            addMorseCodes(letters, Constants.numbers);
+        }
+        if (learnPunctuationSigns) {
+            addMorseCodes(letters, Constants.characters);
+        }
+        if (learnCirilic) {
+            addMorseCodes(letters, Constants.cyrilics);
+        }
+        // sort list
+        // first less shown
+        // then shortest
+        // then learned
+        Collections.sort(letters, (o1, o2) -> {
+            if (o1.count_tries != o2.count_tries) {
+                return o1.count_tries - o2.count_tries;
+            }
+            if (o1.morse_code.length() != o2.morse_code.length()) {
+                return o1.morse_code.length() - o2.morse_code.length();
+            }
+            if (o1.learned != o2.learned) {
+                return o1.learned ? -1 : 1;
+            }
+            return 0;
+        });
 
-		int counter = 0;
-		this.letters = new Stack<>();
-		for (LetterInfo ss : letters) {
-			int count_chars_to_learn = 5;
-			if (counter >= count_chars_to_learn) {
-				break;
-			}
+        int counter = 0;
+        this.letters = new Stack<>();
+        for (LetterInfo ss : letters) {
+            int count_chars_to_learn = 5;
+            if (counter >= count_chars_to_learn) {
+                break;
+            }
 
-			counter++;
+            counter++;
 
-			if (soundPlayer.isSoundPresented()) {
-				ss.stream_id =
-						soundPlayer.getPool().load(
-								this.getApplicationContext(),
-								ss.sound_res,
-								1
-						);
+            if (soundPlayer.isSoundPresented()) {
+                ss.stream_id =
+                        soundPlayer.getPool().load(
+                                this.getApplicationContext(),
+                                ss.sound_res,
+                                1
+                        );
 
-				ss.morse_sound_id = this.soundGenerator.getMorseSound(
-						soundPlayer.getPool(),
-						this.getApplicationContext(),
-						ss.morse_code
-				);
-			}
+                ss.morse_sound_id = this.soundGenerator.getMorseSound(
+                        soundPlayer.getPool(),
+                        this.getApplicationContext(),
+                        ss.morse_code
+                );
+            }
 
-			this.letters.push(ss);
-		}
-		Collections.reverse(this.letters);
-	}
+            this.letters.push(ss);
+        }
+        Collections.reverse(this.letters);
+    }
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		getMenuInflater().inflate(R.menu.training_menu, menu);
-		return true;
-	}
+    @SuppressLint("RestrictedApi")
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.training_menu, menu);
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		int itemId = item.getItemId();
-		if (itemId == R.id.menu_settings) {
-			Intent intent = new Intent(
-					this.getBaseContext(),
-					SettingsActivity.class
-			);
-			this.startActivityForResult(intent, REQUEST_SETTINGS);
-		} else if (itemId == R.id.menu_prograss) {
-			this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
-		}
-		return super.onOptionsItemSelected(item);
-	}
+        if(menu instanceof MenuBuilder){
+            MenuBuilder m = (MenuBuilder) menu;
+            m.setOptionalIconsVisible(true);
+        }
 
-	void saveHistory() {
-		LetterInfo i;
-		// pool.release();
-		while (!letters_done.empty()) {
-			i = letters_done.pop();
-			soundPlayer.unload(i.stream_id);
+        return true;
+    }
 
-			if (this.history.containsKey(i.character)) {
-				LetterStatistic s = this.history.get(i.character);
-				if (s != null) {
-					s.count_tries++;
-					if (!i.correct) {
-						s.count_corrects = 0;
-					} else {
-						s.count_corrects++;
-						int corrects_to_be_learned = 3;
-						if (s.count_corrects >= corrects_to_be_learned) {
-							s.learned = true;
-						}
-					}
-				}
-			} else {
-				LetterStatistic s = new LetterStatistic();
-				this.history.put(i.character, s);
-			}
-		}
-		this.historyPersistenseService.saveLearningInfo(this.getApplicationContext(), this.history);
-	}
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.menu_settings) {
+            Intent intent = new Intent(
+                    this.getBaseContext(),
+                    SettingsActivity.class
+            );
+            this.startActivityForResult(intent, REQUEST_SETTINGS);
+        } else if (itemId == R.id.menu_prograss) {
+            this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
-	protected void clickDit() {
-		soundPlayer.playDitSound();
-		clickButton('·');
-	}
+    void saveHistory() {
+        LetterInfo i;
+        // pool.release();
+        while (!letters_done.empty()) {
+            i = letters_done.pop();
+            soundPlayer.unload(i.stream_id);
 
-	protected void clickDash() {
-		soundPlayer.playDashSound();
-		clickButton('-');
-	}
+            if (this.history.containsKey(i.character)) {
+                LetterStatistic s = this.history.get(i.character);
+                if (s != null) {
+                    s.count_tries++;
+                    if (!i.correct) {
+                        s.count_corrects = 0;
+                    } else {
+                        s.count_corrects++;
+                        int corrects_to_be_learned = 3;
+                        if (s.count_corrects >= corrects_to_be_learned) {
+                            s.learned = true;
+                        }
+                    }
+                }
+            } else {
+                LetterStatistic s = new LetterStatistic();
+                this.history.put(i.character, s);
+            }
+        }
+        this.historyPersistenseService.saveLearningInfo(this.getApplicationContext(), this.history);
+    }
 
-	protected void clickButton(Character ch) {
-		this.user_code = this.user_code + ch;
-		this.morse_text.setText(this.user_code);
-		if (!this.user_code.equals(this.current.morse_code)) {
-			// this.morzeText //make red!
-			if (!correctSoFar()) {
-				soundPlayer.playWrongSound();
-				this.morse_text.setText("");
+    protected void clickDit() {
+        soundPlayer.playDitSound();
+        clickButton('·');
+    }
 
-				if (this.current.morse_singing_id != 0) {
-					this.singing_text.setText(this.current.morse_singing_id);
-				}
-				hint_text.setVisibility(View.VISIBLE);
-				hint_text.setText(this.formatCode(this.current.morse_code));
-				
-				this.current.correct = false;
-				this.is_error = true;
-				this.user_code = ""; // try again
-				handler.postDelayed(() -> soundPlayer.playSound(current.morse_sound_id), 500);
-			}
-		} else { // done ok
-			hint_text.setVisibility(View.GONE);
-			this.user_code = "";
-			this.morse_text.setTextColor(
-				this.getResources().getColor(
-					R.color.green
-				)
-			);
-			soundPlayer.playCorrectSound();
-			handler.postDelayed(this::showNextLetter, 1000);
-			// shedule new letter
-		}
-	}
-	
-	String formatCode(String code) {
-		//return code.replace('', '');
-		return code;
-	}
+    protected void clickDash() {
+        soundPlayer.playDashSound();
+        clickButton('-');
+    }
 
-	void showNextLetter() {
-		int repeat_to_remember = 3;
-		if (this.repeat < repeat_to_remember && this.is_error) {
-			this.repeat++;
-		} else {
-			this.is_error = false;
-			if (letters.empty()) {
-				// save current statistic
-				saveHistory();
-				initLetters();
-			}
-			this.letters_done.push(this.current);
-			this.current = letters.pop(); // get new
-			repeat = 0;
-		}
-		this.showLetter();
-	}
+    protected void clickButton(Character ch) {
+        this.user_code = this.user_code + ch;
+        this.morse_text.setText(this.user_code);
+        if (!this.user_code.equals(this.current.morse_code)) {
+            // this.morzeText //make red!
+            if (!correctSoFar()) {
+                soundPlayer.playWrongSound();
+                this.morse_text.setText("");
 
-	protected boolean correctSoFar() {
-		if (this.user_code.length() > this.current.morse_code.length()) {
-			return false;
-		}
-		String substring = this.current.morse_code.substring(
-				0,
-				this.user_code.length()
-		);                                  // get substring of master string same
-											// length as userinput
-		return substring.equals(this.user_code);
-	}
+                if (this.current.morse_singing_id != 0) {
+                    this.singing_text.setText(this.current.morse_singing_id);
+                }
+                hint_text.setVisibility(View.VISIBLE);
+                hint_text.setText(this.formatCode(this.current.morse_code));
 
-	@Override
-	protected void onResume() {
-		super.onResume();
+                this.current.correct = false;
+                this.is_error = true;
+                this.user_code = ""; // try again
+                handler.postDelayed(() -> soundPlayer.playSound(current.morse_sound_id), 500);
+            }
+        } else { // done ok
+            hint_text.setVisibility(View.GONE);
+            this.user_code = "";
+            this.morse_text.setTextColor(
+                this.getResources().getColor(
+                    R.color.green
+                )
+            );
+            soundPlayer.playCorrectSound();
+            handler.postDelayed(this::showNextLetter, 1000);
+            // shedule new letter
+        }
+    }
 
-		trackerService.track(TRACKING_ACTIVITY_NAME);
-		try {
-			PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-			if (pm != null) {
-				wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "morse:MY_WAKE_TAG");
-				wl.acquire(1000);
-			}
-		} catch (Exception e) {
-			//can not acquire wake log
-		}
-	}
-	
-	@Override
-	protected void onPause() {
-		super.onPause();
-		try {
-			if (wl != null) {
-				wl.release();
-			}
-		} catch (Exception e) {
-			//can not release wake log
-		}
-	}
+    String formatCode(String code) {
+        //return code.replace('', '');
+        return code;
+    }
+
+    void showNextLetter() {
+        int repeat_to_remember = 3;
+        if (this.repeat < repeat_to_remember && this.is_error) {
+            this.repeat++;
+        } else {
+            this.is_error = false;
+            if (letters.empty()) {
+                // save current statistic
+                saveHistory();
+                initLetters();
+            }
+            this.letters_done.push(this.current);
+            this.current = letters.pop(); // get new
+            repeat = 0;
+        }
+        this.showLetter();
+    }
+
+    protected boolean correctSoFar() {
+        if (this.user_code.length() > this.current.morse_code.length()) {
+            return false;
+        }
+        String substring = this.current.morse_code.substring(
+                0,
+                this.user_code.length()
+        );                                  // get substring of master string same
+                                            // length as userinput
+        return substring.equals(this.user_code);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        trackerService.track(TRACKING_ACTIVITY_NAME);
+        try {
+            PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+            if (pm != null) {
+                wl = pm.newWakeLock(PowerManager.SCREEN_DIM_WAKE_LOCK, "morse:MY_WAKE_TAG");
+                wl.acquire(1000);
+            }
+        } catch (Exception e) {
+            //can not acquire wake log
+        }
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        try {
+            if (wl != null) {
+                wl.release();
+            }
+        } catch (Exception e) {
+            //can not release wake log
+        }
+    }
 }
