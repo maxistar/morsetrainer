@@ -20,4 +20,4 @@ test:
     - ssh pi@10.8.0.27 "adb -s ZY223NB8FP install -r -t /home/pi/tests/morsetrainer/app-debug-androidTest.apk"
     - ssh pi@10.8.0.27 "adb -s ZY223NB8FP install -r -t /home/pi/tests/morsetrainer/app-debug.apk"
     - echo "Run tests"
-    - ssh pi@10.8.0.27 "adb -s ZY223NB8FP shell am instrument -w -m -e debug false com.maxistar.morsetrainer.test/androidx.test.runner.AndroidJUnitRunner"
+    - ssh pi@10.8.0.27 "adb -s ZY223NB8FP shell am instrument -w -e debug false com.maxistar.morsetrainer.test/androidx.test.runner.AndroidJUnitRunner"
