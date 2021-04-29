@@ -12,82 +12,76 @@ import java.io.IOException;
 
 public class SoundGenerator {
 
-    /** Called when the activity is first created. */
-    private final double dash_duration = 0.5; // seconds
-    private final double dip_duration = 0.25; // seconds
-    private final double pause_duration = 0.25; // seconds
+    private final double dashDuration = 0.5; // seconds
+    private final double dipDuration = 0.25; // seconds
+    private final double pauseDuration = 0.25; // seconds
     private final int sampleRate = 8000;
+    private final double freqOfTone = 440; // hz
 
-    private final int pause_numSamples = (int) (sampleRate * pause_duration);
-    //private final double pause_sample[] = new double[pause_numSamples];
+    private final int pauseNumSamples = (int) (sampleRate * pauseDuration);
 
-    private final byte[] generatedSndPause = new byte[2 * pause_numSamples];
+    private final byte[] generatedSndPause = new byte[2 * pauseNumSamples];
 
-    private final int dash_numSamples = (int) (sampleRate * dash_duration);
-    private final byte[] generatedSndDash = new byte[2 * dash_numSamples];
+    private final int dashNumSamples = (int) (sampleRate * dashDuration);
+    private final byte[] generatedSndDash = new byte[2 * dashNumSamples];
 
-    private final int dip_numSamples = (int) (sampleRate * dip_duration);
-    private final byte[] generatedSndDip = new byte[2 * dip_numSamples];
+    private final int dipNumSamples = (int) (sampleRate * dipDuration);
+    private final byte[] generatedSndDip = new byte[2 * dipNumSamples];
 
-    boolean generated = false; // shows if sounds generated
-
+    private boolean generated = false; // shows if sounds generated
 
     public void generateSounds() {
-        if (generated)
+        if (generated) {
             return;
-
-        double[] dip_sample = new double[dip_numSamples];
-        // hz
-        double freqOfTone = 440;
-        for (int i = 0; i < dip_numSamples; ++i) {
-            dip_sample[i] = Math.sin(2 * Math.PI * i
-                    / (sampleRate / freqOfTone));
         }
+
+        double[] dip_sample = new double[dipNumSamples];
+        int i;
+        boolean pos = false;
+        for (i = 0; i < dipNumSamples; i++) {
+            dip_sample[i] = Math.sin(2 * Math.PI * i * freqOfTone / sampleRate);
+            pos = dip_sample[i] > 0;
+        }
+        do {
+            i--;
+            dip_sample[i] = 0;
+        } while ((!(dip_sample[i] > 0) || pos) && (!(dip_sample[i] <= 0) || !pos));
+
+        convertTo16BitPcb(dip_sample, generatedSndDip);
+
+        double[] dash_sample = new double[dashNumSamples];
+        for (i = 0; i < dashNumSamples; i++) {
+            dash_sample[i] = Math.sin(2 * Math.PI * i * freqOfTone / sampleRate);
+            pos = dash_sample[i] > 0;
+        }
+        do {
+            i--;
+            dash_sample[i] = 0;
+        } while ((!(dash_sample[i] > 0) || pos) && (!(dash_sample[i] <= 0) || !pos));
+
+
+        convertTo16BitPcb(dash_sample, generatedSndDash);
+
+        double[] space_sample = new double[pauseNumSamples];
+        for (i = 0; i < pauseNumSamples; ++i) {
+            space_sample[i] = 0;
+        }
+        convertTo16BitPcb(space_sample, generatedSndPause);
+
+        generated = true;
+    }
+
+    private void convertTo16BitPcb(double[] sample, byte[] generatedSnd) {
         // convert to 16 bit pcm sound array
         // assumes the sample buffer is normalised.
         int idx = 0;
-        for (final double dVal : dip_sample) {
+        for (double dVal : sample) {
             // scale to maximum amplitude
-            final short val = (short) ((dVal * 32767));
+            short val = (short) ((dVal * 32767));
             // in 16 bit wav PCM, first byte is the low order byte
-            generatedSndDip[idx++] = (byte) (val & 0x00ff);
-            generatedSndDip[idx++] = (byte) ((val & 0xff00) >>> 8);
+            generatedSnd[idx++] = (byte) (val & 0x00ff);
+            generatedSnd[idx++] = (byte) ((val & 0xff00) >>> 8);
         }
-
-        double[] dash_sample = new double[dash_numSamples];
-        for (int i = 0; i < dash_numSamples; ++i) {
-            dash_sample[i] = Math.sin(
-                    2 * Math.PI * i / (sampleRate / freqOfTone)
-            );
-        }
-
-        // convert to 16 bit pcm sound array
-        // assumes the sample buffer is normalised.
-        idx = 0;
-        for (final double dVal : dash_sample) {
-            // scale to maximum amplitude
-            final short val = (short) ((dVal * 32767));
-            // in 16 bit wav PCM, first byte is the low order byte
-            generatedSndDash[idx++] = (byte) (val & 0x00ff);
-            generatedSndDash[idx++] = (byte) ((val & 0xff00) >>> 8);
-        }
-
-        double[] space_sample = new double[pause_numSamples];
-        for (int i = 0; i < pause_numSamples; ++i) {
-            space_sample[i] = 0;
-        }
-
-        // convert to 16 bit pcm sound array
-        // assumes the sample buffer is normalised.
-        idx = 0;
-        for (final double dVal : space_sample) {
-            // scale to maximum amplitude
-            final short val = (short) ((dVal * 32767));
-            // in 16 bit wav PCM, first byte is the low order byte
-            generatedSndPause[idx++] = (byte) (val & 0x00ff);
-            generatedSndPause[idx++] = (byte) ((val & 0xff00) >>> 8);
-        }
-
     }
 
     public void initSounds(Context context) {
