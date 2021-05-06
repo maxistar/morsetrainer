@@ -17,6 +17,7 @@ public class SoundGenerator {
     private final double pauseDuration = 0.25; // seconds
     private final int sampleRate = 8000;
     private final double freqOfTone = 440; // hz
+    private final int numberDebounce = 200;
 
     private final int pauseNumSamples = (int) (sampleRate * pauseDuration);
 
@@ -37,38 +38,35 @@ public class SoundGenerator {
 
         double[] dip_sample = new double[dipNumSamples];
         int i;
-        boolean pos = false;
         for (i = 0; i < dipNumSamples; i++) {
             dip_sample[i] = Math.sin(2 * Math.PI * i * freqOfTone / sampleRate);
-            pos = dip_sample[i] > 0;
         }
-        do {
-            i--;
-            dip_sample[i] = 0;
-        } while ((!(dip_sample[i] > 0) || pos) && (!(dip_sample[i] <= 0) || !pos));
+        debounce(dip_sample, i-1);
 
         convertTo16BitPcb(dip_sample, generatedSndDip);
 
         double[] dash_sample = new double[dashNumSamples];
         for (i = 0; i < dashNumSamples; i++) {
             dash_sample[i] = Math.sin(2 * Math.PI * i * freqOfTone / sampleRate);
-            pos = dash_sample[i] > 0;
         }
-        do {
-            i--;
-            dash_sample[i] = 0;
-        } while ((!(dash_sample[i] > 0) || pos) && (!(dash_sample[i] <= 0) || !pos));
+        debounce(dash_sample, i-1);
 
 
         convertTo16BitPcb(dash_sample, generatedSndDash);
 
         double[] space_sample = new double[pauseNumSamples];
-        for (i = 0; i < pauseNumSamples; ++i) {
+        for (i = 0; i < pauseNumSamples; i++) {
             space_sample[i] = 0;
         }
         convertTo16BitPcb(space_sample, generatedSndPause);
 
         generated = true;
+    }
+
+    private void debounce(double[] sample, int numberSamples) {
+        for (int i = 0; i < numberDebounce; i++) {
+            sample[numberSamples - i] = sample[numberSamples - i] * ((1.0 * i) / numberDebounce);
+        }
     }
 
     private void convertTo16BitPcb(double[] sample, byte[] generatedSnd) {
