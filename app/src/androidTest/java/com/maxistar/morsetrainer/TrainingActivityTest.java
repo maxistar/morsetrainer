@@ -46,7 +46,7 @@ public class TrainingActivityTest {
     @Test
     public void changeText_sameActivity() {
 
-        Screengrab.screenshot("training");
+        // Screengrab.screenshot("training");
         // Type text and then press the button.
         //onView(withId(R.id.editTextUserInput))
         //        .perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());

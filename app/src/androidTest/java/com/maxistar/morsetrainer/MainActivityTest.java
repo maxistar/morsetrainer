@@ -5,9 +5,12 @@ import com.maxistar.morsetrainer.activities.TrainingActivity;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.ClassRule;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+
+import androidx.annotation.ContentView;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 import androidx.test.filters.LargeTest;
@@ -15,7 +18,9 @@ import androidx.test.filters.LargeTest;
 
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 import tools.fastlane.screengrab.Screengrab;
+import tools.fastlane.screengrab.locale.LocaleTestRule;
 
+import static androidx.test.espresso.Espresso.onView;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static androidx.test.espresso.action.ViewActions.click;
@@ -25,6 +30,9 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 @RunWith(AndroidJUnit4.class)
 @LargeTest
 public class MainActivityTest {
+
+    @ClassRule
+    public static final LocaleTestRule localeTestRule = new LocaleTestRule();
 
     @Rule
     public ActivityScenarioRule<MainActivity> activityRule
@@ -45,19 +53,14 @@ public class MainActivityTest {
     }
 
     @Test
-    public void changeText_sameActivity() {
-
-        Screengrab.screenshot("training");
-        // Type text and then press the button.
-        //onView(withId(R.id.editTextUserInput))
-        //        .perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());
-        //onView(withId(R.id.changeTextBt)).perform(click());
-
-        // Check that the text was changed.
-        //onView(withId(R.id.code)).check(matches(withText("")));
+    public void goToTraining() {
+        onView(withId(R.id.button_training)).perform(click());
+        Screengrab.screenshot("main");
     }
 
     @Test
-    public void addMorseCodes() {
+    public void goToProgress() {
+        onView(withId(R.id.button_progress)).perform(click());
+        Screengrab.screenshot("progress");
     }
 }
