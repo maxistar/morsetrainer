@@ -3,6 +3,8 @@
 /build
 /captures
 /app/build
+/releases/
+/images/scaled/
 .idea
 .gradle
 *.iml
