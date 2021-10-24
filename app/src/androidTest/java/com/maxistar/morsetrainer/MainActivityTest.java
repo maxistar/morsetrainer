@@ -1,5 +1,6 @@
 package com.maxistar.morsetrainer;
 
+import com.maxistar.morsetrainer.activities.MainActivity;
 import com.maxistar.morsetrainer.activities.TrainingActivity;
 
 import org.junit.After;
@@ -23,11 +24,11 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 
 @RunWith(AndroidJUnit4.class)
 @LargeTest
-public class TrainingActivityTest {
+public class MainActivityTest {
 
     @Rule
-    public ActivityScenarioRule<TrainingActivity> activityRule
-            = new ActivityScenarioRule<>(TrainingActivity.class);
+    public ActivityScenarioRule<MainActivity> activityRule
+            = new ActivityScenarioRule<>(MainActivity.class);
 
     @Before
     public void setUp() throws Exception {
@@ -40,7 +41,7 @@ public class TrainingActivityTest {
     @Test
     public void onCreate() {
         //onView(withId(R.id.code)).check(matches(withText("")));
-                //.perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());
+        //.perform(typeText(STRING_TO_BE_TYPED), closeSoftKeyboard());
     }
 
     @Test
