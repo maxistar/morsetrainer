@@ -1,0 +1,9 @@
+This simple program is created to help you learn Morse code. You can learn Morse code keeping your phone in your pocket - the sound feedback helps you to know if you doing well or not.
+
+There are some known issues to be fixed.
+Known issues:
+- sounds play simultaneously if you make several mistakes
+- need to correct pronunciations for some sounds
+- need better translation
+
+This is beta version, please leave your feedbacks - this will encourage me create new versions sooner and make this software better.
