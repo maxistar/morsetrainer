@@ -21,6 +21,8 @@ import tools.fastlane.screengrab.Screengrab;
 import tools.fastlane.screengrab.locale.LocaleTestRule;
 
 import static androidx.test.espresso.Espresso.onView;
+import static androidx.test.espresso.assertion.ViewAssertions.matches;
+import static androidx.test.espresso.matcher.ViewMatchers.isDisplayed;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import static androidx.test.espresso.action.ViewActions.click;
@@ -54,8 +56,10 @@ public class MainActivityTest {
 
     @Test
     public void goToTraining() {
-        onView(withId(R.id.button_training)).perform(click());
+        onView(withId(R.id.button_training)).check(matches(isDisplayed()));
         Screengrab.screenshot("main");
+        onView(withId(R.id.button_training)).perform(click());
+        Screengrab.screenshot("training");
     }
 
     @Test
