@@ -10,3 +10,4 @@
 *.iml
 .DS_Store
 /fastlane/Appfile
+/local.properties
