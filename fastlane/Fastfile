@@ -56,4 +56,19 @@ platform :android do
     gradle(task: "clean assembleRelease")
     upload_to_play_store
   end
+
+  desc "Upload images"
+  lane :deploy_images do
+    versions = google_play_track_version_codes()
+    version_code = versions[0]
+
+    upload_to_play_store(
+      skip_upload_apk: true,
+      skip_upload_metadata: false,
+      skip_upload_images: false,
+      skip_upload_screenshots: false,
+      skip_upload_aab: true,
+      version_code: version_code
+    )
+  end
 end
