@@ -4,6 +4,7 @@ test:
   stage: test
   script:
     - echo "Compile project"
+    - cp local.properties.dist local.properties
     - export PATH=${GRADLE_HOME}/bin:${ANDROID_SDK_ROOT}/tools/bin:${PATH}
     - gradle clean
     - gradle build
