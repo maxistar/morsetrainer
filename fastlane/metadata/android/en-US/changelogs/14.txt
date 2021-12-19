@@ -1,0 +1,1 @@
+- the link in the "about..." section now opens in the browser
