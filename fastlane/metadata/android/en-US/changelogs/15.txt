@@ -1,0 +1,1 @@
+- use volume buttons to work with application

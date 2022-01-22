@@ -103,4 +103,6 @@
     <string name="preferencesLearnPuctation">учить знаки пунктуации</string>
     <string name="preferencesCyrillic">Кириллические символы</string>
     <string name="preferencesLearnCyrillic">учить кириллицу</string>
+    <string name="preferenceVolumeFunctions">Клавиши громкости</string>
+    <string name="preferenceVolumeFunctionsSummary">Использовать клавиши громкости для навигации</string>
 </resources>

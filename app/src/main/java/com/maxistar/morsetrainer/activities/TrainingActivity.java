@@ -10,10 +10,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.TextView;
 
 import com.maxistar.morsetrainer.Constants;
@@ -234,6 +237,15 @@ public class TrainingActivity extends AppCompatActivity
         Collections.reverse(this.letters);
     }
 
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        MenuItem searchItem = menu.findItem(R.id.options_menu_volume);
+        if (searchItem != null) {
+            searchItem.setChecked(settingsService.isUseVolumeButtons());
+        }
+        return super.onPrepareOptionsMenu(menu);
+    }
+
     @SuppressLint("RestrictedApi")
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -258,8 +270,29 @@ public class TrainingActivity extends AppCompatActivity
             this.startActivityForResult(intent, REQUEST_SETTINGS);
         } else if (itemId == R.id.menu_prograss) {
             this.startActivity(new Intent(this.getBaseContext(), ProgressActivity.class));
+        } else if (itemId == R.id.options_menu_volume) {
+            settingsService.toggleUseVolumeButtons(this.getApplicationContext());
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    protected boolean useVolumeNavigation() {
+        return settingsService.isUseVolumeButtons();
+    }
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (useVolumeNavigation()) {
+            if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+                clickDash();
+                return true;
+            }
+            if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+                clickDit();
+                return true;
+            }
+        }
+        return super.onKeyDown(keyCode, event);
     }
 
     void saveHistory() {

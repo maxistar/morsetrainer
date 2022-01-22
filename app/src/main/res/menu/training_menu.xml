@@ -13,4 +13,12 @@
         app:showAsAction="never"
         android:icon="@drawable/ic_settings"
         android:title="@string/settings"/>
+    <item
+        android:id="@+id/options_menu_volume"
+        android:title="@string/preferenceVolumeFunctionsSummary"
+        android:icon="@drawable/ic_volume"
+        app:showAsAction="never"
+        android:checkable="true"
+        android:checked="true"
+        />
 </menu>

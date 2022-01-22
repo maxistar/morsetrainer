@@ -109,4 +109,6 @@
     <string name="preferencesLearnCyrillic">learn cyrillic letters</string>
     <string name="dash" translatable="false">-</string>
     <string name="dot" translatable="false">.</string>
+    <string name="preferenceVolumeFunctions">Volume Buttons</string>
+    <string name="preferenceVolumeFunctionsSummary">Use volume buttons for navigation</string>
 </resources>

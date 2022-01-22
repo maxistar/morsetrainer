@@ -95,4 +95,6 @@
     <string name="preferencesLearnLatin">Aprender los caracteres latinos</string>
     <string name="preferencesWhatToLearn">Grupos y estilos</string>
     <string name="languageSpanish">Español</string>
+    <string name="preferenceVolumeFunctions">Botones de volumen</string>
+    <string name="preferenceVolumeFunctionsSummary">Use los botones de volumen para navegar</string>
 </resources>

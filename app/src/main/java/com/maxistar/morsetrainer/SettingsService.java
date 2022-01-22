@@ -18,6 +18,8 @@ public class SettingsService {
 
     public static final String LEARN_CYRILICS = "learn_cyrilics";
 
+    public static final String USE_VOLUME_BUTTONS_KEY = "use_volume_buttons";
+
     public static final String EMPTY = "";
 
     public static final String EN = "en";
@@ -26,6 +28,7 @@ public class SettingsService {
 
     private static boolean languageWasChanged = false;
 
+    private boolean useVolumeButtons = false;
 
     private SettingsService(Context context) {
         loadSettings(context);
@@ -34,6 +37,7 @@ public class SettingsService {
     private void loadSettings(Context context) {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         language = sharedPref.getString(SETTING_LANGUAGE, EMPTY);
+        useVolumeButtons = sharedPref.getBoolean(USE_VOLUME_BUTTONS_KEY, false);
     }
 
     public void reloadSettings(Context context) {
@@ -42,6 +46,13 @@ public class SettingsService {
 
     static public SettingsService getInstance(Context context) {
         return new SettingsService(context);
+    }
+
+    private void setSettingValue(String name, boolean value, Context context) {
+        SharedPreferences settings = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = settings.edit();
+        editor.putBoolean(name, value);
+        editor.apply();
     }
 
     private void setSettingValue(String name, String value, Context context) {
@@ -83,5 +94,19 @@ public class SettingsService {
         Configuration config2 = new Configuration();
         config2.locale = locale2;
         context.getResources().updateConfiguration(config2, null);
+    }
+
+    public void toggleUseVolumeButtons(Context context) {
+        if (isUseVolumeButtons()) {
+            this.setSettingValue(USE_VOLUME_BUTTONS_KEY, false, context);
+            this.useVolumeButtons = false;
+        } else {
+            this.setSettingValue(USE_VOLUME_BUTTONS_KEY, true, context);
+            this.useVolumeButtons = true;
+        }
+    }
+
+    public boolean isUseVolumeButtons() {
+        return useVolumeButtons;
     }
 }
