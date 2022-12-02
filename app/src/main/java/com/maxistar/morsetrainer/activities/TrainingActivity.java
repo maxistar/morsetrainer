@@ -1,14 +1,18 @@
 package com.maxistar.morsetrainer.activities;
 
+import android.Manifest;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.Menu;
@@ -18,6 +22,7 @@ import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.maxistar.morsetrainer.Constants;
 import com.maxistar.morsetrainer.HistoryPersistenseService;
@@ -39,6 +44,8 @@ import java.util.Stack;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.view.menu.MenuBuilder;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
 public class TrainingActivity extends AppCompatActivity
 {
@@ -76,6 +83,7 @@ public class TrainingActivity extends AppCompatActivity
     private final SoundPlayer soundPlayer = ServiceLocator.getInstance().getSoundPlayer();
 
     private final TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
+    private Vibrator vibrator;
 
     @Override
     @SuppressLint("SourceLockedOrientationActivity")
@@ -118,6 +126,23 @@ public class TrainingActivity extends AppCompatActivity
         showLetter(); // show it
 
         trackerService.initTracker((MorseApplication) getApplication());
+        checkPermissions();
+        // get the VIBRATOR_SERVICE system service
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+    }
+
+    private void checkPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.VIBRATE) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return;
+        }
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.VIBRATE)) {
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.VIBRATE}, 1);
+        }
     }
 
     void showLetter() {
@@ -326,10 +351,39 @@ public class TrainingActivity extends AppCompatActivity
 
     protected void clickDit() {
         soundPlayer.playDitSound();
+        final VibrationEffect vibrationEffect1;
+
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            // this effect creates the vibration of default amplitude for 1000ms(1 sec)
+            vibrationEffect1 = VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE);
+
+            // it is safe to cancel other vibrations currently taking place
+            vibrator.cancel();
+            vibrator.vibrate(vibrationEffect1);
+        } else {
+            vibrator.vibrate(500);
+        }
+
         clickButton('·');
     }
 
     protected void clickDash() {
+        final VibrationEffect vibrationEffect1;
+
+        // this is the only type of the vibration which requires system version Oreo (API 26)
+         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            // this effect creates the vibration of default amplitude for 1000ms(1 sec)
+            vibrationEffect1 = VibrationEffect.createOneShot(1000, VibrationEffect.DEFAULT_AMPLITUDE);
+
+            // it is safe to cancel other vibrations currently taking place
+            vibrator.cancel();
+            vibrator.vibrate(vibrationEffect1);
+        } else {
+            vibrator.vibrate(1000);
+         }
+
         soundPlayer.playDashSound();
         clickButton('-');
     }
