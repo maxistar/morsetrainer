@@ -11,12 +11,12 @@ def signingKeyPassword = properties.getProperty('signing_key_password')
 
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 33
 
     defaultConfig {
         applicationId "com.maxistar.morsetrainer"
         minSdkVersion 18
-        targetSdkVersion 30
+        targetSdkVersion 33
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
