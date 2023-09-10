@@ -13,6 +13,7 @@ import android.preference.PreferenceManager;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
@@ -68,6 +69,7 @@ public class TrainingActivity extends AppCompatActivity
 
     SettingsService settingsService;
 
+
     private final SoundGenerator soundGenerator = ServiceLocator.getInstance().getSoundGenerator();
 
     private final HistoryPersistenseService historyPersistenseService
@@ -77,8 +79,29 @@ public class TrainingActivity extends AppCompatActivity
 
     private final TrackerService trackerService = ServiceLocator.getInstance().getTrackerService();
 
+
+    // start
+
+    //private Button myButton;
+    //private long pressStartTime;
+    //private long pressDuration;
+    //private Handler newHandler = new Handler();
+
+    private long keyDownTime = 0;
+    private boolean pressed = false;
+
+    private Runnable longClickRunnable = new Runnable() {
+        @Override
+        public void run() {
+            // Handle long press here
+            // You can do something when the button is pressed for a long time
+            // For example, show a context menu or perform some action.
+        }
+    };
+    // stop
+
+
     @Override
-    @SuppressLint("SourceLockedOrientationActivity")
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
@@ -92,7 +115,46 @@ public class TrainingActivity extends AppCompatActivity
         soundPlayer.initSounds(this.getApplicationContext());
 
 
-        setContentView(R.layout.activity_trainig);
+        if (settingsService.isOneButtonMode()) { // one button
+            setContentView(R.layout.activity_one_button_trainig);
+            Button b1 = this.findViewById(R.id.button1);
+            //b1.setOnTouchListener(v -> clickDotDash());
+            /*
+            b1.setOnTouchListener(new View.OnTouchListener() {
+                @Override
+                public boolean onTouch(View v, MotionEvent event) {
+                    switch (event.getAction()) {
+                        case MotionEvent.ACTION_DOWN:
+                            pressStartTime = System.currentTimeMillis();
+                            newHandler.postDelayed(longClickRunnable, 1000); // Define your long press duration here (in milliseconds)
+                            return true;
+
+                        case MotionEvent.ACTION_UP:
+                            newHandler.removeCallbacks(longClickRunnable);
+                            pressDuration = System.currentTimeMillis() - pressStartTime;
+                            if (pressDuration < 1000) { // Adjust this threshold as needed
+                                // Handle short click here
+                                // You can do something when the button is tapped.
+                            } else {
+                                //
+                            }
+                            return true;
+
+                        case MotionEvent.ACTION_CANCEL:
+                            newHandler.removeCallbacks(longClickRunnable);
+                            return true;
+                    }
+                    return false;
+                }
+            }); */
+
+        } else { // two buttons
+            setContentView(R.layout.activity_trainig);
+            Button b1 = this.findViewById(R.id.button1);
+            b1.setOnClickListener(v -> clickDash());
+            Button b2 = this.findViewById(R.id.button2);
+            b2.setOnClickListener(v -> clickDit());
+        }
 
         this.history = historyPersistenseService.getLearningInfo(this.getApplicationContext());
 
@@ -102,14 +164,8 @@ public class TrainingActivity extends AppCompatActivity
         type_text = this.findViewById(R.id.textView4);
         singing_text = this.findViewById(R.id.singing);
 
-        Button b1 = this.findViewById(R.id.button1);
-        b1.setOnClickListener(v -> clickDash());
-
-        Button b2 = this.findViewById(R.id.button2);
-        b2.setOnClickListener(v -> clickDit());
 
         hint_text.setVisibility(View.GONE);
-
         initLetters();
 
         // use stack?
@@ -172,11 +228,8 @@ public class TrainingActivity extends AppCompatActivity
         boolean learnLatinica = sharedPreferences.getBoolean(SettingsService.LEARN_LATINICA, true);
         boolean learnNumbers = sharedPreferences.getBoolean(SettingsService.LEARN_NUMBERS, true);
         boolean learnPunctuationSigns = sharedPreferences.getBoolean(SettingsService.LEARN_PUNCTUATION_SIGNS, true);
-        boolean learnCirilic = sharedPreferences.getBoolean(SettingsService.LEARN_CYRILICS, false);
-        boolean savetyCheck = false;
-        if (!learnCirilic && !learnLatinica && !learnNumbers && !learnPunctuationSigns) {
-            savetyCheck = true;
-        }
+        boolean learnCyrillic = sharedPreferences.getBoolean(SettingsService.LEARN_CYRILICS, false);
+        boolean savetyCheck = !learnCyrillic && !learnLatinica && !learnNumbers && !learnPunctuationSigns;
 
         if (savetyCheck || learnLatinica) {
             addMorseCodes(letters, Constants.latins);
@@ -187,7 +240,7 @@ public class TrainingActivity extends AppCompatActivity
         if (learnPunctuationSigns) {
             addMorseCodes(letters, Constants.characters);
         }
-        if (learnCirilic) {
+        if (learnCyrillic) {
             addMorseCodes(letters, Constants.cyrilics);
         }
         // sort list
@@ -280,20 +333,64 @@ public class TrainingActivity extends AppCompatActivity
         return settingsService.isUseVolumeButtons();
     }
 
+    protected boolean isOneKeyMode() {
+        return settingsService.isUseVolumeButtons();
+    }
+
     @Override
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (useVolumeNavigation()) {
-            if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-                clickDash();
-                return true;
-            }
-            if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
-                clickDit();
-                return true;
+            if (isOneKeyMode()) {
+                if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN)) {
+                    if (!pressed) {
+                        pressed = true;
+                        keyDownTime = System.currentTimeMillis();
+                    }
+                    return true;
+                }
+            } else {
+                if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+                    clickDash();
+                    return true;
+                }
+                if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+                    clickDit();
+                    return true;
+                }
             }
         }
         return super.onKeyDown(keyCode, event);
     }
+
+    @Override
+    public boolean onKeyUp(int keyCode, KeyEvent event) {
+        if (useVolumeNavigation()) {
+            if (isOneKeyMode()) {
+                if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+                    pressed = false;
+                    long keyUpTime = System.currentTimeMillis();
+                    long interval = keyUpTime - keyDownTime;
+                    if (interval > 700) {
+                        clickDash();
+                    } else {
+                        clickDit();
+                    }
+                    return true;
+                }
+            } else {
+                if (keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
+                    clickDash();
+                    return true;
+                }
+                if (keyCode == KeyEvent.KEYCODE_VOLUME_UP) {
+                    clickDit();
+                    return true;
+                }
+            }
+        }
+        return super.onKeyUp(keyCode, event);
+    }
+
 
     void saveHistory() {
         LetterInfo i;
@@ -332,6 +429,12 @@ public class TrainingActivity extends AppCompatActivity
     protected void clickDash() {
         soundPlayer.playDashSound();
         clickButton('-');
+    }
+
+    protected boolean clickDotDash() {
+        //soundPlayer.playDashSound();
+        //clickButton('-');
+        return false;
     }
 
     protected void clickButton(Character ch) {

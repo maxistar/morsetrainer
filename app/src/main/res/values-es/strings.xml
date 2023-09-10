@@ -97,4 +97,8 @@
     <string name="languageSpanish">Español</string>
     <string name="preferenceVolumeFunctions">Botones de volumen</string>
     <string name="preferenceVolumeFunctionsSummary">Use los botones de volumen para navegar</string>
+
+    <string name="preferenceOneButtonMode">Modo de un botón</string>
+    <string name="preferenceOneButtonModeSummary">Utilice un botón como tecla Morse</string>
+
 </resources>

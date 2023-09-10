@@ -27,6 +27,11 @@
             android:title="@string/preferenceVolumeFunctions"
             android:summary="@string/preferenceVolumeFunctionsSummary"
             android:defaultValue="false" />
+        <CheckBoxPreference
+            android:key="one_button_mode"
+            android:title="@string/preferenceOneButtonMode"
+            android:summary="@string/preferenceOneButtonModeSummary"
+            android:defaultValue="false" />
     </PreferenceCategory>
     <PreferenceCategory
         android:title="@string/Appearance">
