@@ -112,4 +112,8 @@
     <string name="dot_dash" translatable="false">•/−</string>
     <string name="preferenceVolumeFunctions">Volume Buttons</string>
     <string name="preferenceVolumeFunctionsSummary">Use volume buttons for navigation</string>
+
+    <string name="preferenceOneButtonMode">One Button Mode</string>
+    <string name="preferenceOneButtonModeSummary">Use the one button for dash and dots</string>
+
 </resources>

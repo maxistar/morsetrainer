@@ -18,6 +18,8 @@ public class SettingsService {
 
     public static final String LEARN_CYRILICS = "learn_cyrilics";
 
+    public static final String IS_ONE_BUTTON_KEY = "one_button_mode";
+
     public static final String USE_VOLUME_BUTTONS_KEY = "use_volume_buttons";
 
     public static final String EMPTY = "";
@@ -30,6 +32,8 @@ public class SettingsService {
 
     private boolean useVolumeButtons = false;
 
+    private boolean isOneButtonMode = false;
+
     private SettingsService(Context context) {
         loadSettings(context);
     }
@@ -38,6 +42,7 @@ public class SettingsService {
         SharedPreferences sharedPref = PreferenceManager.getDefaultSharedPreferences(context);
         language = sharedPref.getString(SETTING_LANGUAGE, EMPTY);
         useVolumeButtons = sharedPref.getBoolean(USE_VOLUME_BUTTONS_KEY, false);
+        isOneButtonMode = sharedPref.getBoolean(IS_ONE_BUTTON_KEY, false);
     }
 
     public void reloadSettings(Context context) {
@@ -108,5 +113,9 @@ public class SettingsService {
 
     public boolean isUseVolumeButtons() {
         return useVolumeButtons;
+    }
+
+    public boolean isOneButtonMode() {
+        return isOneButtonMode;
     }
 }
