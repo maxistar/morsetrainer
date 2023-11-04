@@ -45,6 +45,8 @@ public class TrainingActivity extends AppCompatActivity
 {
     private static final int REQUEST_SETTINGS = 3;
 
+    private final int dashDuration = 500; // s
+
     private static final String TRACKING_ACTIVITY_NAME = "TrainingActivity";
 
     PowerManager.WakeLock wl;
@@ -343,6 +345,7 @@ public class TrainingActivity extends AppCompatActivity
             if (isOneKeyMode()) {
                 if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN)) {
                     if (!pressed) {
+                        startSound();
                         pressed = true;
                         keyDownTime = System.currentTimeMillis();
                     }
@@ -368,12 +371,15 @@ public class TrainingActivity extends AppCompatActivity
             if (isOneKeyMode()) {
                 if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
                     pressed = false;
+                    stopSound();
                     long keyUpTime = System.currentTimeMillis();
                     long interval = keyUpTime - keyDownTime;
-                    if (interval > 700) {
-                        clickDash();
+                    if (interval > dashDuration) {
+                        //clickDash();
+                        clickButton('-');
                     } else {
-                        clickDit();
+                        //clickDit();
+                        clickButton('·');
                     }
                     return true;
                 }
@@ -430,6 +436,15 @@ public class TrainingActivity extends AppCompatActivity
         soundPlayer.playDashSound();
         clickButton('-');
     }
+
+    protected void startSound() {
+        soundPlayer.startDashSound();
+    }
+
+    protected void stopSound() {
+        soundPlayer.stopDashSound();
+    }
+
 
     protected boolean clickDotDash() {
         //soundPlayer.playDashSound();
