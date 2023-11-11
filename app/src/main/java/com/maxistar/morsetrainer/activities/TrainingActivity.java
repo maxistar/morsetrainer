@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.PowerManager;
 import android.preference.PreferenceManager;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -119,36 +120,40 @@ public class TrainingActivity extends AppCompatActivity
 
         if (settingsService.isOneButtonMode()) { // one button
             setContentView(R.layout.activity_one_button_trainig);
-            Button b1 = this.findViewById(R.id.button1);
+            Button b1 = this.findViewById(R.id.button2);
             //b1.setOnTouchListener(v -> clickDotDash());
-            /*
+
             b1.setOnTouchListener(new View.OnTouchListener() {
                 @Override
                 public boolean onTouch(View v, MotionEvent event) {
                     switch (event.getAction()) {
                         case MotionEvent.ACTION_DOWN:
-                            pressStartTime = System.currentTimeMillis();
-                            newHandler.postDelayed(longClickRunnable, 1000); // Define your long press duration here (in milliseconds)
+                            Log.w("TAG", "Action dows");
+                            //pressStartTime = System.currentTimeMillis();
+                            //newHandler.postDelayed(longClickRunnable, 1000); // Define your long press duration here (in milliseconds)
+                            startClick();
                             return true;
 
                         case MotionEvent.ACTION_UP:
-                            newHandler.removeCallbacks(longClickRunnable);
-                            pressDuration = System.currentTimeMillis() - pressStartTime;
-                            if (pressDuration < 1000) { // Adjust this threshold as needed
+                            stopClick();
+                            Log.w("UP", "Action up");
+                            //newHandler.removeCallbacks(longClickRunnable);
+                            //pressDuration = System.currentTimeMillis() - pressStartTime;
+                            //if (pressDuration < 1000) { // Adjust this threshold as needed
                                 // Handle short click here
                                 // You can do something when the button is tapped.
-                            } else {
+                            //} else {
                                 //
-                            }
+                            //}
                             return true;
 
                         case MotionEvent.ACTION_CANCEL:
-                            newHandler.removeCallbacks(longClickRunnable);
-                            return true;
+                            //newHandler.removeCallbacks(longClickRunnable);
+                            //return true;
                     }
                     return false;
                 }
-            }); */
+            });
 
         } else { // two buttons
             setContentView(R.layout.activity_trainig);
@@ -344,11 +349,7 @@ public class TrainingActivity extends AppCompatActivity
         if (useVolumeNavigation()) {
             if (isOneKeyMode()) {
                 if ((keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN)) {
-                    if (!pressed) {
-                        startSound();
-                        pressed = true;
-                        keyDownTime = System.currentTimeMillis();
-                    }
+                    startClick();
                     return true;
                 }
             } else {
@@ -365,22 +366,21 @@ public class TrainingActivity extends AppCompatActivity
         return super.onKeyDown(keyCode, event);
     }
 
+    private void startClick() {
+        if (pressed) {
+            return;
+        }
+        startSound();
+        pressed = true;
+        keyDownTime = System.currentTimeMillis();
+    }
+
     @Override
     public boolean onKeyUp(int keyCode, KeyEvent event) {
         if (useVolumeNavigation()) {
             if (isOneKeyMode()) {
                 if (keyCode == KeyEvent.KEYCODE_VOLUME_UP || keyCode == KeyEvent.KEYCODE_VOLUME_DOWN) {
-                    pressed = false;
-                    stopSound();
-                    long keyUpTime = System.currentTimeMillis();
-                    long interval = keyUpTime - keyDownTime;
-                    if (interval > dashDuration) {
-                        //clickDash();
-                        clickButton('-');
-                    } else {
-                        //clickDit();
-                        clickButton('·');
-                    }
+                    stopClick();
                     return true;
                 }
             } else {
@@ -395,6 +395,20 @@ public class TrainingActivity extends AppCompatActivity
             }
         }
         return super.onKeyUp(keyCode, event);
+    }
+
+    private void stopClick() {
+        pressed = false;
+        stopSound();
+        long keyUpTime = System.currentTimeMillis();
+        long interval = keyUpTime - keyDownTime;
+        if (interval > dashDuration) {
+            //clickDash();
+            clickButton('-');
+        } else {
+            //clickDit();
+            clickButton('·');
+        }
     }
 
 
