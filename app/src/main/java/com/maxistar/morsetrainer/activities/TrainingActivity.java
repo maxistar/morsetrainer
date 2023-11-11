@@ -132,11 +132,14 @@ public class TrainingActivity extends AppCompatActivity
                             //pressStartTime = System.currentTimeMillis();
                             //newHandler.postDelayed(longClickRunnable, 1000); // Define your long press duration here (in milliseconds)
                             startClick();
+                            v.setPressed(true);
                             return true;
 
                         case MotionEvent.ACTION_UP:
                             stopClick();
+                            // v.performClick();
                             Log.w("UP", "Action up");
+                            //event.
                             //newHandler.removeCallbacks(longClickRunnable);
                             //pressDuration = System.currentTimeMillis() - pressStartTime;
                             //if (pressDuration < 1000) { // Adjust this threshold as needed
@@ -145,11 +148,8 @@ public class TrainingActivity extends AppCompatActivity
                             //} else {
                                 //
                             //}
+                            v.setPressed(false);
                             return true;
-
-                        case MotionEvent.ACTION_CANCEL:
-                            //newHandler.removeCallbacks(longClickRunnable);
-                            //return true;
                     }
                     return false;
                 }
