@@ -33,10 +33,21 @@
         android:layout_alignParentEnd="true" />
 
     <Button
+        android:id="@+id/button_telegraph"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Telegraph"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@id/button_progress"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <Button
         android:id="@+id/button_settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/button_progress"
+        android:layout_below="@id/button_telegraph"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:text="@string/settings"

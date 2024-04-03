@@ -34,6 +34,9 @@ public class MainActivity extends AppCompatActivity {
         Button progressButton = findViewById(R.id.button_progress);
         progressButton.setOnClickListener(view -> startActivity(new Intent(getBaseContext(), ProgressActivity.class)));
 
+        Button telegraphButton = findViewById(R.id.button_telegraph);
+        telegraphButton.setOnClickListener(view -> startActivity(new Intent(getBaseContext(), TelegraphActivity.class)));
+
         Button progressSettings = findViewById(R.id.button_settings);
         if (progressSettings != null) {
             progressSettings.setOnClickListener(view -> showSettings());
