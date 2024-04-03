@@ -67,4 +67,10 @@ public class MainActivityTest {
         onView(withId(R.id.button_progress)).perform(click());
         Screengrab.screenshot("progress");
     }
+
+    @Test
+    public void goToTelegraph() {
+        onView(withId(R.id.button_telegraph)).perform(click());
+        Screengrab.screenshot("telegraph");
+    }
 }
