@@ -1,11 +1,17 @@
 package com.maxistar.morsetrainer.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 
+import android.Manifest;
 import android.content.Context;
+import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.os.VibrationEffect;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
@@ -20,12 +26,16 @@ import java.net.InetAddress;
 import java.net.UnknownHostException;
 
 import android.util.Log;
+import android.widget.Toast;
+
 public class TelegraphActivity extends AppCompatActivity {
 
     static String TAG = "udp";
     static int PORT = 2000;
 
     private DatagramSocket socket;
+
+    private Vibrator vibrator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,6 +64,25 @@ public class TelegraphActivity extends AppCompatActivity {
                 return false;
             }
         });
+
+        checkPermissions();
+        // get the VIBRATOR_SERVICE system service
+        vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
+
+    }
+
+    private void checkPermissions() {
+        if (ContextCompat.checkSelfPermission(
+                this, Manifest.permission.VIBRATE) == PackageManager.PERMISSION_GRANTED
+        ) {
+            return;
+        }
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.VIBRATE)) {
+            Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
+        } else {
+            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.VIBRATE}, 1);
+        }
     }
 
     public void onResume() {
@@ -72,7 +101,19 @@ public class TelegraphActivity extends AppCompatActivity {
 
 
     private void vibrate() {
+        final VibrationEffect vibrationEffect1;
 
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
+
+            // this effect creates the vibration of default amplitude for 1000ms(1 sec)
+            vibrationEffect1 = VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE);
+
+            // it is safe to cancel other vibrations currently taking place
+            vibrator.cancel();
+            vibrator.vibrate(vibrationEffect1);
+        } else {
+            vibrator.vibrate(500);
+        }
     }
 
 
@@ -146,5 +187,6 @@ public class TelegraphActivity extends AppCompatActivity {
     private void handleMessage(String message) {
         // Implement your message handling logic here
         System.out.println("Received message: " + message);
+        vibrate();
     }
 }
