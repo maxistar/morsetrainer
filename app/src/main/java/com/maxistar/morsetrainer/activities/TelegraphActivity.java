@@ -18,6 +18,8 @@ import android.view.View;
 import android.widget.Button;
 
 import com.maxistar.morsetrainer.R;
+import com.maxistar.morsetrainer.ServiceLocator;
+
 import android.os.StrictMode;
 import java.io.IOException;
 import java.net.DatagramPacket;
@@ -36,6 +38,9 @@ public class TelegraphActivity extends AppCompatActivity {
     private DatagramSocket socket;
 
     private Vibrator vibrator;
+
+    private long keyDownTime = 0;
+    private boolean pressed = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +74,10 @@ public class TelegraphActivity extends AppCompatActivity {
         // get the VIBRATOR_SERVICE system service
         vibrator = (Vibrator) getSystemService(Context.VIBRATOR_SERVICE);
 
+        WifiManager wifiManager = (WifiManager) getApplicationContext().getSystemService(Context.WIFI_SERVICE);
+        wifiManager.setWifiEnabled(true);
+
+
     }
 
     private void checkPermissions() {
@@ -78,21 +87,31 @@ public class TelegraphActivity extends AppCompatActivity {
             return;
         }
 
+        String[] PERMISSIONS = {
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.ACCESS_WIFI_STATE,
+                Manifest.permission.WAKE_LOCK,
+                Manifest.permission.DISABLE_KEYGUARD,
+                Manifest.permission.VIBRATE
+        };
+
         if (ActivityCompat.shouldShowRequestPermissionRationale(this, Manifest.permission.VIBRATE)) {
             Toast.makeText(this, "", Toast.LENGTH_SHORT).show();
         } else {
-            ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.VIBRATE}, 1);
+            ActivityCompat.requestPermissions(this, PERMISSIONS, 1);
         }
     }
 
     public void onResume() {
         super.onResume();
         startUDPListener();
+        ServiceLocator.getInstance().getWakeLockService().acquireLock(this.getApplicationContext());
     }
 
     public void onPause() {
         super.onPause();
         stopListening();
+        ServiceLocator.getInstance().getWakeLockService().releaseLock();
     }
 
     private void stopListening() {
@@ -118,10 +137,18 @@ public class TelegraphActivity extends AppCompatActivity {
 
 
     private void stopClick() {
-        sendBroadcast("broadcast");
+        pressed = false;
+        long keyUpTime = System.currentTimeMillis();
+        long interval = keyUpTime - keyDownTime;
+        sendBroadcast("broadcast:" + interval);
     }
 
     private void startClick() {
+        if (pressed) {
+            return;
+        }
+        pressed = true;
+        keyDownTime = System.currentTimeMillis();
     }
 
     void sendBroadcast(String messageStr) {

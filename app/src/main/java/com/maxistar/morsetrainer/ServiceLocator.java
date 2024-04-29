@@ -1,7 +1,11 @@
 package com.maxistar.morsetrainer;
 
+import com.maxistar.morsetrainer.service.WakeLockService;
+
 public class ServiceLocator {
     private static ServiceLocator instance = null;
+
+    private WakeLockService wakeLockService = null;
 
     private ServiceLocator() {}
 
@@ -29,4 +33,12 @@ public class ServiceLocator {
     public SoundPlayer getSoundPlayer() {
         return new SoundPlayer();
     }
+
+    public WakeLockService getWakeLockService() {
+        if (wakeLockService == null) {
+            wakeLockService = new WakeLockService();
+        }
+        return wakeLockService;
+    }
+
 }
