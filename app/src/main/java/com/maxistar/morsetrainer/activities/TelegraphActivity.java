@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.pm.PackageManager;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
+import android.os.Handler;
 import android.os.StrictMode;
 import android.os.VibrationEffect;
 import android.os.Vibrator;
@@ -26,6 +27,7 @@ import java.net.DatagramPacket;
 import java.net.DatagramSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.UUID;
 
 import android.util.Log;
 import android.widget.Toast;
@@ -40,7 +42,15 @@ public class TelegraphActivity extends AppCompatActivity {
     private Vibrator vibrator;
 
     private long keyDownTime = 0;
+
+    private int counter = 0;
+    private int dialogCounter = 0;
+
     private boolean pressed = false;
+
+    String uniqueId = "";
+
+    Handler handler = new Handler();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +58,8 @@ public class TelegraphActivity extends AppCompatActivity {
         setContentView(R.layout.activity_telegraph);
 
         Button b1 = this.findViewById(R.id.button2);
+
+        uniqueId = UUID.randomUUID().toString().substring(0, 8);
 
         b1.setOnTouchListener(new View.OnTouchListener() {
             @Override
@@ -119,28 +131,37 @@ public class TelegraphActivity extends AppCompatActivity {
     }
 
 
-    private void vibrate() {
+    private void vibrate(int duration) {
         final VibrationEffect vibrationEffect1;
 
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
 
             // this effect creates the vibration of default amplitude for 1000ms(1 sec)
-            vibrationEffect1 = VibrationEffect.createOneShot(500, VibrationEffect.DEFAULT_AMPLITUDE);
+            vibrationEffect1 = VibrationEffect.createOneShot(duration, VibrationEffect.DEFAULT_AMPLITUDE);
 
             // it is safe to cancel other vibrations currently taking place
             vibrator.cancel();
             vibrator.vibrate(vibrationEffect1);
         } else {
-            vibrator.vibrate(500);
+            vibrator.vibrate(duration);
         }
     }
 
 
     private void stopClick() {
+        if (!pressed) {
+            return;
+        }
         pressed = false;
         long keyUpTime = System.currentTimeMillis();
         long interval = keyUpTime - keyDownTime;
-        sendBroadcast("broadcast:" + interval);
+
+        String payload = "" + uniqueId + ":" + (counter++) + ":" + interval;
+        sendBroadcast(payload);
+        handler.postDelayed(() -> sendBroadcast(payload), 100);
+        handler.postDelayed(() -> sendBroadcast(payload), 200);
+        handler.postDelayed(() -> sendBroadcast(payload), 300);
+        handler.postDelayed(() -> sendBroadcast(payload), 400);
     }
 
     private void startClick() {
@@ -214,6 +235,41 @@ public class TelegraphActivity extends AppCompatActivity {
     private void handleMessage(String message) {
         // Implement your message handling logic here
         System.out.println("Received message: " + message);
-        vibrate();
+
+        String [] parts = message.split(":");
+        if (parts.length != 3) {
+            //wrong format
+            return;
+        }
+        String clientId = parts[0];
+        String duration = parts[2];
+        String dialogCounterString = parts[1];
+        int vibrationDuration;
+        if (clientId.equals(uniqueId)) {
+            //message from us
+            return;
+        }
+        try{
+            vibrationDuration = Integer.parseInt(duration);
+            System.out.println(vibrationDuration); // output = 25
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+            return;
+        }
+        try{
+            int counter = Integer.parseInt(dialogCounterString);
+            if (counter <= dialogCounter) {
+                return;
+            }
+            dialogCounter = counter;
+        }
+        catch (NumberFormatException ex){
+            ex.printStackTrace();
+            return;
+        }
+        vibrate(vibrationDuration);
+
+
     }
 }
