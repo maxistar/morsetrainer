@@ -22,12 +22,6 @@ jobs:
       - name: Install Bundler
         run: gem install bundler --user-install
 
-      - name: Add Bundler to PATH
-        run: echo "PATH=\$HOME/.local/bin:\$PATH" >> $GITHUB_ENV
-
-      - name: Install dependencies with Bundler
-        run: bundle install --path vendor/bundle
-
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
         with:
