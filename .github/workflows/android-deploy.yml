@@ -19,14 +19,14 @@ jobs:
         with:
           java-version: '11'
 
-      - name: Add Bundler to PATH
-        run: echo 'export PATH=$HOME/.local/bin:$PATH' >> $BASH_ENV
-
       - name: Install Bundler
         run: gem install bundler --user-install
 
-      - name: Install Fastlane dependencies
-        run: bundle install
+      - name: Add Bundler to PATH
+        run: echo 'export PATH=$HOME/.local/bin:$PATH' >> $BASH_ENV
+
+      - name: Install dependencies with Bundler
+        run: bundle install --path vendor/bundle
 
       - name: Set up Android SDK
         uses: android-actions/setup-android@v2
