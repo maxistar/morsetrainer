@@ -19,6 +19,9 @@ jobs:
         with:
           java-version: '11'
 
+      - name: Add Bundler to PATH
+        run: echo 'export PATH=$HOME/.local/bin:$PATH' >> $BASH_ENV
+
       - name: Install Bundler
         run: gem install bundler --user-install
 
