@@ -20,7 +20,7 @@ jobs:
           java-version: '11'
 
       - name: Install Bundler
-        run: gem install bundler
+        run: gem install bundler --user-install
 
       - name: Install Fastlane dependencies
         run: bundle install
