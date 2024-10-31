@@ -1,7 +1,6 @@
 package com.maxistar.morsetrainer;
 
 import com.maxistar.morsetrainer.activities.MainActivity;
-import com.maxistar.morsetrainer.activities.TrainingActivity;
 
 import org.junit.After;
 import org.junit.Before;

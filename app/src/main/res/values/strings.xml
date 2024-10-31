@@ -107,8 +107,13 @@
     <string name="preferencesLearnPuctation">learn punctuation marks</string>
     <string name="preferencesCyrillic">Cyrillic Letters</string>
     <string name="preferencesLearnCyrillic">learn cyrillic letters</string>
-    <string name="dash" translatable="false">-</string>
-    <string name="dot" translatable="false">.</string>
+    <string name="dash" translatable="false">−</string>
+    <string name="dot" translatable="false">•</string>
+    <string name="dot_dash" translatable="false">•/−</string>
     <string name="preferenceVolumeFunctions">Volume Buttons</string>
     <string name="preferenceVolumeFunctionsSummary">Use volume buttons for navigation</string>
+
+    <string name="preferenceOneButtonMode">One Button Mode</string>
+    <string name="preferenceOneButtonModeSummary">Use the one button for dash and dots</string>
+
 </resources>

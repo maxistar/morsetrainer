@@ -105,4 +105,7 @@
     <string name="preferencesLearnCyrillic">учить кириллицу</string>
     <string name="preferenceVolumeFunctions">Клавиши громкости</string>
     <string name="preferenceVolumeFunctionsSummary">Использовать клавиши громкости для навигации</string>
+
+    <string name="preferenceOneButtonMode">Однокнопочный режим</string>
+    <string name="preferenceOneButtonModeSummary">Использовать одну кнопку как ключ Морзе</string>
 </resources>

@@ -1,24 +1,46 @@
+image: maxistar/android:latest
+
+before_script:
+  - 'command -v ssh-agent >/dev/null || ( apt-get update -y && apt-get install openssh-client -y )'
+  - eval $(ssh-agent -s)
+  - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+  - mkdir -p ~/.ssh
+  - chmod 700 ~/.ssh
+
 stages:
-  - test
-test:
-  stage: test
+  - build
+  - execute
+
+build:
+  stage: build
+  tags:
+    - fomalgaut
+
   script:
     - echo "Compile project"
     - cp local.properties.dist local.properties
-    - export PATH=${GRADLE_HOME}/bin:${ANDROID_SDK_ROOT}/tools/bin:${PATH}
     - gradle clean
-    - gradle build
-    - gradle test
+    - gradle assembleDebug
     - gradle compileDebugSources
     - gradle compileDebugAndroidTestSources
     - gradle assembleAndroidTest
     - echo "Upload compiled binaries"
-    - scp app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk pi@10.8.0.27:/home/pi/tests/morsetrainer/app-debug-androidTest.apk
-    - scp app/build/outputs/apk/debug/app-debug.apk pi@10.8.0.27:/home/pi/tests/morsetrainer/app-debug.apk
-    - echo "Install scripts to test device"
-    - ssh pi@10.8.0.27 "adb -s ZY223NB8FP uninstall com.maxistar.morsetrainer.test"
-    - ssh pi@10.8.0.27 "adb -s ZY223NB8FP uninstall com.maxistar.morsetrainer"
-    - ssh pi@10.8.0.27 "adb -s ZY223NB8FP install -r -t /home/pi/tests/morsetrainer/app-debug-androidTest.apk"
-    - ssh pi@10.8.0.27 "adb -s ZY223NB8FP install -r -t /home/pi/tests/morsetrainer/app-debug.apk"
+    - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk $PHYSICAL_DEVICE_RUNNER:$APK_LOCATION/app-debug-androidTest.apk
+    - scp -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null app/build/outputs/apk/debug/app-debug.apk $PHYSICAL_DEVICE_RUNNER:$APK_LOCATION/app-debug.apk
+    - echo "Done stage Fomalgaut"
+
+execute:
+  stage: execute
+  tags:
+    - altair
+  script:
+    - echo "Execute Compliled Tests"
+    - adb -s $ADB_DEVICE_NAME uninstall com.maxistar.morsetrainer.test
+    - adb -s $ADB_DEVICE_NAME uninstall com.maxistar.morsetrainer
+    - adb -s $ADB_DEVICE_NAME install -r -t -g -d $APK_LOCATION/app-debug-androidTest.apk
+    - adb -s $ADB_DEVICE_NAME install -r -t -g -d $APK_LOCATION/app-debug.apk
     - echo "Run tests"
-    - ssh pi@10.8.0.27 "adb -s ZY223NB8FP shell am instrument -w -e debug false com.maxistar.morsetrainer.test/androidx.test.runner.AndroidJUnitRunner"
+    - adb -s $ADB_DEVICE_NAME shell input keyevent 82
+    - sleep 1
+    - adb -s $ADB_DEVICE_NAME shell am instrument -w -e debug false com.maxistar.morsetrainer.test/androidx.test.runner.AndroidJUnitRunner
+    - exit $?

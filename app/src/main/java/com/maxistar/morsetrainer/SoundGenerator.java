@@ -13,6 +13,8 @@ import java.io.IOException;
 public class SoundGenerator {
 
     private final double dashDuration = 0.5; // seconds
+
+    private final double longDashDuration = 5; // seconds
     private final double dipDuration = 0.25; // seconds
     private final double pauseDuration = 0.25; // seconds
     private final int sampleRate = 8000;
@@ -24,7 +26,11 @@ public class SoundGenerator {
     private final byte[] generatedSndPause = new byte[2 * pauseNumSamples];
 
     private final int dashNumSamples = (int) (sampleRate * dashDuration);
+
+    private final int longDashNumSamples = (int) (sampleRate * longDashDuration);
     private final byte[] generatedSndDash = new byte[2 * dashNumSamples];
+
+    private final byte[] generatedSndLongDash = new byte[2 * longDashNumSamples];
 
     private final int dipNumSamples = (int) (sampleRate * dipDuration);
     private final byte[] generatedSndDip = new byte[2 * dipNumSamples];
@@ -45,6 +51,8 @@ public class SoundGenerator {
 
         convertTo16BitPcb(dip_sample, generatedSndDip);
 
+
+
         double[] dash_sample = new double[dashNumSamples];
         for (i = 0; i < dashNumSamples; i++) {
             dash_sample[i] = Math.sin(2 * Math.PI * i * freqOfTone / sampleRate);
@@ -53,6 +61,18 @@ public class SoundGenerator {
 
 
         convertTo16BitPcb(dash_sample, generatedSndDash);
+
+
+        double[] long_dash_sample = new double[longDashNumSamples];
+        for (i = 0; i < longDashNumSamples; i++) {
+            long_dash_sample[i] = Math.sin(2 * Math.PI * i * freqOfTone / sampleRate);
+        }
+        debounce(long_dash_sample, i-1);
+
+
+        convertTo16BitPcb(long_dash_sample, generatedSndLongDash);
+
+
 
         double[] space_sample = new double[pauseNumSamples];
         for (i = 0; i < pauseNumSamples; i++) {
@@ -92,6 +112,11 @@ public class SoundGenerator {
         if (!file.exists()) {
             createDipSound(context);
         }
+
+        file = context.getFileStreamPath("_long_dash.wav");
+        if (!file.exists()) {
+            createLongDashSound(context);
+        }
     }
 
     void createDipSound(Context context) {
@@ -102,6 +127,11 @@ public class SoundGenerator {
     void createDashSound(Context context) {
         generateSounds();
         saveWav(context, generatedSndDash, "_dash.wav");
+    }
+
+    void createLongDashSound(Context context) {
+        generateSounds();
+        saveWav(context, generatedSndLongDash, "_long_dash.wav");
     }
 
 
