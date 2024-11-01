@@ -26,6 +26,8 @@ jobs:
 
       - name: Run tests
         run: bundle exec fastlane android test
+        env:
+          KEYSTORE_FILE: "android_keystore.jks"
 
       - name: Build & deploy Android release
         run: bundle exec fastlane android deploy
