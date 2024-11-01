@@ -27,12 +27,12 @@ jobs:
       - name: Run tests
         run: bundle exec fastlane android test
         env:
-          ANDROID_KEYSTORE: "android_keystore.jks"
+          ANDROID_KEYSTORE: "../android_keystore.jks"
 
       - name: Build & deploy Android release
         run: bundle exec fastlane android deploy
         env:
-          ANDROID_KEYSTORE: "android_keystore.jks"
+          ANDROID_KEYSTORE: "../android_keystore.jks"
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS}}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}

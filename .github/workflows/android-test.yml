@@ -33,7 +33,7 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test
         env:
-          ANDROID_KEYSTORE: "android_keystore.jks"
+          ANDROID_KEYSTORE: "../android_keystore.jks"
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS}}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
