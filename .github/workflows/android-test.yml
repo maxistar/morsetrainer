@@ -2,7 +2,6 @@ name: Android CI
 
 on:
   push:
-  pull_request: # Optionally, run tests on pull requests
     branches:
       - '**'  # Match all branches
 
@@ -34,7 +33,7 @@ jobs:
       - name: Run Unit Tests
         run: ./gradlew test
         env:
-          KEYSTORE_FILE: "android_keystore.jks"
+          ANDROID_KEYSTORE: "android_keystore.jks"
           KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
           KEY_ALIAS: ${{ secrets.KEY_ALIAS}}
           KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
