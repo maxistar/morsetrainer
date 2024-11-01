@@ -1,18 +1,9 @@
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
-Properties properties = new Properties()
-properties.load(project.rootProject.file('local.properties').newDataInputStream())
-def signingKeystorePassword = properties.getProperty('signing_keystore_password')
-def signingKeystoreFile = properties.getProperty('signing_keystore_file')
-def signingKeyAlias = properties.getProperty('signing_key_alias')
-def signingKeyPassword = properties.getProperty('signing_key_password')
-
-
-
 android {
     compileSdkVersion 34
-
+    namespace "com.maxistar.morsetrainer"
     defaultConfig {
         applicationId "com.maxistar.morsetrainer"
         minSdkVersion 18
@@ -23,10 +14,10 @@ android {
 
     signingConfigs {
         release {
-            storeFile file("${signingKeystoreFile}")
-            storePassword "${signingKeystorePassword}"
-            keyAlias "${signingKeyAlias}"
-            keyPassword "${signingKeyPassword}"
+            storeFile file(System.getenv("ANDROID_KEYSTORE"))
+            storePassword System.getenv("KEYSTORE_PASSWORD")
+            keyAlias System.getenv("KEYSTORE_ALIAS")
+            keyPassword System.getenv("KEY_PASSWORD")
         }
     }
 
