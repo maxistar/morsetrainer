@@ -1,35 +1,45 @@
-name: Android CI
+name: Android Build & Deploy
 
 on:
-  push:
-  pull_request: # Optionally, run tests on pull requests
-    branches:
-      - main
+  workflow_dispatch:
 
 jobs:
-  build:
+  deploy:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
+      - uses: actions/checkout@v2
+
+      - name: Set up ruby env
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.7.2
+          bundler-cache: true
 
       - name: Setup Properties
-        run: cp local.properties.dist local.properties
+        run: cp fastlane/Appfile.deploy Appfile
 
-      - name: Set up JDK
-        uses: actions/setup-java@v1
+      - name: Decode Service Account Key JSON File
+        run: echo "${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}" | base64 -d > service_account_key.json
+
+      - name: Decode Keystore File
+        run: echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 -d > android_keystore.jks
+
+      - name: Run tests
+        run: bundle exec fastlane android test
+        env:
+          ANDROID_KEYSTORE: "android_keystore.jks"
+
+      - name: Build & deploy Android release
+        run: bundle exec fastlane android deploy
+        env:
+          ANDROID_KEYSTORE: "android_keystore.jks"
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS}}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v2
         with:
-          java-version: '11'
-
-      - name: Install Bundler
-        run: gem install bundler --user-install
-
-      - name: Set up Android SDK
-        uses: android-actions/setup-android@v2
-        with:
-          api-level: 30
-          build-tools-version: "30.0.2"
-
-      - name: Run Unit Tests
-        run: ./gradlew test
+          name: assets
+          path: |
+            ${{ github.workspace }}/app/build/outputs/bundle/release
