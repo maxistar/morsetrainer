@@ -2,12 +2,12 @@ apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 34
+    compileSdkVersion 35
     namespace "com.maxistar.morsetrainer"
     defaultConfig {
         applicationId "com.maxistar.morsetrainer"
         minSdkVersion 18
-        targetSdkVersion 34
+        targetSdkVersion 35
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
