@@ -57,8 +57,8 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     // Testing-only dependencies
-    androidTestImplementation(libs.androidx.test.core.android)
-    androidTestImplementation(libs.androidx.test.ext.junit.android)
+    androidTestImplementation(libs.androidx.test.core.unit)
+    androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.test.runner)
     androidTestImplementation(libs.androidx.test.espresso.core)
     androidTestImplementation(libs.androidx.test.espresso.intents)
