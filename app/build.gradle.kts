@@ -11,6 +11,8 @@ android {
         applicationId = "com.maxistar.morsetrainer"
         minSdk = 18
         targetSdk = 35
+        versionCode = 21
+        versionName = "1.11.11"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
@@ -43,6 +45,12 @@ android {
     packaging {
         resources {
             excludes += setOf("META-INF/LICENSE.md", "META-INF/LICENSE-notice.md")
+        }
+    }
+
+    bundle {
+        language {
+            enableSplit = false
         }
     }
 

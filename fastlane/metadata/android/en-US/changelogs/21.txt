@@ -1,0 +1,4 @@
+Technical maintenance release:
+- Updated Android build metadata and dependencies.
+- Improved release and maintainer documentation.
+- No changes to the Morse training flow.
