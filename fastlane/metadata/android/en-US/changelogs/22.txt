@@ -1,0 +1,2 @@
+Technical maintenance release:
+- Updated Android build metadata and dependencies.

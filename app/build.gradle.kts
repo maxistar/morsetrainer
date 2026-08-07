@@ -5,23 +5,26 @@ plugins {
 
 android {
     namespace = "com.maxistar.morsetrainer"
-    compileSdk = 35
+    compileSdk = 36
+    val keystorePath = System.getenv("ANDROID_KEYSTORE")
 
     defaultConfig {
         applicationId = "com.maxistar.morsetrainer"
         minSdk = 18
-        targetSdk = 35
-        versionCode = 21
-        versionName = "1.11.11"
+        targetSdk = 36
+        versionCode = 22
+        versionName = "1.11.12"
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     signingConfigs {
-        create("release") {
-            storeFile = file(System.getenv("ANDROID_KEYSTORE"))
-            storePassword = System.getenv("KEYSTORE_PASSWORD")
-            keyAlias = System.getenv("KEY_ALIAS")
-            keyPassword = System.getenv("KEY_PASSWORD")
+        if (!keystorePath.isNullOrBlank()) {
+            create("release") {
+                storeFile = file(keystorePath)
+                storePassword = System.getenv("KEYSTORE_PASSWORD")
+                keyAlias = System.getenv("KEY_ALIAS")
+                keyPassword = System.getenv("KEY_PASSWORD")
+            }
         }
     }
 
@@ -34,7 +37,7 @@ android {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.txt")
-            signingConfig = signingConfigs.getByName("release")
+            signingConfig = signingConfigs.findByName("release")
         }
         getByName("debug") {
             isMinifyEnabled = false
